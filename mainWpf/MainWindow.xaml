@@ -1,0 +1,59 @@
+﻿<Window x:Name="MainWin" x:Class="mainWpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:mainWpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="768" Width="1366" Loaded="MainWin_Loaded" Background="#008BB6C3" KeyUp="Keyboard_KeyUp" Closed="MainWin_Closed">
+	<Grid x:Name="Grid1" Background="#FF668DA8">
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		<Grid x:Name="myGrid" Height="734" HorizontalAlignment="Left" Width="1015" VerticalAlignment="Top" Panel.ZIndex="2">
+			<Image x:Name="ImageWebcam1" HorizontalAlignment="Left" Width="1015" Height="734" VerticalAlignment="Top" Panel.ZIndex="2"/>
+			<Grid x:Name="UDPData_Grid" HorizontalAlignment="Left" Height="356" VerticalAlignment="Top" Width="611" Panel.ZIndex="3">
+				<TextBox x:Name="TextBox1" HorizontalAlignment="Left" Height="339" TextWrapping="Wrap" Text="{Binding SendingData, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="118" TextChanged="TextBox1_TextChanged" UndoLimit="300" Panel.ZIndex="3" Background="#B2A01DEC"/>
+				<TextBox x:Name="ctext" HorizontalAlignment="Left" Height="208" Margin="118,0,0,0" TextWrapping="Wrap" Text="{Binding ReceivingData, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="118" Panel.ZIndex="3" Background="#B2A01DEC"/>
+				<Label x:Name="Label_ByteData" Content="{Binding ReceivingBytes, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="74" Margin="236,0,0,0" VerticalAlignment="Top" Width="364" Panel.ZIndex="3" Background="#B2A01DEC"/>
+				<Label x:Name="Label_SendingBytes" Content="{Binding SendingBytes, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="74" Margin="236,74,0,0" VerticalAlignment="Top" Width="364" Panel.ZIndex="3" Background="#B2A01DEC"/>
+			</Grid>
+		</Grid>
+		<TextBox x:Name="TextBox_SpeedMode" Text="{Binding Path=SpeedMode, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="39" Margin="0,0,0,3" VerticalAlignment="Bottom" Width="122" BorderThickness="1" Panel.ZIndex="2" DataContextChanged="SpeedModeChanged" BorderBrush="#00ABADB3" SelectionBrush="#000078D7" IsReadOnly="True" TextChanged="TextBox_SpeedMode_TextChanged" Background="{x:Null}"/>
+		<Rectangle x:Name="Rectangle_lows" Fill="{Binding Speed1Brush}" HorizontalAlignment="Left" Height="15" Margin="23,0,0,42" Stroke="Black" VerticalAlignment="Bottom" Width="10" Panel.ZIndex="2"/>
+		<Rectangle x:Name="Rectangle_normals" Fill="{Binding Speed2Brush}" HorizontalAlignment="Left" Height="30" Margin="33,0,0,42" Stroke="Black" VerticalAlignment="Bottom" Width="10" Panel.ZIndex="2"/>
+		<Rectangle x:Name="Rectangle_highs" Fill="{Binding Speed3Brush}" HorizontalAlignment="Left" Height="45" Margin="43,0,0,42" Stroke="Black" VerticalAlignment="Bottom" Width="10" Panel.ZIndex="2"/>
+		<GroupBox x:Name="GroupBox_Timer" Header="Timer" HorizontalAlignment="Left" Height="196" Margin="1033,10,0,0" VerticalAlignment="Top" Width="315" Foreground="White" BorderBrush="#FF2A4897" FontSize="14" Background="#7F2F5168" FontWeight="Bold" Panel.ZIndex="2">
+			<Grid x:Name="GroupBoxTimer_Grid" HorizontalAlignment="Left" Height="171" Margin="0,10,-2,-11" VerticalAlignment="Top" Width="305">
+				<Button x:Name="Pause_button" Content="{Binding Path=ButtonContent, UpdateSourceTrigger=PropertyChanged}" Margin="0,121,162,10" Click="Stop_button_Click" FontFamily="Arial Rounded MT Bold" Background="#FF143A5B" Foreground="White" Width="143"/>
+				<Button x:Name="reset_button" Content="Reset" Margin="0,121,0,0" Click="reset_button_Click" Height="40" VerticalAlignment="Top" HorizontalAlignment="Right" Width="143" FontFamily="Arial Rounded MT Bold" Background="#FF143A5B" Foreground="White"/>
+				<TextBox x:Name="TextBox_timer" Text="{Binding Path=TimeLeft, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="106" TextWrapping="Wrap" VerticalAlignment="Top" Width="305" BorderBrush="#00ABADB3" Background="Transparent" SelectionBrush="#000078D7" FontSize="36" TextAlignment="Center" Margin="0,10,0,0" TextChanged="TextBox_timer_TextChanged_1" FontFamily="Stencil"/>
+			</Grid>
+		</GroupBox>
+		<GroupBox x:Name="GroupBox_SensorData" Header="SensorData" HorizontalAlignment="Left" Height="421" Margin="1033,206,0,0" VerticalAlignment="Top" Width="315" Foreground="White" BorderBrush="#FF2A4897" FontSize="14" Background="#7F2F5168" FontWeight="Bold" Panel.ZIndex="2">
+			<Grid x:Name="GroupBoxP_Grid" HorizontalAlignment="Left" Height="401" Margin="0,10,-2,-16" VerticalAlignment="Top" Width="305">
+				<Label x:Name="Label_Yaw" Content="{Binding Path=Yaw, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="195,347,0,0" Width="93" Height="44" VerticalAlignment="Top" FontSize="24" FontWeight="Normal"/>
+				<Label x:Name="Label_pitch" Content="{Binding Path=Pitch, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="44" Margin="106,45,0,0" VerticalAlignment="Top" Width="93" FontSize="24" FontWeight="Normal"/>
+				<Label x:Name="Label_roll" Content="{Binding Path=Roll, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="101,104,0,0" Width="93" Height="44" VerticalAlignment="Top" FontSize="24" FontWeight="Normal"/>
+				<Label x:Name="Label_depth" Content="{Binding Path=Depth, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="31,342,0,0" Width="92" Height="44" VerticalAlignment="Top" FontSize="24" FontWeight="Normal"/>
+				<Label x:Name="Label_1yaw" Content="   Yaw" HorizontalAlignment="Left" Height="44" Margin="187,178,0,0" VerticalAlignment="Top" Width="101" FontSize="24" FontWeight="Normal" BorderBrush="#BF0C0151"/>
+				<Label x:Name="Label_1depht" Content="Depth" HorizontalAlignment="Left" Height="44" Margin="31,178,0,0" VerticalAlignment="Top" Width="101" FontSize="24" FontWeight="Normal" BorderBrush="#BF0C0151"/>
+				<Label x:Name="Label_1pitch" Content=" Pitch =" HorizontalAlignment="Left" Height="44" Margin="0,45,0,0" VerticalAlignment="Top" Width="101" FontSize="24" FontWeight="Normal"/>
+				<Label x:Name="Label_1roll" Content="   Roll =" HorizontalAlignment="Left" Height="44" Margin="0,104,0,0" VerticalAlignment="Top" Width="101" FontSize="24" FontWeight="Normal"/>
+				<Image x:Name="Image_signal" HorizontalAlignment="Left" Height="63" Margin="217,17,0,0" VerticalAlignment="Top" Width="71" Source="Images/WSignal.png"/>
+				<Image x:Name="Image_Nosignal" HorizontalAlignment="Left" Height="63" Margin="216,17,0,0" VerticalAlignment="Top" Width="72" Source="Images/NoWSignal.png" OpacityMask="Black"/>
+				<Image x:Name="Image_compass" HorizontalAlignment="Left" Height="124" Margin="154,222,-25,0" VerticalAlignment="Top" Width="176" Source="Images/modern-compass-without-needle-hi.png" RenderTransformOrigin="0.444,0.488" Panel.ZIndex="2"/>
+				<Image x:Name="Image_strelka" HorizontalAlignment="Left" Height="90" Margin="194,240,0,0" VerticalAlignment="Top" Width="94" Source="Images/trelka.png" RenderTransformOrigin="{Binding Path=YawAngle, UpdateSourceTrigger=PropertyChanged}" Panel.ZIndex="2"/>
+				<Rectangle x:Name="Rectangle_Depth" Fill="#CCFFFFFF" HorizontalAlignment="Left" Height="108" Margin="70,0,0,59" Stroke="White" VerticalAlignment="Bottom" Width="26" Panel.ZIndex="2"/>
+				<Image x:Name="Image_lantern" HorizontalAlignment="Left" Height="93" Margin="206,85,0,0" VerticalAlignment="Top" Width="89" Source="Images/lantern.png"/>
+			</Grid>
+		</GroupBox>
+		<Image x:Name="Image_Background" HorizontalAlignment="Left" Height="737" VerticalAlignment="Top" Width="1300" Source="Images/nostalgic_blue_background_06_hd_pictures_169782.jpg" Margin="58,0,0,0"/>
+		<Image x:Name="Image_IsSound" HorizontalAlignment="Left" Height="123" Margin="909,12,0,0" VerticalAlignment="Top" Width="106" Panel.ZIndex="3"/>
+		<Label x:Name="Label_DephMeter" Content="{Binding Path=ADVDepth, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="77" Margin="1035,632,0,0" VerticalAlignment="Top" Width="313" Background="#B28BB3B9"/>
+		<MediaElement x:Name="ME_Test" Margin="1015,546,10,3" Panel.ZIndex="4" LoadedBehavior="Manual" Source="Videos/videoplayback.mp4" Visibility="Collapsed" Volume="2"/>
+		<Label x:Name="Label_calcresult" Content="{Binding Path=ADVHeigh, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="77" Margin="1139,632,0,0" VerticalAlignment="Top" Width="209" Panel.ZIndex="3" FontSize="20"/>
+		<TextBox x:Name="TextBox_AtmPr" HorizontalAlignment="Left" Height="64" Margin="824,663,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Panel.ZIndex="3" Background="#CC6FE8AB" PreviewTextInput="TextBox_AtmPr_PreviewTextInput_1" Text="1251" Visibility="Visible" TextChanged="TextBox_AtmPr_TextChanged"/>
+
+	</Grid>
+</Window>
