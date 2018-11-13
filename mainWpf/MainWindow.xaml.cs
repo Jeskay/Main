@@ -253,7 +253,8 @@ namespace mainWpf
             //Label_DephMeter.Visibility    = Visibility.Collapsed;
             Label_SendingBytes.Visibility   = Visibility.Collapsed;//V<
             webcam                          = new WebCamCapture();//C>
-
+           // webcam.CaptureHeight = 100;
+           // webcam.CaptureWidth = 100;
             webcam.FrameNumber                  = ((ulong)(0ul));
             webcam.TimeToCapture_milliseconds   = 30;
             webcam.ImageCaptured                += new WebCamCapture.WebCamEventHandler(webcam_ImageCaptured);
@@ -301,7 +302,9 @@ namespace mainWpf
         {
             if (e.KeyboardDevice.Modifiers == ModifierKeys.Shift && e.Key == System.Windows.Input.Key.D1)
             {
-                ctext.Margin = new Thickness(4, 12, 0, 0);
+                if (TextBox1.Visibility == Visibility.Visible) TextBox1.Visibility = Visibility.Collapsed;
+                else TextBox1.Visibility = Visibility.Visible;
+              /*  ctext.Margin = new Thickness(4, 12, 0, 0);
                 if (TextBox1.Visibility == Visibility.Visible) TextBox1.Visibility = Visibility.Collapsed;
                 else TextBox1.Visibility = Visibility.Visible;
                 if (TextBox1.Visibility == Visibility.Visible) ctext.Margin = new Thickness(122, 12, 0, 0);
@@ -313,12 +316,13 @@ namespace mainWpf
                 else if (TextBox1.Visibility == Visibility.Visible && ctext.Visibility == Visibility.Visible) Label_SendingBytes.Margin = new Thickness(240, 12, 0, 0);
                 else if (TextBox1.Visibility != Visibility.Visible ^ ctext.Visibility != Visibility.Visible) Label_SendingBytes.Margin = new Thickness(122, 12, 0, 0);
                 else Label_SendingBytes.Margin = new Thickness(4, 12, 0, 0);
-            }
+            */}
 
             if (e.KeyboardDevice.Modifiers == ModifierKeys.Shift && e.Key == System.Windows.Input.Key.D2)
             {
-                
                 if (ctext.Visibility == Visibility.Visible) ctext.Visibility = Visibility.Collapsed;
+                else ctext.Visibility = Visibility.Visible;
+                /*if (ctext.Visibility == Visibility.Visible) ctext.Visibility = Visibility.Collapsed;
                 else ctext.Visibility = Visibility.Visible;
                 if (ctext.Text == "") ctext.Text = "NO DATA RECEIVED";
                 if (TextBox1.Visibility == Visibility.Visible) ctext.Margin = new Thickness(122, 12, 0, 0);
@@ -330,7 +334,7 @@ namespace mainWpf
                 else if (TextBox1.Visibility == Visibility.Visible && ctext.Visibility == Visibility.Visible) Label_SendingBytes.Margin = new Thickness(240, 12, 0, 0);
                 else if (TextBox1.Visibility != Visibility.Visible ^ ctext.Visibility != Visibility.Visible) Label_SendingBytes.Margin = new Thickness(122, 12, 0, 0);
                 else Label_SendingBytes.Margin = new Thickness(4, 12, 0, 0);
-                
+                */
             }
             if (e.KeyboardDevice.Modifiers == ModifierKeys.Shift && e.Key == System.Windows.Input.Key.R)//C
             {
@@ -370,8 +374,9 @@ namespace mainWpf
             }
             if (e.KeyboardDevice.Modifiers == ModifierKeys.Shift && e.Key == System.Windows.Input.Key.D3)//V
             {
-                
                 if (Label_ByteData.Visibility == Visibility.Visible) Label_ByteData.Visibility = Visibility.Collapsed;
+                else Label_ByteData.Visibility = Visibility.Visible;
+                /*if (Label_ByteData.Visibility == Visibility.Visible) Label_ByteData.Visibility = Visibility.Collapsed;
                 else Label_ByteData.Visibility = Visibility.Visible;
                 if (ctext.Visibility == Visibility.Visible && TextBox1.Visibility == Visibility.Visible) Label_ByteData.Margin = new Thickness(240, 12, 0, 0);
                 else if (ctext.Visibility != Visibility.Visible ^ TextBox1.Visibility != Visibility.Visible) Label_ByteData.Margin = new Thickness(122, 12, 0, 0);
@@ -380,11 +385,12 @@ namespace mainWpf
                 else if (TextBox1.Visibility == Visibility.Visible && ctext.Visibility == Visibility.Visible) Label_SendingBytes.Margin = new Thickness(240, 12, 0, 0);
                 else if (TextBox1.Visibility != Visibility.Visible ^ ctext.Visibility != Visibility.Visible) Label_SendingBytes.Margin = new Thickness(122, 12, 0, 0);
                 else Label_SendingBytes.Margin = new Thickness(4, 12, 0, 0);                
-            }
+            */}
             if (e.KeyboardDevice.Modifiers == ModifierKeys.Shift && e.Key == System.Windows.Input.Key.D4)//V
             {
-                
                 if (Label_SendingBytes.Visibility == Visibility.Visible) Label_SendingBytes.Visibility = Visibility.Collapsed;
+                else Label_SendingBytes.Visibility = Visibility.Visible;
+                /*if (Label_SendingBytes.Visibility == Visibility.Visible) Label_SendingBytes.Visibility = Visibility.Collapsed;
                 else Label_SendingBytes.Visibility = Visibility.Visible;
                 if (ctext.Visibility == Visibility.Visible && TextBox1.Visibility == Visibility.Visible) Label_ByteData.Margin = new Thickness(240, 12, 0, 0);
                 else if (ctext.Visibility != Visibility.Visible ^ TextBox1.Visibility != Visibility.Visible) Label_ByteData.Margin = new Thickness(122, 12, 0, 0);
@@ -393,7 +399,7 @@ namespace mainWpf
                 else if (TextBox1.Visibility == Visibility.Visible && ctext.Visibility == Visibility.Visible) Label_SendingBytes.Margin = new Thickness(240, 12, 0, 0);
                 else if (TextBox1.Visibility != Visibility.Visible ^ ctext.Visibility != Visibility.Visible) Label_SendingBytes.Margin = new Thickness(122, 12, 0, 0);
                 else Label_SendingBytes.Margin = new Thickness(4, 12, 0, 0);
-                
+                */
             }
             if (e.Key == System.Windows.Input.Key.M && TextBox_AtmPr.Visibility == Visibility.Collapsed)//V
             {
@@ -465,25 +471,7 @@ namespace mainWpf
                 Image_Nosignal.Visibility = Visibility.Visible;
                 Image_signal.Visibility = Visibility.Collapsed;
                 timer.Start();
-            }/*
-            if (vmodel.SpeedMode == "SpeedMode: 1")
-            {
-                Rectangle_lows.Fill = Brushes.Lime;
-                Rectangle_normals.Fill = Brushes.White;
-                Rectangle_highs.Fill = Brushes.White;
             }
-            if (vmodel.SpeedMode == "SpeedMode: 2")
-            {
-                vMain.Rectangle_normals.Fill = Brushes.Gold;
-                vMain.Rectangle_lows.Fill = Brushes.Lime;
-                vMain.Rectangle_highs.Fill = Brushes.White;
-            }
-            if (vmodel.SpeedMode == "SpeedMode: 3")
-            {
-                vMain.Rectangle_highs.Fill = Brushes.Firebrick;
-                vMain.Rectangle_normals.Fill = Brushes.Gold;
-                vMain.Rectangle_lows.Fill = Brushes.Lime;
-            }*/
         }
     }
 }

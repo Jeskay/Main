@@ -80,7 +80,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="FileController.cs" />
+    <Compile Include="SettingsController.cs" />
     <Compile Include="JoystickController.cs" />
     <Compile Include="Model.cs" />
     <Compile Include="Timer\TimerController.cs" />
@@ -145,6 +145,7 @@
     <Resource Include="Images\WSignal.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="ResourseFiles\AirPressure.txt" />
     <Content Include="Sounds\DisconnectionSound.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

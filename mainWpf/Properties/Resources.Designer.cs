@@ -61,6 +61,15 @@ namespace mainWpf.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на .
+        /// </summary>
+        public static string AirPressure {
+            get {
+                return ResourceManager.GetString("AirPressure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на 1
         ///1
         ///1

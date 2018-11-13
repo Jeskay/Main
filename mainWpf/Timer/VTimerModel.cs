@@ -46,17 +46,9 @@ namespace mainWpf
             }
         }
         public event PropertyChangedEventHandler PropertyChanged; // Событие, которое нужно вызывать при изменении
-        public void OnPropertyChanged(string propertyName)//RaisePropertyChanged(string propertyName)
+        public void OnPropertyChanged(string propertyName)
         {
-            PropertyChangedEventHandler handler = PropertyChanged;//1
-
-            // Если кто-то на него подписан, то вызывем его
-            //if (PropertyChanged != null)
-            if (handler != null) //1
-            {
-                //PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-                handler(this, new PropertyChangedEventArgs(propertyName));//1
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));//1
         }
         public VTimerModel(TimerModel timermodel)
         {

@@ -43,9 +43,6 @@ namespace mainWpf
                 // Устанавливаем новое значение
                 if (value != null) sendingdata = value;
                 else sendingdata = "NO DATA SENT";
-                // Сообщаем всем, кто подписан на событие PropertyChanged, что поле изменилось Name
-                //RaisePropertyChanged("SendingData");
-                //OnPropertyChanged("SendingData");//1
             }
         }
         public string SendingBytes
@@ -58,9 +55,6 @@ namespace mainWpf
             {
                 // Устанавливаем новое значение
                 sendingbytes = value;
-                // Сообщаем всем, кто подписан на событие PropertyChanged, что поле изменилось Name
-                //                RaisePropertyChanged("SendingBytes");
-                //OnPropertyChanged("SendingBytes");//1
             }
         }
         public string ReceivingData
@@ -73,9 +67,6 @@ namespace mainWpf
             {
                 // Устанавливаем новое значение
                 receivingdata = value;
-                // Сообщаем всем, кто подписан на событие PropertyChanged, что поле изменилось Name
-                //                RaisePropertyChanged("ReceivingData");
-                //OnPropertyChanged("ReceivingData");//1
             }
         }
         public string ReceivingBytes
@@ -88,9 +79,6 @@ namespace mainWpf
             {
                 // Устанавливаем новое значение
                 receivingbytes = value;
-                // Сообщаем всем, кто подписан на событие PropertyChanged, что поле изменилось Name
-                //                RaisePropertyChanged("ReceivingBytes");
-                //OnPropertyChanged("ReceivingBytes");//1
             }
         }
         public UDPModel()

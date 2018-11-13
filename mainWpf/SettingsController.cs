@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace mainWpf
 {
-    public class SettingsController//setingscontroller
+    public class SettingsController
     {
         public void ReadCoefficients(string filename)
         {
@@ -19,6 +19,23 @@ namespace mainWpf
             Model.vGM.pitch_KP_p = (sbyte)(Convert.ToDouble(sr.ReadLine()) * 100);
             Model.vGM.pitch_KD_p = (sbyte)(Convert.ToDouble(sr.ReadLine()) * 100);
             sr.Close();//C<
+        }
+        public void ReadAirPressure(string filename)
+        {
+            StreamReader sr = new StreamReader(@"ResourseFiles\" + filename);
+            AirPressure = Convert.ToInt16(sr.ReadLine());
+            sr.Close();
+        }
+        public void WriteAirPressure(string filename, string pressure)
+        {
+            StreamWriter sr = new StreamWriter(@"ResourseFiles\" + filename);
+            sr.Write(pressure);
+            sr.Close();
+        }
+        public int AirPressure
+        {
+            get;
+            set;
         }
     }
 }
