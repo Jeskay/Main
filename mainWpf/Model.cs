@@ -25,9 +25,9 @@ namespace mainWpf
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
         public struct SM
         {
-            public Int16 yaw;
-            public Int16 pitch;
-            public Int16 roll;
+            public float yaw;
+            public float pitch;
+            public float roll;
             public float depth;
         };
         public static SM vSM;
@@ -107,7 +107,7 @@ namespace mainWpf
                 //OnPropertyChanged("Depth");
             }
         }
-        public Int16 Yaw
+        public float Yaw
         {
             get { return vSM.yaw; }
             set
@@ -116,7 +116,7 @@ namespace mainWpf
                 //OnPropertyChanged("Yaw");
             }
         }
-        public Int16 Pitch
+        public float Pitch
         {
             get { return vSM.pitch; }
             set
@@ -125,7 +125,7 @@ namespace mainWpf
                 //OnPropertyChanged("Pitch");
             }
         }
-        public Int16 Roll
+        public float Roll
         {
             get { return vSM.roll; }
             set

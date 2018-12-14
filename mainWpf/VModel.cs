@@ -14,7 +14,7 @@ namespace mainWpf
     {
         Model model;
 
-        public Int16 Pitch
+        public float Pitch
         {
             get { return model.Pitch; }
             set
@@ -23,7 +23,7 @@ namespace mainWpf
                 OnPropertyChanged("Pitch");
             }
         }
-        public Int16 Roll
+        public float Roll
         {
             get { return model.Roll; }
             set
@@ -32,7 +32,7 @@ namespace mainWpf
                 OnPropertyChanged("Roll");
             }
         }
-        public Int16 Yaw
+        public float Yaw
         {
             get { return model.Yaw; }
             set

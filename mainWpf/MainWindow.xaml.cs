@@ -28,6 +28,7 @@ namespace mainWpf
         System.Media.SoundPlayer sp = new System.Media.SoundPlayer();
         System.Media.SoundPlayer TimeOut1 = new System.Media.SoundPlayer();
         // обьявление используемых клаасов
+        ROVprojection ProjectionWindow = new ROVprojection();
         public JoystickController Maincontroller;
         public UDPController MainUDP;
         public SettingsController setter;
@@ -50,6 +51,7 @@ namespace mainWpf
         {
             InitializeComponent();
 
+            //Теперь MainWindow главное окно для ProjectionWindow
             setter          = new SettingsController();
             Maincontroller  = new JoystickController();
             MainUDP         = new UDPController();
@@ -104,7 +106,10 @@ namespace mainWpf
                     vudp.ReceivingData = "ReseivedData:" + "\n" + "Yaw:   " + Model.vSM.yaw + "\n" + "Pitch:    " + Model.vSM.pitch + "\n" + "Roll:   " + Model.vSM.roll + "\n" + "Depth:   " + Model.vSM.depth;
                     vudp.SendingBytes = MainUDP.SendedBytes;
                     vudp.ReceivingBytes = MainUDP.ReceivedBytes;
-                    Thread.Sleep(60);
+                    ProjectionWindow.Yaw = Model.vSM.yaw;
+                    ProjectionWindow.Diff = Model.vSM.pitch;
+                    ProjectionWindow.Lurch = Model.vSM.roll;
+                    Thread.Sleep(20);
                 }
             }
             catch (Exception ex)
@@ -304,37 +309,12 @@ namespace mainWpf
             {
                 if (TextBox1.Visibility == Visibility.Visible) TextBox1.Visibility = Visibility.Collapsed;
                 else TextBox1.Visibility = Visibility.Visible;
-              /*  ctext.Margin = new Thickness(4, 12, 0, 0);
-                if (TextBox1.Visibility == Visibility.Visible) TextBox1.Visibility = Visibility.Collapsed;
-                else TextBox1.Visibility = Visibility.Visible;
-                if (TextBox1.Visibility == Visibility.Visible) ctext.Margin = new Thickness(122, 12, 0, 0);
-                else ctext.Margin = new Thickness(4, 12, 0, 0);
-                if (ctext.Visibility == Visibility.Visible && TextBox1.Visibility == Visibility.Visible) Label_ByteData.Margin = new Thickness(240, 12, 0, 0);
-                else if (ctext.Visibility != Visibility.Visible ^ TextBox1.Visibility != Visibility.Visible) Label_ByteData.Margin = new Thickness(122, 12, 0, 0);
-                else Label_ByteData.Margin = new Thickness(4, 12, 0, 0);
-                if (Label_ByteData.Visibility == Visibility.Visible) Label_SendingBytes.Margin = new Thickness(Label_ByteData.Margin.Left, 86, 0, 0);
-                else if (TextBox1.Visibility == Visibility.Visible && ctext.Visibility == Visibility.Visible) Label_SendingBytes.Margin = new Thickness(240, 12, 0, 0);
-                else if (TextBox1.Visibility != Visibility.Visible ^ ctext.Visibility != Visibility.Visible) Label_SendingBytes.Margin = new Thickness(122, 12, 0, 0);
-                else Label_SendingBytes.Margin = new Thickness(4, 12, 0, 0);
-            */}
+            }
 
             if (e.KeyboardDevice.Modifiers == ModifierKeys.Shift && e.Key == System.Windows.Input.Key.D2)
             {
                 if (ctext.Visibility == Visibility.Visible) ctext.Visibility = Visibility.Collapsed;
                 else ctext.Visibility = Visibility.Visible;
-                /*if (ctext.Visibility == Visibility.Visible) ctext.Visibility = Visibility.Collapsed;
-                else ctext.Visibility = Visibility.Visible;
-                if (ctext.Text == "") ctext.Text = "NO DATA RECEIVED";
-                if (TextBox1.Visibility == Visibility.Visible) ctext.Margin = new Thickness(122, 12, 0, 0);
-                else ctext.Margin = new Thickness(4, 12, 0, 0);
-                if (ctext.Visibility == Visibility.Visible && TextBox1.Visibility == Visibility.Visible) Label_ByteData.Margin = new Thickness(240, 12, 0, 0);
-                else if (ctext.Visibility != Visibility.Visible ^ TextBox1.Visibility != Visibility.Visible) Label_ByteData.Margin = new Thickness(122, 12, 0, 0);
-                else Label_ByteData.Margin = new Thickness(4, 12, 0, 0);
-                if (Label_ByteData.Visibility == Visibility.Visible) Label_SendingBytes.Margin = new Thickness(Label_ByteData.Margin.Left, 86, 0, 0);
-                else if (TextBox1.Visibility == Visibility.Visible && ctext.Visibility == Visibility.Visible) Label_SendingBytes.Margin = new Thickness(240, 12, 0, 0);
-                else if (TextBox1.Visibility != Visibility.Visible ^ ctext.Visibility != Visibility.Visible) Label_SendingBytes.Margin = new Thickness(122, 12, 0, 0);
-                else Label_SendingBytes.Margin = new Thickness(4, 12, 0, 0);
-                */
             }
             if (e.KeyboardDevice.Modifiers == ModifierKeys.Shift && e.Key == System.Windows.Input.Key.R)//C
             {
@@ -376,30 +356,11 @@ namespace mainWpf
             {
                 if (Label_ByteData.Visibility == Visibility.Visible) Label_ByteData.Visibility = Visibility.Collapsed;
                 else Label_ByteData.Visibility = Visibility.Visible;
-                /*if (Label_ByteData.Visibility == Visibility.Visible) Label_ByteData.Visibility = Visibility.Collapsed;
-                else Label_ByteData.Visibility = Visibility.Visible;
-                if (ctext.Visibility == Visibility.Visible && TextBox1.Visibility == Visibility.Visible) Label_ByteData.Margin = new Thickness(240, 12, 0, 0);
-                else if (ctext.Visibility != Visibility.Visible ^ TextBox1.Visibility != Visibility.Visible) Label_ByteData.Margin = new Thickness(122, 12, 0, 0);
-                else Label_ByteData.Margin = new Thickness(4, 12, 0, 0);
-                if (Label_ByteData.Visibility == Visibility.Visible) Label_SendingBytes.Margin = new Thickness(Label_ByteData.Margin.Left, 86, 0, 0);
-                else if (TextBox1.Visibility == Visibility.Visible && ctext.Visibility == Visibility.Visible) Label_SendingBytes.Margin = new Thickness(240, 12, 0, 0);
-                else if (TextBox1.Visibility != Visibility.Visible ^ ctext.Visibility != Visibility.Visible) Label_SendingBytes.Margin = new Thickness(122, 12, 0, 0);
-                else Label_SendingBytes.Margin = new Thickness(4, 12, 0, 0);                
-            */}
+            }
             if (e.KeyboardDevice.Modifiers == ModifierKeys.Shift && e.Key == System.Windows.Input.Key.D4)//V
             {
                 if (Label_SendingBytes.Visibility == Visibility.Visible) Label_SendingBytes.Visibility = Visibility.Collapsed;
                 else Label_SendingBytes.Visibility = Visibility.Visible;
-                /*if (Label_SendingBytes.Visibility == Visibility.Visible) Label_SendingBytes.Visibility = Visibility.Collapsed;
-                else Label_SendingBytes.Visibility = Visibility.Visible;
-                if (ctext.Visibility == Visibility.Visible && TextBox1.Visibility == Visibility.Visible) Label_ByteData.Margin = new Thickness(240, 12, 0, 0);
-                else if (ctext.Visibility != Visibility.Visible ^ TextBox1.Visibility != Visibility.Visible) Label_ByteData.Margin = new Thickness(122, 12, 0, 0);
-                else Label_ByteData.Margin = new Thickness(4, 12, 0, 0);
-                if (Label_ByteData.Visibility == Visibility.Visible) Label_SendingBytes.Margin = new Thickness(Label_ByteData.Margin.Left, 86, 0, 0);
-                else if (TextBox1.Visibility == Visibility.Visible && ctext.Visibility == Visibility.Visible) Label_SendingBytes.Margin = new Thickness(240, 12, 0, 0);
-                else if (TextBox1.Visibility != Visibility.Visible ^ ctext.Visibility != Visibility.Visible) Label_SendingBytes.Margin = new Thickness(122, 12, 0, 0);
-                else Label_SendingBytes.Margin = new Thickness(4, 12, 0, 0);
-                */
             }
             if (e.Key == System.Windows.Input.Key.M && TextBox_AtmPr.Visibility == Visibility.Collapsed)//V
             {
@@ -421,7 +382,11 @@ namespace mainWpf
                 vmodel.ADVDepth = "1Depth:" + vmodel.FirstDepth + "\n2Depth" + vmodel.SecondDepth;
                 vmodel.ADVHeigh = "ADVheight:" + Convert.ToString((Int16)(vmodel.FirstDepth - vmodel.SecondDepth + 16 + 6));//+погрешность
             }
-            
+            if (e.KeyboardDevice.Modifiers == ModifierKeys.Shift && e.Key == System.Windows.Input.Key.N)//V
+            {
+                ProjectionWindow.Owner = this;
+                ProjectionWindow.Show();
+            }
         }
 
         private void MainWin_Closed(object sender, EventArgs e)//V
