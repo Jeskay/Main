@@ -84,14 +84,16 @@ namespace mainWpf
         public void UpdateJoystick(VModel Vmodel)
         {
 
-            JoystickState state = joystick.CurrentJoystickState;//M
-
-            //Capture Position.C>
-            Model.vGM.button_data1 = 0;
-            Model.vGM.button_data2 = 0;
-            byte[] buttons = state.GetButtons();
-            int[] sligterP = state.GetSlider();
-            int[] viewP = state.GetPointOfView();
+            JoystickState state = joystick.CurrentJoystickState;
+  
+            Buttons_Update(state.GetButtons());
+            Manipulator_Rotation_Update(state.GetPointOfView());
+            SpeedMode_Update(Vmodel);
+            Slider_Update(state.GetSlider());
+            Main_Joystick_Parameters_Update(state);
+        }
+        private void Buttons_Update(byte[] buttons)
+        {
             for (int i = 0; i < 12; i++)
             {
                 if (buttons[i] != 0)
@@ -103,15 +105,6 @@ namespace mainWpf
                     Buttons[i] = 0;
                 }
             }
-            //C<
-            //костыль для изменения кнопок блютуза и инвертирования камер
-            int change = Buttons[0];
-            Buttons[0] = Buttons[1];
-            Buttons[1] = change;
-            change = Buttons[3];
-            Buttons[3] = Buttons[11];
-            Buttons[11] = change;
-
             for (int i = 0; i <= 7; i++)//C>
             {
                 if ((Buttons[i] == 1))
@@ -126,38 +119,48 @@ namespace mainWpf
                     Model.vGM.button_data2 = (sbyte)(((int)Model.vGM.button_data2) | (1 << (i - 8)));
                 }
             }
-
+        }
+        private void Manipulator_Rotation_Update(int[] viewP)
+        {
             if (viewP[2] == 0) viewP[0] = 0;
-            Model.vGM.manipulator_p = (sbyte)viewP[0];
-            if (Model.vGM.manipulator_p == (sbyte)40) Model.vGM.manipulator_p = (sbyte)1;
-            if (Model.vGM.manipulator_p == (sbyte)120) Model.vGM.manipulator_p = (sbyte)3;
-            if (Model.vGM.manipulator_p == (sbyte)80) Model.vGM.manipulator_p = (sbyte)2;
-            if (Model.vGM.manipulator_p == (sbyte)0) Model.vGM.manipulator_p = (sbyte)4;
-            if (Model.vGM.manipulator_p == (sbyte)-1) Model.vGM.manipulator_p = 0;
+            Model.vGM.camera_rotate = (sbyte)viewP[0];
+            if (Model.vGM.camera_rotate == (sbyte)40) Model.vGM.camera_rotate = (sbyte)1;
+            if (Model.vGM.camera_rotate == (sbyte)120) Model.vGM.camera_rotate = (sbyte)3;
+            if (Model.vGM.camera_rotate == (sbyte)80) Model.vGM.camera_rotate = (sbyte)2;
+            if (Model.vGM.camera_rotate == (sbyte)0) Model.vGM.camera_rotate = (sbyte)4;
+            if (Model.vGM.camera_rotate == (sbyte)-1) Model.vGM.camera_rotate = 0;
 
+        }
+        private void SpeedMode_Update(VModel vmodel)
+        {
             if (Buttons[6] == 1)
             {
-                Vmodel.SpeedMode = "1";
+                vmodel.SpeedMode = "1";
                 SpeedK = 0.25;
             }
             if (Buttons[5] == 1)
             {
-                Vmodel.SpeedMode = "2";
+                vmodel.SpeedMode = "2";
                 SpeedK = 0.5;
             }
             if (Buttons[4] == 1)
             {
-                Vmodel.SpeedMode = "3";
+                vmodel.SpeedMode = "3";
                 SpeedK = 1.0;
             }
-            
+        }
+        private void Slider_Update(int[] slider_p)
+        {
+            if (slider_p[0] > -50 && slider_p[0] < 50) slider_p[0] = 0;
+            Model.vGM.manipulator_rotate = (sbyte)(slider_p[0]);
+
+        }
+        private void Main_Joystick_Parameters_Update(JoystickState state)
+        {
             Model.vGM.axisX_p = (sbyte)Math.Round(state.X * SpeedK);
             Model.vGM.axisY_p = (sbyte)Math.Round(state.Y * SpeedK * -1);
             Model.vGM.axisZ_p = (sbyte)state.Z;
-            Model.vGM.JRZ_p = (sbyte)Math.Round(state.Rz * SpeedK);
-
-            if (sligterP[0] > -50 && sligterP[0] < 50) sligterP[0] = 0;
-            Model.vGM.slighter_p = (sbyte)(sligterP[0]);//V<
+            Model.vGM.axisW_p   = (sbyte)Math.Round(state.Rz * SpeedK);
         }
     } 
 }

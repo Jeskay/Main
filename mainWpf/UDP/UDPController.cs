@@ -65,7 +65,7 @@ namespace mainWpf
                     IntPtr ptr = Marshal.AllocHGlobal(size);
                     Marshal.Copy(buffer, 0, ptr, size);
                     Model.vSM = (Model.SM)Marshal.PtrToStructure(ptr, Model.vSM.GetType());
-                    Model.vSM.depth = (float)((Model.vSM.depth - Model.AirPressure) / 1.197);//конвертирование глубины из паскалей в сантиметры
+                    Model.vSM.depth = (float)((Model.vSM.depth) / 1.197);//конвертирование глубины из паскалей в сантиметры
                     R = "";
                     for (int i = 0; i < buffer.Length; i++) R += buffer[i] + " ";
                     if (R != "") R = "ReceivedByteData: " + R;

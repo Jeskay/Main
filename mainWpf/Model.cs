@@ -39,8 +39,9 @@ namespace mainWpf
             public sbyte button_data2;
             public sbyte axisX_p;
             public sbyte axisY_p;
+            public sbyte axisW_p;
             public sbyte axisZ_p;
-            public sbyte manipulator_p;
+            public sbyte camera_rotate;
             public sbyte yaw_KP_p;
             public sbyte yaw_KI_p;
             public sbyte yaw_KD_p;
@@ -50,18 +51,13 @@ namespace mainWpf
             public sbyte depth_KP_p;
             public sbyte depth_KI_p;
             public sbyte depth_KD_p;
-            public sbyte slighter_p;
-            public sbyte JRZ_p;
+            public sbyte manipulator_rotate;
+            
 
         };
 
         public static GM vGM;//M<
-
-        public static int AirPressure
-        {
-            set { Airpressure = value; }
-            get { return Airpressure; }
-        }
+        
         public RotateTransform YawAngle
         {
             get { return yawangle; }
@@ -73,22 +69,6 @@ namespace mainWpf
             set;
         }
         public float SecondDepth
-        {
-            get;
-            set;
-        }
-        public string ADVDepth
-        {
-            get
-            {
-                return advdepth;
-            }
-            set
-            {
-                advdepth = value;
-            }
-        }
-        public string ADVHeigh
         {
             get;
             set;
@@ -145,8 +125,6 @@ namespace mainWpf
             FirstDepth     = 0;
             SecondDepth    = 0;
             speedmode      = 1;
-            advdepth       = "Not indicated";
-            ADVHeigh       = "Not enough data";
         }
 
 }

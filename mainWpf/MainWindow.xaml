@@ -90,10 +90,7 @@
 		</GroupBox>
 		<Image x:Name="Image_Background" HorizontalAlignment="Left" Height="737" VerticalAlignment="Top" Width="1300" Source="Images/nostalgic_blue_background_06_hd_pictures_169782.jpg" Margin="58,0,0,0"/>
 		<Image x:Name="Image_IsSound" HorizontalAlignment="Left" Height="123" Margin="909,12,0,0" VerticalAlignment="Top" Width="106" Panel.ZIndex="3"/>
-		<Label x:Name="Label_DephMeter" Content="{Binding Path=ADVDepth, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" Height="77" Margin="0,0,10,3" VerticalAlignment="Bottom" Width="313" Background="#B28BB3B9"/>
 		<MediaElement x:Name="ME_Test" Margin="1015,546,10,3" Panel.ZIndex="4" LoadedBehavior="Manual" Source="Videos/videoplayback.mp4" Visibility="Collapsed" Volume="2"/>
-		<Label x:Name="Label_calcresult" Content="{Binding Path=ADVHeigh, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" Height="77" Margin="0,0,10,3" VerticalAlignment="Bottom" Width="209" Panel.ZIndex="3" FontSize="20"/>
-		<TextBox x:Name="TextBox_AtmPr" Height="64" Margin="824,0,348,3" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="186" Panel.ZIndex="3" Background="#CC6FE8AB" PreviewTextInput="TextBox_AtmPr_PreviewTextInput_1" Text="1251" Visibility="Visible" TextChanged="TextBox_AtmPr_TextChanged"/>
 
 	</Grid>
 </Window>

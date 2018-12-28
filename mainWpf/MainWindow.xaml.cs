@@ -91,10 +91,10 @@ namespace mainWpf
                     }
                     string info = "AxisX: " + Model.vGM.axisX_p + "\n";//state.X + "\n";
                     info += "AxisY: " + Model.vGM.axisY_p + "\n";
-                    info += "AxisZ: " + Model.vGM.JRZ_p + "\n";//state.Rz + ";";
-                    info += "Lever: " + Model.vGM.axisZ_p + "\n";//state.Z + ";";
-                    info += "Slighter:  " + Model.vGM.slighter_p + "\n"; //sligterP[0] + ";";
-                    info += "PointOfView:   " + Model.vGM.manipulator_p + "\n";
+                    info += "AxisW: " + Model.vGM.axisW_p + "\n";//state.Rz + ";";
+                    info += "AxisZ: " + Model.vGM.axisZ_p + "\n";//state.Z + ";";
+                    info += "Slighter:  " + Model.vGM.manipulator_rotate + "\n"; //sligterP[0] + ";";
+                    info += "PointOfView:   " + Model.vGM.camera_rotate + "\n";
                     for (int i = 0; i < 12; i++) info += "Key" + i + ": " + Maincontroller.GetButtons[i] + "\n";
                     MainUDP.Send(info);
 
@@ -106,9 +106,9 @@ namespace mainWpf
                     vudp.ReceivingData = "ReseivedData:" + "\n" + "Yaw:   " + Model.vSM.yaw + "\n" + "Pitch:    " + Model.vSM.pitch + "\n" + "Roll:   " + Model.vSM.roll + "\n" + "Depth:   " + Model.vSM.depth;
                     vudp.SendingBytes = MainUDP.SendedBytes;
                     vudp.ReceivingBytes = MainUDP.ReceivedBytes;
-                    ProjectionWindow.Yaw = Model.vSM.yaw;
-                    ProjectionWindow.Diff = Model.vSM.pitch;
-                    ProjectionWindow.Lurch = Model.vSM.roll;
+                    //ProjectionWindow.Yaw = Model.vSM.yaw;
+                    //ProjectionWindow.Diff = Model.vSM.pitch;
+                    //ProjectionWindow.Lurch = Model.vSM.roll;
                     Thread.Sleep(20);
                 }
             }
@@ -118,35 +118,7 @@ namespace mainWpf
             }
             
         }//C<
-        private void Timerthread()//V>
-        {
-            bool MARK = false;
-            while (true)
-            {
-                this.Dispatcher.BeginInvoke(DispatcherPriority.Normal,
-                   (ThreadStart)delegate ()
-                   {
-                       if (!TimerIsStoped) TextBox_timer.Text = (Int16)(dtm.Subtract(DateTime.Now)).TotalHours + ":" + (Int16)((dtm.Subtract(DateTime.Now)).Minutes) + ":" + (Int16)(dtm.Subtract(DateTime.Now)).Seconds;
-                       if ((dtm.Subtract(DateTime.Now).Minutes < 1 && !SecondLeft))
-                       {
-                           TextBox_timer.Background = new SolidColorBrush(Color.FromArgb(0, 255, 12, 12));
-                           SecondLeft = true;
-                       }
-                       else if ((dtm.Subtract(DateTime.Now).Minutes < 4 && SecondLeft) || (mark && SecondLeft))
-                       {
-                           if (!MARK)
-                           {
-                               TimeOut1.Play();
-                               MARK = true;
-                           }
-                           TextBox_timer.Background = Brushes.Crimson;
-                           SecondLeft = false;
-                       }
-                   }
-                   );
-                Thread.Sleep(100);
-            }
-        }//V<
+        
 
         private void timerTick(object sender, EventArgs e)//V>
         {
@@ -177,11 +149,6 @@ namespace mainWpf
         private void reset_button_Click(object sender, RoutedEventArgs e)//V>
         {
             timercontroller.StartTimer(15);
-            /*
-            dtm = DateTime.Now;
-            dtm = dtm.AddMinutes(15.0);
-            TextBox_timer.Background = new SolidColorBrush(Color.FromArgb(0, 255, 12, 12));
-            */
         }//V<
         class Helper//M>
         {
@@ -219,20 +186,6 @@ namespace mainWpf
                 vtimer.ButtonContent = "Continue";
                 timercontroller.StopTimer();
             }
-                /*
-            if (!TimerIsStoped)
-            {
-                StopRange = DateTime.Now.Subtract(dtm);
-                TimerIsStoped = true;
-                Pause_button.Content = "Continue";
-            }
-            else if (TimerIsStoped)
-            {
-                dtm = DateTime.Now - StopRange;
-                timer.Start();
-                TimerIsStoped = false;
-                Pause_button.Content = "Pause";
-            }*/
         }//V<
         void webcam_ImageCaptured(object source, WebcamEventArgs e)//M
         {
@@ -266,16 +219,6 @@ namespace mainWpf
             _FrameImage                         = ImageWebcam1;
 
             webcam.Start(0);
-            try
-            {
-                Model.AirPressure = Convert.ToInt16(TextBox_AtmPr.Text);
-            }
-            catch (Exception ex)
-            {
-                Model.AirPressure = 0;
-                Console.WriteLine("Возникло исключение: " + ex);
-            }
-
             dtm = DateTime.Now;
             dtm = dtm.AddMinutes(15.0);
             
@@ -296,9 +239,6 @@ namespace mainWpf
             Thread thread1   = new Thread(Joystickthread);
             thread1.Priority = ThreadPriority.Highest;
             thread1.Start();
-            Thread thread2   = new Thread(Timerthread);
-            thread2.Priority = ThreadPriority.Lowest;
-            //thread2.Start();
             setter.ReadCoefficients("Coefficents.txt");
             timercontroller.StartTimer(15);
         }
@@ -362,25 +302,9 @@ namespace mainWpf
                 if (Label_SendingBytes.Visibility == Visibility.Visible) Label_SendingBytes.Visibility = Visibility.Collapsed;
                 else Label_SendingBytes.Visibility = Visibility.Visible;
             }
-            if (e.Key == System.Windows.Input.Key.M && TextBox_AtmPr.Visibility == Visibility.Collapsed)//V
-            {
-                TextBox_AtmPr.Visibility = Visibility.Visible;
-                webcam.Stop();
-            }
-            else if(e.Key == System.Windows.Input.Key.M && TextBox_AtmPr.Visibility == Visibility.Visible)//V
-            {
-                TextBox_AtmPr.Visibility = Visibility.Collapsed;
-                webcam.Start(0);
-            }
             if (e.Key == System.Windows.Input.Key.T)//V
             {
                 vmodel.FirstDepth = Model.vSM.depth;//+погрешность
-            }
-            if (e.Key == System.Windows.Input.Key.Y)//V
-            {
-                vmodel.SecondDepth = Model.vSM.depth;
-                vmodel.ADVDepth = "1Depth:" + vmodel.FirstDepth + "\n2Depth" + vmodel.SecondDepth;
-                vmodel.ADVHeigh = "ADVheight:" + Convert.ToString((Int16)(vmodel.FirstDepth - vmodel.SecondDepth + 16 + 6));//+погрешность
             }
             if (e.KeyboardDevice.Modifiers == ModifierKeys.Shift && e.Key == System.Windows.Input.Key.N)//V
             {
@@ -397,19 +321,6 @@ namespace mainWpf
         private void TextBox_AtmPr_PreviewTextInput_1(object sender, TextCompositionEventArgs e)//V
         {
             e.Handled = !Char.IsDigit(e.Text, 0);
-        }
-
-        private void TextBox_AtmPr_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            try
-            {
-                Model.AirPressure = Convert.ToInt32(TextBox_AtmPr.Text);
-            }
-            catch (Exception ex)
-            {
-                Model.AirPressure = 0;
-                Console.WriteLine("Возникло исключение: " + ex);
-            }
         }
 
         public void SpeedModeChanged(object sender, DependencyPropertyChangedEventArgs e)

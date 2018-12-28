@@ -72,30 +72,6 @@ namespace mainWpf
                 model.SecondDepth = value;
             }
         }
-        public string ADVDepth
-        {
-            get
-            {
-                return model.ADVDepth;
-            }
-            set
-            {
-                model.ADVDepth = value;
-                OnPropertyChanged("ADVDepth");
-            }
-        }
-        public string ADVHeigh
-        {
-            get
-            {
-                return model.ADVHeigh;
-            }
-            set
-            {
-                model.ADVHeigh = value;
-                OnPropertyChanged("ADVHeigh");
-            }
-        }
         public string SpeedMode
         {
             get { return "SpeedMode: " + Model.SpeedMode; }
