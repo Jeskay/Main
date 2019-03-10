@@ -26,7 +26,7 @@ namespace mainWpf
         public struct SM
         {
             public float yaw;
-            public float pitch;
+            public float temp;
             public float roll;
             public float depth;
         };
@@ -42,15 +42,15 @@ namespace mainWpf
             public sbyte axisW_p;
             public sbyte axisZ_p;
             public sbyte camera_rotate;
-            public sbyte yaw_KP_p;
-            public sbyte yaw_KI_p;
-            public sbyte yaw_KD_p;
-            public sbyte pitch_KP_p;
-            public sbyte pitch_KI_p;
-            public sbyte pitch_KD_p;
-            public sbyte depth_KP_p;
-            public sbyte depth_KI_p;
-            public sbyte depth_KD_p;
+            //public sbyte yaw_KP_p;
+            //public sbyte yaw_KI_p;
+            //public sbyte yaw_KD_p;
+            //public sbyte pitch_KP_p;
+            //public sbyte pitch_KI_p;
+            //public sbyte pitch_KD_p;
+            //public sbyte depth_KP_p;
+            //public sbyte depth_KI_p;
+            //public sbyte depth_KD_p;
             public sbyte manipulator_rotate;
             
 
@@ -96,12 +96,12 @@ namespace mainWpf
                 //OnPropertyChanged("Yaw");
             }
         }
-        public float Pitch
+        public float Temperature
         {
-            get { return vSM.pitch; }
+            get { return vSM.temp; }
             set
             {
-                vSM.pitch = value;
+                vSM.temp = value;
                 //OnPropertyChanged("Pitch");
             }
         }
@@ -120,7 +120,7 @@ namespace mainWpf
             
             Depth          = 0;
             Yaw            = 0;
-            Pitch          = 0;
+            Temperature    = 0;
             Roll           = 0;
             FirstDepth     = 0;
             SecondDepth    = 0;

@@ -14,13 +14,13 @@ namespace mainWpf
     {
         Model model;
 
-        public float Pitch
+        public float Temperature
         {
-            get { return model.Pitch; }
+            get { return model.Temperature; }
             set
             {
-                model.Pitch = value;
-                OnPropertyChanged("Pitch");
+                model.Temperature = value;
+                OnPropertyChanged("Temperature");
             }
         }
         public float Roll

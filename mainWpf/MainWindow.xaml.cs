@@ -28,7 +28,6 @@ namespace mainWpf
         System.Media.SoundPlayer sp = new System.Media.SoundPlayer();
         System.Media.SoundPlayer TimeOut1 = new System.Media.SoundPlayer();
         // обьявление используемых клаасов
-        ROVprojection ProjectionWindow = new ROVprojection();
         public JoystickController Maincontroller;
         public UDPController MainUDP;
         public SettingsController setter;
@@ -99,11 +98,11 @@ namespace mainWpf
                     MainUDP.Send(info);
 
                     vmodel.Depth = Model.vSM.depth;
-                    vmodel.Pitch = Model.vSM.pitch;
+                    vmodel.Temperature = Model.vSM.temp;
                     vmodel.Roll  = Model.vSM.roll;
                     vmodel.Yaw   = Model.vSM.yaw;
                     vudp.SendingData = info;
-                    vudp.ReceivingData = "ReseivedData:" + "\n" + "Yaw:   " + Model.vSM.yaw + "\n" + "Pitch:    " + Model.vSM.pitch + "\n" + "Roll:   " + Model.vSM.roll + "\n" + "Depth:   " + Model.vSM.depth;
+                    vudp.ReceivingData = "ReseivedData:" + "\n" + "Yaw:   " + Model.vSM.yaw + "\n" + "Temperature:    " + Model.vSM.temp + "\n" + "Roll:   " + Model.vSM.roll + "\n" + "Depth:   " + Model.vSM.depth;
                     vudp.SendingBytes = MainUDP.SendedBytes;
                     vudp.ReceivingBytes = MainUDP.ReceivedBytes;
                     //ProjectionWindow.Yaw = Model.vSM.yaw;
@@ -239,7 +238,7 @@ namespace mainWpf
             Thread thread1   = new Thread(Joystickthread);
             thread1.Priority = ThreadPriority.Highest;
             thread1.Start();
-            setter.ReadCoefficients("Coefficents.txt");
+            //setter.ReadCoefficients("Coefficents.txt");
             timercontroller.StartTimer(15);
         }
 
@@ -306,11 +305,6 @@ namespace mainWpf
             {
                 vmodel.FirstDepth = Model.vSM.depth;//+погрешность
             }
-            if (e.KeyboardDevice.Modifiers == ModifierKeys.Shift && e.Key == System.Windows.Input.Key.N)//V
-            {
-                ProjectionWindow.Owner = this;
-                ProjectionWindow.Show();
-            }
         }
 
         private void MainWin_Closed(object sender, EventArgs e)//V
@@ -332,7 +326,7 @@ namespace mainWpf
         {
 
         }
-
+        //вынести изменение состояния соединения и адекватно это реализовать
         private void TextBox_SpeedMode_TextChanged(object sender, TextChangedEventArgs e)
         {
 
