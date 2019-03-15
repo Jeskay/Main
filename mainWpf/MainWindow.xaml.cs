@@ -239,7 +239,7 @@ namespace mainWpf
             Thread thread1   = new Thread(Joystickthread);
             thread1.Priority = ThreadPriority.Highest;
             thread1.Start();
-            setter.ReadCoefficients("Coefficents.txt");
+            //setter.ReadCoefficients("Coefficents.txt");
             timercontroller.StartTimer(15);
         }
 

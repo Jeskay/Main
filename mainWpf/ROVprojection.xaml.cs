@@ -55,7 +55,7 @@ namespace mainWpf
 
             InitializeComponent();
 
-            model = importer.Load("C:\\Users\\Valera\\source\\repos\\WpfApp5\\Gear OBJ\\cube.obj");
+            model = importer.Load("C:\\Users\\ASUS\\Pictures\\15981_Hollow_Cylinder_v1.obj");
             DataContext = projectionmodelview;
             Models.Content = model;
         }
@@ -86,6 +86,21 @@ namespace mainWpf
             {
                 Diff = number;
             }
+        }
+
+        private void Yaw_Szlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            Yaw = (float)Yaw_Szlider.Value;
+        }
+
+        private void Lurch_Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            Lurch = (float)Lurch_Slider.Value;
+        }
+
+        private void Diff_Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            Diff = (float)Diff_Slider.Value;
         }
     }
 }

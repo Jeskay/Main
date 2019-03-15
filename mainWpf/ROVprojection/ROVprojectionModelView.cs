@@ -20,7 +20,7 @@ namespace mainWpf
             set
             {
                 ROVprojection.ROVrotationZ = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("RotateY"));
+                OnPropertyChanged("RotationZ");
             }
         }
         public float RotationX
@@ -32,7 +32,7 @@ namespace mainWpf
             set
             {
                 ROVprojection.ROVrotationX = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("RotateX"));
+                OnPropertyChanged("RotationX");
             }
         }
         public float RotationY
@@ -44,11 +44,19 @@ namespace mainWpf
             set
             {
                 ROVprojection.ROVrotationY = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("RotateY"));
+                OnPropertyChanged("RotationY");
 
             }
         }
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged; // Событие, которое нужно вызывать при изменении
+        public void OnPropertyChanged(string propertyName)//RaisePropertyChanged(string propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;//1
+            if (handler != null) //1
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));//1
+            }
+        }
         public ROVprojectionModelView(ROVprojectionModel ROVprojection)
         {
             this.ROVprojection = ROVprojection;

@@ -6,36 +6,39 @@
 		xmlns:HelixToolkit="clr-namespace:HelixToolkit.Wpf;assembly=HelixToolkit.Wpf"
         mc:Ignorable="d"
         Title="ROVprojection" Height="300" Width="393.293">
-	<Grid x:Name="ModelGrid" Margin="0,0,126,0">
-		<HelixToolkit:HelixViewport3D x:Name="Viewport" ZoomExtentsWhenLoaded="True">
-			<HelixToolkit:SunLight/>
-			<ModelVisual3D x:Name="Models" >
-				<ModelVisual3D.Transform>
-					<Transform3DGroup>
-						<RotateTransform3D>
-							<RotateTransform3D.Rotation>
-								<AxisAngleRotation3D Axis="1,0,0" Angle="{Binding RotateX}"/>
-							</RotateTransform3D.Rotation>
-						</RotateTransform3D>
-						<RotateTransform3D>
-							<RotateTransform3D.Rotation>
-								<AxisAngleRotation3D Axis="0,1,0" Angle="{Binding RotateY}"/>
-							</RotateTransform3D.Rotation>
-						</RotateTransform3D>
-						<RotateTransform3D>
-							<RotateTransform3D.Rotation>
-								<AxisAngleRotation3D Axis="0,0,1" Angle="{Binding RotateZ}"/>
-							</RotateTransform3D.Rotation>
-						</RotateTransform3D>
-					</Transform3DGroup>
-				</ModelVisual3D.Transform>
-			</ModelVisual3D>
-		</HelixToolkit:HelixViewport3D>
-		<TextBox x:Name="TextBox_X" HorizontalAlignment="Left" Height="35" Margin="304,0,-121,0" TextWrapping="Wrap" Text="&#xD;&#xA;" VerticalAlignment="Top" Width="76" TextChanged="TextBox_X_TextChanged"/>
-		<Label x:Name="Label_X" Content="Yaw:" HorizontalAlignment="Left" Height="35" Margin="259,0,-45,0" VerticalAlignment="Top" Width="45"/>
-		<TextBox x:Name="TextBox_Y" HorizontalAlignment="Left" Height="35" Margin="304,35,-121,0" TextWrapping="Wrap" Text="&#xA;" VerticalAlignment="Top" Width="76" TextChanged="TextBox_Y_TextChanged"/>
-		<Label x:Name="Label_Y" Content="Lurch:" HorizontalAlignment="Left" Height="35" Margin="259,35,-45,0" VerticalAlignment="Top" Width="45"/>
-		<TextBox x:Name="TextBox_Z" HorizontalAlignment="Left" Height="35" Margin="304,70,-121,0" TextWrapping="Wrap" Text="&#xA;" VerticalAlignment="Top" Width="76" TextChanged="TextBox_Z_TextChanged"/>
-		<Label x:Name="Label_Z" Content="Diff:" HorizontalAlignment="Left" Height="35" Margin="259,70,-45,0" VerticalAlignment="Top" Width="45"/>
-	</Grid>
+    <Grid x:Name="ModelGrid" Margin="0,0,2,0">
+        <HelixToolkit:HelixViewport3D x:Name="Viewport" ZoomExtentsWhenLoaded="True">
+            <HelixToolkit:SunLight/>
+            <ModelVisual3D x:Name="Models" >
+                <ModelVisual3D.Transform>
+                    <Transform3DGroup>
+                        <RotateTransform3D>
+                            <RotateTransform3D.Rotation>
+                                <AxisAngleRotation3D Axis="1,0,0" Angle="{Binding Path=RotationX, UpdateSourceTrigger=PropertyChanged}"/>
+                            </RotateTransform3D.Rotation>
+                        </RotateTransform3D>
+                        <RotateTransform3D>
+                            <RotateTransform3D.Rotation>
+                                <AxisAngleRotation3D Axis="0,1,0" Angle="{Binding Path=RotationY, UpdateSourceTrigger=PropertyChanged}"/>
+                            </RotateTransform3D.Rotation>
+                        </RotateTransform3D>
+                        <RotateTransform3D>
+                            <RotateTransform3D.Rotation>
+                                <AxisAngleRotation3D Axis="0,0,1" Angle="{Binding Path=RotationZ, UpdateSourceTrigger=PropertyChanged}"/>
+                            </RotateTransform3D.Rotation>
+                        </RotateTransform3D>
+                    </Transform3DGroup>
+                </ModelVisual3D.Transform>
+            </ModelVisual3D>
+        </HelixToolkit:HelixViewport3D>
+        <TextBox x:Name="TextBox_X" HorizontalAlignment="Left" Height="35" Margin="304,0,-121,0" TextWrapping="Wrap" Text="&#xD;&#xA;" VerticalAlignment="Top" Width="76" TextChanged="TextBox_X_TextChanged"/>
+        <Label x:Name="Label_X" Content="Yaw:" HorizontalAlignment="Left" Height="35" Margin="259,0,-45,0" VerticalAlignment="Top" Width="45"/>
+        <TextBox x:Name="TextBox_Y" HorizontalAlignment="Left" Height="35" Margin="304,35,-121,0" TextWrapping="Wrap" Text="&#xA;" VerticalAlignment="Top" Width="76" TextChanged="TextBox_Y_TextChanged"/>
+        <Label x:Name="Label_Y" Content="Lurch:" HorizontalAlignment="Left" Height="35" Margin="259,35,-45,0" VerticalAlignment="Top" Width="45"/>
+        <TextBox x:Name="TextBox_Z" HorizontalAlignment="Left" Height="35" Margin="304,70,-121,0" TextWrapping="Wrap" Text="&#xA;" VerticalAlignment="Top" Width="76" TextChanged="TextBox_Z_TextChanged"/>
+        <Label x:Name="Label_Z" Content="Diff:" HorizontalAlignment="Left" Height="35" Margin="259,70,-45,0" VerticalAlignment="Top" Width="45"/>
+        <Slider x:Name="Yaw_Szlider" HorizontalAlignment="Left" Height="36" Margin="259,110,0,0" VerticalAlignment="Top" Width="121" ValueChanged="Yaw_Szlider_ValueChanged"/>
+        <Slider x:Name="Lurch_Slider" HorizontalAlignment="Left" Height="36" Margin="259,146,0,0" VerticalAlignment="Top" Width="121" ValueChanged="Lurch_Slider_ValueChanged"/>
+        <Slider x:Name="Diff_Slider" HorizontalAlignment="Left" Height="36" Margin="259,182,0,0" VerticalAlignment="Top" Width="121" ValueChanged="Diff_Slider_ValueChanged"/>
+    </Grid>
 </Window>
