@@ -29,6 +29,7 @@ namespace mainWpf
             public float pitch;
             public float roll;
             public float depth;
+            public float temperature;
         };
         public static SM vSM;
 
@@ -42,7 +43,7 @@ namespace mainWpf
             public sbyte axisW_p;
             public sbyte axisZ_p;
             public sbyte camera_rotate;
-            public sbyte yaw_KP_p;
+            public sbyte yaw_KP_p;//убрать коэфиценты
             public sbyte yaw_KI_p;
             public sbyte yaw_KD_p;
             public sbyte pitch_KP_p;
@@ -84,7 +85,6 @@ namespace mainWpf
             set
             {
                 vSM.depth = value;
-                //OnPropertyChanged("Depth");
             }
         }
         public float Yaw
@@ -93,7 +93,6 @@ namespace mainWpf
             set
             {
                 vSM.yaw = value;
-                //OnPropertyChanged("Yaw");
             }
         }
         public float Pitch
@@ -102,7 +101,6 @@ namespace mainWpf
             set
             {
                 vSM.pitch = value;
-                //OnPropertyChanged("Pitch");
             }
         }
         public float Roll
@@ -111,10 +109,16 @@ namespace mainWpf
             set
             {
                 vSM.roll = value;
-                //OnPropertyChanged("Roll");
             }
         }
-
+        public float Temperature
+        {
+            get { return vSM.temperature; }
+            set
+            {
+                vSM.temperature = value;
+            }
+        }
         public Model()
         {
             
