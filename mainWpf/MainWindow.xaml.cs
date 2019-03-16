@@ -106,9 +106,9 @@ namespace mainWpf
                     vudp.ReceivingData = "ReseivedData:" + "\n" + "Yaw:   " + Model.vSM.yaw + "\n" + "Pitch:    " + Model.vSM.pitch + "\n" + "Roll:   " + Model.vSM.roll + "\n" + "Depth:   " + Model.vSM.depth + '\n' + "Temperature: " + Model.vSM.temperature;
                     vudp.SendingBytes = MainUDP.SendedBytes;
                     vudp.ReceivingBytes = MainUDP.ReceivedBytes;
-                    //ProjectionWindow.Yaw = Model.vSM.yaw;
-                    //ProjectionWindow.Diff = Model.vSM.pitch;
-                    //ProjectionWindow.Lurch = Model.vSM.roll;
+                    ProjectionWindow.Yaw = Model.vSM.yaw;
+                    ProjectionWindow.Diff = Model.vSM.pitch;
+                    ProjectionWindow.Lurch = Model.vSM.roll;
                     Thread.Sleep(20);
                 }
             }

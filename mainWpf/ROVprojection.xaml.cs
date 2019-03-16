@@ -30,14 +30,14 @@ namespace mainWpf
         {
             set
             {
-                projectionmodelview.RotationX = value;
+                projectionmodelview.RotationZ = value;
             }
         }
         public float Diff
         {
             set
             {
-                projectionmodelview.RotationZ = value;
+                projectionmodelview.RotationX = value;
             }
         }
         public float Lurch
@@ -73,7 +73,7 @@ namespace mainWpf
         private void TextBox_Y_TextChanged(object sender, TextChangedEventArgs e)
         {
             float number;
-            if (float.TryParse(TextBox_X.Text, out number))
+            if (float.TryParse(TextBox_Y.Text, out number))
             {
                 Lurch = number;
             }
@@ -82,7 +82,7 @@ namespace mainWpf
         private void TextBox_Z_TextChanged(object sender, TextChangedEventArgs e)
         {
             float number;
-            if (float.TryParse(TextBox_X.Text, out number))
+            if (float.TryParse(TextBox_Z.Text, out number))
             {
                 Diff = number;
             }
