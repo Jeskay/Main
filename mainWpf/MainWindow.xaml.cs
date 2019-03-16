@@ -103,7 +103,7 @@ namespace mainWpf
                     vmodel.Roll  = Model.vSM.roll;
                     vmodel.Yaw   = Model.vSM.yaw;
                     vudp.SendingData = info;
-                    vudp.ReceivingData = "ReseivedData:" + "\n" + "Yaw:   " + Model.vSM.yaw + "\n" + "Pitch:    " + Model.vSM.pitch + "\n" + "Roll:   " + Model.vSM.roll + "\n" + "Depth:   " + Model.vSM.depth;
+                    vudp.ReceivingData = "ReseivedData:" + "\n" + "Yaw:   " + Model.vSM.yaw + "\n" + "Pitch:    " + Model.vSM.pitch + "\n" + "Roll:   " + Model.vSM.roll + "\n" + "Depth:   " + Model.vSM.depth + '\n' + "Temperature: " + Model.vSM.temperature;
                     vudp.SendingBytes = MainUDP.SendedBytes;
                     vudp.ReceivingBytes = MainUDP.ReceivedBytes;
                     //ProjectionWindow.Yaw = Model.vSM.yaw;

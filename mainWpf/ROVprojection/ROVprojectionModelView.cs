@@ -51,11 +51,7 @@ namespace mainWpf
         public event PropertyChangedEventHandler PropertyChanged; // Событие, которое нужно вызывать при изменении
         public void OnPropertyChanged(string propertyName)//RaisePropertyChanged(string propertyName)
         {
-            PropertyChangedEventHandler handler = PropertyChanged;//1
-            if (handler != null) //1
-            {
-                handler(this, new PropertyChangedEventArgs(propertyName));//1
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));//1
         }
         public ROVprojectionModelView(ROVprojectionModel ROVprojection)
         {
