@@ -7,23 +7,21 @@ using System.Windows;
 using System.Net;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
+using System.Windows.Threading;
+
 namespace mainWpf
 {
     public class UDPController
     {
-        private static bool Issignal = false;
+        DispatcherTimer ConnectionTimer;
+        public bool Connection = false;
         private static UdpClient m_receivingUdpClient = new UdpClient(UDPModel.LocalPort);
         private static IPEndPoint m_RemoteIpEndPoint = new IPEndPoint(UDPModel.RemoteIP, UDPModel.RemotePort);
-        public bool Connection
+        
+
+        public void ConnectionTimerTick(object sender, EventArgs e)
         {
-            get
-            {
-                return Issignal;
-            }
-            set
-            {
-                Issignal = value;
-            }
+            Connection = false;
         }
 #region receiving
         private static string R = "NO RECEIVED DATA";
@@ -50,7 +48,7 @@ namespace mainWpf
                 Console.WriteLine("Возникло исключение: " + ex.ToString() + "\n  " + ex.Message);//V
             }
         }
-        private static void ReceiveCallback(IAsyncResult ar)//C>
+        private void ReceiveCallback(IAsyncResult ar)//C>
         {
             try
             {
@@ -60,7 +58,7 @@ namespace mainWpf
 
                 if (buffer.Length > 0)
                 {
-                    Issignal = true;
+                    Connection = true;
                     int size = Marshal.SizeOf(Model.vSM);
                     IntPtr ptr = Marshal.AllocHGlobal(size);
                     Marshal.Copy(buffer, 0, ptr, size);
@@ -81,7 +79,7 @@ namespace mainWpf
             catch (Exception ex)
             {
                 Console.WriteLine("Возникло исключение: " + ex.ToString() + "\n  " + ex.Message);
-                Issignal = false;
+                Connection = false;
             }
         }//C<
 #endregion receiving
@@ -115,6 +113,12 @@ namespace mainWpf
                 Console.WriteLine("Возникло исключение: " + ex.ToString() + "\n  " + ex.Message);
             }
         }
-#endregion sending
+        #endregion sending
+        public UDPController()
+        {
+            ConnectionTimer = new DispatcherTimer();
+            ConnectionTimer.Tick += new EventHandler(ConnectionTimerTick);
+            ConnectionTimer.Interval = new TimeSpan(0, 0, 1);
+        }
     }
 }

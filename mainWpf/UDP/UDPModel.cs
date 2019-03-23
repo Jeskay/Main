@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Windows.Media;
+using System.Windows;
 namespace mainWpf
 {
     public class UDPModel
@@ -14,6 +15,8 @@ namespace mainWpf
         public static IPAddress remoteIPAddress = IPAddress.Parse("192.168.1.5");//IPAddress.Broadcast;
         private static int remotePort = 5000;
         private static int localPort = 5000;
+        private Visibility signal;
+        private Visibility nosignal;
         private string sendingdata;
         private string sendingbytes;
         private string receivingdata;
@@ -32,6 +35,28 @@ namespace mainWpf
             get { return localPort; }
         }
 
+        public Visibility Signal
+        {
+            get
+            {
+                return signal;
+            }
+            set
+            {
+                signal = value;
+            }
+        }
+        public Visibility NoSignal
+        {
+            get
+            {
+                return nosignal;
+            }
+            set
+            {
+                nosignal = value;
+            }
+        }
         public string SendingData
         {
             get

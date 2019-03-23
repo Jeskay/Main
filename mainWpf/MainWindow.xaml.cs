@@ -22,7 +22,6 @@ namespace mainWpf
     {
         internal static MainWindow vMain;
         DispatcherTimer timer = new DispatcherTimer();
-        DispatcherTimer timer2 = new DispatcherTimer();
         DispatcherTimer timer3 = new DispatcherTimer();
         DispatcherTimer ClockTimer = new DispatcherTimer();
         System.Media.SoundPlayer sp = new System.Media.SoundPlayer();
@@ -106,6 +105,7 @@ namespace mainWpf
                     vudp.ReceivingData = "ReseivedData:" + "\n" + "Yaw:   " + Model.vSM.yaw + "\n" + "Pitch:    " + Model.vSM.pitch + "\n" + "Roll:   " + Model.vSM.roll + "\n" + "Depth:   " + Model.vSM.depth + '\n' + "Temperature: " + Model.vSM.temperature;
                     vudp.SendingBytes = MainUDP.SendedBytes;
                     vudp.ReceivingBytes = MainUDP.ReceivedBytes;
+                    vudp.Connection = MainUDP.Connection;
                     ProjectionWindow.Yaw = Model.vSM.yaw;
                     ProjectionWindow.Diff = Model.vSM.pitch;
                     ProjectionWindow.Lurch = Model.vSM.roll;
@@ -131,10 +131,7 @@ namespace mainWpf
             timercontroller.UpdateTimer();
             vtimer.TimeLeft = timercontroller.TimeLeft;
         }
-        public void timer2Tick(object sender, EventArgs e)
-        {
-            MainUDP.Connection = false;
-        }
+        
         public void timer3Tick(object sender, EventArgs e)
         {
             Image_IsSound.Visibility = Visibility.Collapsed;
@@ -229,8 +226,7 @@ namespace mainWpf
 
             timer.Tick      += new EventHandler(timerTick);
             timer.Interval   = new TimeSpan(0, 0, 1);
-            timer2.Tick     += new EventHandler(timer2Tick);
-            timer2.Interval  = new TimeSpan(0, 0, 1);
+            
             timer3.Tick     += new EventHandler(timer3Tick);
             timer3.Interval  = new TimeSpan(0, 0, 3);
             ClockTimer.Interval = new TimeSpan(0, 0, 1);
