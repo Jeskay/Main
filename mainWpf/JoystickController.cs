@@ -105,6 +105,8 @@ namespace mainWpf
                     Buttons[i] = 0;
                 }
             }
+            Model.vGM.button_data1 = 0;
+            Model.vGM.button_data2 = 0;
             for (int i = 0; i <= 7; i++)//C>
             {
                 if ((Buttons[i] == 1))
