@@ -12,6 +12,8 @@ using System.Windows.Threading;
 using System.Threading;
 using WebCam_Capture;
 using System.IO;
+using System.Reflection;
+
 namespace mainWpf
 {
     //M<
@@ -20,7 +22,6 @@ namespace mainWpf
     /// </summary>
     public partial class MainWindow : System.Windows.Window
     {
-        internal static MainWindow vMain;
         DispatcherTimer timer = new DispatcherTimer();
         DispatcherTimer timer3 = new DispatcherTimer();
         DispatcherTimer ClockTimer = new DispatcherTimer();
@@ -34,6 +35,7 @@ namespace mainWpf
         public TimerController timercontroller;
         public VTimerModel vtimer;
         public VUDPModel vudp;
+        FileStream SendLog;
 
         bool mark = false;
         int NoSoundEffects = 0;
@@ -191,7 +193,6 @@ namespace mainWpf
 
         private void MainWin_Loaded(object sender, RoutedEventArgs e)
         {
-            vMain = this;//M
 
             TimeOut1.Stream =   Properties.Resources.time;//V>
             sp.Stream       =   Properties.Resources.NoSignalSound;
@@ -199,17 +200,14 @@ namespace mainWpf
             sp.Load();
             TimeOut1.Load();
 
-            GroupBox_SensorData.BorderBrush = System.Windows.Media.Brushes.Navy;
-            GroupBox_Timer.BorderBrush      = System.Windows.Media.Brushes.Navy;
             TextBox1.Visibility             = Visibility.Collapsed;
             ctext.Visibility                = Visibility.Collapsed;
             Image_lantern.Visibility        = Visibility.Collapsed;
             Label_ByteData.Visibility       = Visibility.Collapsed;
             //Label_DephMeter.Visibility    = Visibility.Collapsed;
             Label_SendingBytes.Visibility   = Visibility.Collapsed;//V<
+
             webcam                          = new WebCamCapture();//C>
-           // webcam.CaptureHeight = 100;
-           // webcam.CaptureWidth = 100;
             webcam.FrameNumber                  = ((ulong)(0ul));
             webcam.TimeToCapture_milliseconds   = 30;
             webcam.ImageCaptured                += new WebCamCapture.WebCamEventHandler(webcam_ImageCaptured);
@@ -235,10 +233,17 @@ namespace mainWpf
             Thread thread1   = new Thread(Joystickthread);
             thread1.Priority = ThreadPriority.Highest;
             thread1.Start();
+            //создание файла для записи
+            string path = Path.GetFullPath(@"ResourseFiles\SendLog.txt");
+            SendLog = File.Create(@path);
+            Byte[] info = new UTF8Encoding(true).GetBytes("This is some text in the file.");
+            // Add some information to the file.
+            SendLog.Write(info, 0, info.Length);
+            SendLog.Close();
+            //StreamReader sr = File.OpenText(@"ResourseFiles\\SendLog.txt");
             //setter.ReadCoefficients("Coefficents.txt");
             timercontroller.StartTimer(15);
         }
-
         private void Keyboard_KeyUp(object sender, KeyEventArgs e)//V
         {
             if (e.KeyboardDevice.Modifiers == ModifierKeys.Shift && e.Key == System.Windows.Input.Key.D1)

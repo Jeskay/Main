@@ -9,6 +9,7 @@ namespace mainWpf
 {
     public class SettingsController
     {
+
         public void ReadCoefficients(string filename)
         {
             StreamReader sr = new StreamReader(@"ResourseFiles\" + filename);
