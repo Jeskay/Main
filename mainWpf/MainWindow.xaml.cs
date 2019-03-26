@@ -37,6 +37,7 @@ namespace mainWpf
         public VUDPModel vudp;
         FileStream SendLog;
 
+        string path;
         bool mark = false;
         int NoSoundEffects = 0;
         bool TimerIsStoped = false;
@@ -67,10 +68,10 @@ namespace mainWpf
 
         public void Joystickthread()//C>
         {
-            
-            try
+
+            while (true)
             {
-                while (true)
+                try
                 {
                     if (!Maincontroller.GetJoystick)
                     {
@@ -88,7 +89,7 @@ namespace mainWpf
                         {
                             Console.WriteLine("Возникло исключение: " + ex);
                         }
-                           
+
                     }
                     string info = "AxisX: " + Model.vGM.axisX_p + "\n";//state.X + "\n";
                     info += "AxisY: " + Model.vGM.axisY_p + "\n";
@@ -101,8 +102,8 @@ namespace mainWpf
 
                     vmodel.Depth = Model.vSM.depth;
                     vmodel.Pitch = Model.vSM.pitch;
-                    vmodel.Roll  = Model.vSM.roll;
-                    vmodel.Yaw   = Model.vSM.yaw;
+                    vmodel.Roll = Model.vSM.roll;
+                    vmodel.Yaw = Model.vSM.yaw;
                     vudp.SendingData = info;
                     vudp.ReceivingData = "ReseivedData:" + "\n" + "Yaw:   " + Model.vSM.yaw + "\n" + "Pitch:    " + Model.vSM.pitch + "\n" + "Roll:   " + Model.vSM.roll + "\n" + "Depth:   " + Model.vSM.depth + '\n' + "Temperature: " + Model.vSM.temperature;
                     vudp.SendingBytes = MainUDP.SendedBytes;
@@ -111,12 +112,22 @@ namespace mainWpf
                     ProjectionWindow.Yaw = Model.vSM.yaw;
                     ProjectionWindow.Diff = Model.vSM.pitch;
                     ProjectionWindow.Lurch = Model.vSM.roll;
+                    
                     Thread.Sleep(20);
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Возникло исключение1: " + ex.ToString() + "\n  " + ex.Message);
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Возникло исключение1: " + ex.ToString() + "\n  " + ex.Message);
+                }
+                finally//logging data
+                {
+                    string senddata = Model.vGM.axisX_p + "-" + Model.vGM.axisY_p + "-" + Model.vGM.axisW_p + "-" + Model.vGM.axisZ_p + "-" + Model.vGM.manipulator_rotate + "-" + Model.vGM.camera_rotate + "-";
+                    for (int i = 0; i < 12; i++) senddata += Maincontroller.GetButtons[i] + "-";
+                    senddata += ":" + DateTime.Now.ToLongTimeString() + "\n";
+                    Byte[] sendlog = new UTF8Encoding(true).GetBytes(senddata);
+                    // Add some information to the file.
+                    SendLog.Write(sendlog, 0, sendlog.Length);
+                }
             }
             
         }//C<
@@ -234,12 +245,8 @@ namespace mainWpf
             thread1.Priority = ThreadPriority.Highest;
             thread1.Start();
             //создание файла для записи
-            string path = Path.GetFullPath(@"ResourseFiles\SendLog.txt");
+            path = Path.GetFullPath(@"ResourseFiles") + "\\Sendlog" + DateTime.Now.Hour + "h" + DateTime.Now.Minute + "m" + DateTime.Now.Second + "s" + ".txt";
             SendLog = File.Create(@path);
-            Byte[] info = new UTF8Encoding(true).GetBytes("This is some text in the file.");
-            // Add some information to the file.
-            SendLog.Write(info, 0, info.Length);
-            SendLog.Close();
             //StreamReader sr = File.OpenText(@"ResourseFiles\\SendLog.txt");
             //setter.ReadCoefficients("Coefficents.txt");
             timercontroller.StartTimer(15);
@@ -316,6 +323,7 @@ namespace mainWpf
 
         private void MainWin_Closed(object sender, EventArgs e)//V
         {
+            SendLog.Close();
             Environment.Exit(0);
         }
 
