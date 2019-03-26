@@ -94,8 +94,6 @@ namespace mainWpf
         }
         private void Buttons_Update(byte[] buttons)
         {
-            Model.vGM.button_data1 = 0;
-            Model.vGM.button_data2 = 0;
             for (int i = 0; i < 12; i++)
             {
                 if (buttons[i] != 0)

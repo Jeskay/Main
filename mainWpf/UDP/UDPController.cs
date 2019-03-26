@@ -7,18 +7,10 @@ using System.Windows;
 using System.Net;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
-using System.Windows.Threading;
-
 namespace mainWpf
 {
     public class UDPController
     {
-        public UDPController()
-        {
-            DisconnectionTimer.Tick += new EventHandler(DisconnectionTimerTick);
-            DisconnectionTimer.Interval = new TimeSpan(0, 0, 1);
-        }
-        private DispatcherTimer DisconnectionTimer = new DispatcherTimer();
         private static bool Issignal = false;
         private static UdpClient m_receivingUdpClient = new UdpClient(UDPModel.LocalPort);
         private static IPEndPoint m_RemoteIpEndPoint = new IPEndPoint(UDPModel.RemoteIP, UDPModel.RemotePort);
@@ -121,12 +113,8 @@ namespace mainWpf
             catch (Exception ex)
             {
                 Console.WriteLine("Возникло исключение: " + ex.ToString() + "\n  " + ex.Message);
-        }
             }
-#endregion sending
-        private void DisconnectionTimerTick(object sender, EventArgs e)
-        {
-            Connection = false;
         }
+#endregion sending
     }
 }
