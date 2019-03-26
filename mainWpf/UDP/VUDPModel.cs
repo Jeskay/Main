@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using System.Windows;
 
 namespace mainWpf
 {
@@ -11,6 +12,22 @@ namespace mainWpf
     {
         UDPModel udpmodel;
 
+        public bool Connection
+        {
+            set
+            {
+                if (value)
+                {
+                    IsSignal = Visibility.Visible;
+                    NoSignal = Visibility.Collapsed;
+                }
+                else
+                {
+                    IsSignal = Visibility.Collapsed;
+                    NoSignal = Visibility.Visible;
+                }
+            }
+        }
         public string ReceivingData
         {
             get { return udpmodel.ReceivingData; }
@@ -45,6 +62,28 @@ namespace mainWpf
             {
                 udpmodel.SendingBytes = value;
                 OnPropertyChanged("SendingBytes");
+            }
+        }
+        public Visibility IsSignal
+        {
+            get
+            {
+                return udpmodel.Signal;
+            }
+            set
+            {
+                udpmodel.Signal = value;
+            }
+        }
+        public Visibility NoSignal
+        {
+            get
+            {
+                return udpmodel.NoSignal;
+            }
+            set
+            {
+                udpmodel.NoSignal = value;
             }
         }
         public event PropertyChangedEventHandler PropertyChanged; // Событие, которое нужно вызывать при изменении

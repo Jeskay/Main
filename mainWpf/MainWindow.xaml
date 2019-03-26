@@ -75,7 +75,7 @@
 				<Label x:Name="Label_Yaw" Content="{Binding Path=Yaw, UpdateSourceTrigger=PropertyChanged}" Margin="195,347,0,0" Width="93" Height="44" Style="{StaticResource SensorData}"/>
 				<Label x:Name="Label_pitch" Content="{Binding Path=Pitch, UpdateSourceTrigger=PropertyChanged}" Height="44" Margin="106,45,0,0" Width="93" Style="{StaticResource SensorData}"/>
 				<Label x:Name="Label_roll" Content="{Binding Path=Roll, UpdateSourceTrigger=PropertyChanged}" Margin="101,104,0,0" Width="93" Height="44" Style="{StaticResource SensorData}"/>
-				<Label x:Name="Label_depth" Content="{Binding Path=Depth, UpdateSourceTrigger=PropertyChanged}" Margin="31,342,0,0" Width="92" Height="44" Style="{StaticResource SensorData}"/>
+                <Label x:Name="Label_depth" Content="{Binding Path=Depth, UpdateSourceTrigger=PropertyChanged}" Margin="31,342,0,0" Width="92" Height="44" Style="{StaticResource SensorData}"/>
 				<Label x:Name="Label_1yaw" Content="   Yaw" Height="44" Margin="187,178,0,0" BorderBrush="#BF0C0151" Style="{StaticResource SensorDataName}"/>
 				<Label x:Name="Label_1depht" Content="Depth" Height="44" Margin="31,178,0,0" BorderBrush="#BF0C0151" Style="{StaticResource SensorDataName}"/>
 				<Label x:Name="Label_1pitch" Content=" Pitch =" Height="44" Margin="0,45,0,0" Style="{StaticResource SensorDataName}"/>

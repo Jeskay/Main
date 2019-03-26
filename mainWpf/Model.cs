@@ -43,7 +43,7 @@ namespace mainWpf
             public sbyte axisW_p;
             public sbyte axisZ_p;
             public sbyte camera_rotate;
-            public sbyte yaw_KP_p;//убрать коэфиценты
+            /*public sbyte yaw_KP_p;//убрать коэфиценты
             public sbyte yaw_KI_p;
             public sbyte yaw_KD_p;
             public sbyte pitch_KP_p;
@@ -51,7 +51,7 @@ namespace mainWpf
             public sbyte pitch_KD_p;
             public sbyte depth_KP_p;
             public sbyte depth_KI_p;
-            public sbyte depth_KD_p;
+            public sbyte depth_KD_p;*/
             public sbyte manipulator_rotate;
             
 

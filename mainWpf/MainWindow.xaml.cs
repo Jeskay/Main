@@ -12,6 +12,8 @@ using System.Windows.Threading;
 using System.Threading;
 using WebCam_Capture;
 using System.IO;
+using System.Reflection;
+
 namespace mainWpf
 {
     //M<
@@ -20,9 +22,7 @@ namespace mainWpf
     /// </summary>
     public partial class MainWindow : System.Windows.Window
     {
-        internal static MainWindow vMain;
         DispatcherTimer timer = new DispatcherTimer();
-        DispatcherTimer timer2 = new DispatcherTimer();
         DispatcherTimer timer3 = new DispatcherTimer();
         DispatcherTimer ClockTimer = new DispatcherTimer();
         System.Media.SoundPlayer sp = new System.Media.SoundPlayer();
@@ -35,6 +35,7 @@ namespace mainWpf
         public TimerController timercontroller;
         public VTimerModel vtimer;
         public VUDPModel vudp;
+        FileStream SendLog;
 
         bool mark = false;
         int NoSoundEffects = 0;
@@ -106,6 +107,7 @@ namespace mainWpf
                     vudp.ReceivingData = "ReseivedData:" + "\n" + "Yaw:   " + Model.vSM.yaw + "\n" + "Pitch:    " + Model.vSM.pitch + "\n" + "Roll:   " + Model.vSM.roll + "\n" + "Depth:   " + Model.vSM.depth + '\n' + "Temperature: " + Model.vSM.temperature;
                     vudp.SendingBytes = MainUDP.SendedBytes;
                     vudp.ReceivingBytes = MainUDP.ReceivedBytes;
+                    vudp.Connection = MainUDP.Connection;
                     ProjectionWindow.Yaw = Model.vSM.yaw;
                     ProjectionWindow.Diff = Model.vSM.pitch;
                     ProjectionWindow.Lurch = Model.vSM.roll;
@@ -131,10 +133,7 @@ namespace mainWpf
             timercontroller.UpdateTimer();
             vtimer.TimeLeft = timercontroller.TimeLeft;
         }
-        public void timer2Tick(object sender, EventArgs e)
-        {
-            MainUDP.Connection = false;
-        }
+        
         public void timer3Tick(object sender, EventArgs e)
         {
             Image_IsSound.Visibility = Visibility.Collapsed;
@@ -194,7 +193,6 @@ namespace mainWpf
 
         private void MainWin_Loaded(object sender, RoutedEventArgs e)
         {
-            vMain = this;//M
 
             TimeOut1.Stream =   Properties.Resources.time;//V>
             sp.Stream       =   Properties.Resources.NoSignalSound;
@@ -202,17 +200,14 @@ namespace mainWpf
             sp.Load();
             TimeOut1.Load();
 
-            GroupBox_SensorData.BorderBrush = System.Windows.Media.Brushes.Navy;
-            GroupBox_Timer.BorderBrush      = System.Windows.Media.Brushes.Navy;
             TextBox1.Visibility             = Visibility.Collapsed;
             ctext.Visibility                = Visibility.Collapsed;
             Image_lantern.Visibility        = Visibility.Collapsed;
             Label_ByteData.Visibility       = Visibility.Collapsed;
             //Label_DephMeter.Visibility    = Visibility.Collapsed;
             Label_SendingBytes.Visibility   = Visibility.Collapsed;//V<
+
             webcam                          = new WebCamCapture();//C>
-           // webcam.CaptureHeight = 100;
-           // webcam.CaptureWidth = 100;
             webcam.FrameNumber                  = ((ulong)(0ul));
             webcam.TimeToCapture_milliseconds   = 30;
             webcam.ImageCaptured                += new WebCamCapture.WebCamEventHandler(webcam_ImageCaptured);
@@ -229,8 +224,7 @@ namespace mainWpf
 
             timer.Tick      += new EventHandler(timerTick);
             timer.Interval   = new TimeSpan(0, 0, 1);
-            timer2.Tick     += new EventHandler(timer2Tick);
-            timer2.Interval  = new TimeSpan(0, 0, 1);
+            
             timer3.Tick     += new EventHandler(timer3Tick);
             timer3.Interval  = new TimeSpan(0, 0, 3);
             ClockTimer.Interval = new TimeSpan(0, 0, 1);
@@ -239,10 +233,17 @@ namespace mainWpf
             Thread thread1   = new Thread(Joystickthread);
             thread1.Priority = ThreadPriority.Highest;
             thread1.Start();
+            //создание файла для записи
+            string path = Path.GetFullPath(@"ResourseFiles\SendLog.txt");
+            SendLog = File.Create(@path);
+            Byte[] info = new UTF8Encoding(true).GetBytes("This is some text in the file.");
+            // Add some information to the file.
+            SendLog.Write(info, 0, info.Length);
+            SendLog.Close();
+            //StreamReader sr = File.OpenText(@"ResourseFiles\\SendLog.txt");
             //setter.ReadCoefficients("Coefficents.txt");
             timercontroller.StartTimer(15);
         }
-
         private void Keyboard_KeyUp(object sender, KeyEventArgs e)//V
         {
             if (e.KeyboardDevice.Modifiers == ModifierKeys.Shift && e.Key == System.Windows.Input.Key.D1)
