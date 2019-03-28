@@ -1,0 +1,20 @@
+﻿<Window x:Name="Chart_Window" x:Class="mainWpf.ChartBuilder"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:dvc="clr-namespace:System.Windows.Forms.DataVisualization.Charting;assembly=System.Windows.Forms.DataVisualization"
+        mc:Ignorable="d"
+        Title="ChartBuilder" Height="450" Width="800" Loaded="Chart_Window_Loaded">
+    <Grid x:Name="ChartWindow_Grid">
+        <WindowsFormsHost x:Name="Main_WFHost" Margin="89,0,0,0">
+            <dvc:Chart x:Name="chart" />
+        </WindowsFormsHost>
+        <CheckBox x:Name="AxisXChart_CB" Content="AxisX" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Checked="AxisXChart_CB_Checked"/>
+        <CheckBox x:Name="AxisYChart_CB" Content="AxisY" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Margin="0,20,0,0"/>
+        <CheckBox x:Name="AxisWChart_CB" Content="AxisW" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Margin="0,40,0,0"/>
+        <CheckBox x:Name="AxisZChart_CB" Content="AxisZ" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Margin="0,60,0,0"/>
+        <CheckBox x:Name="CameraChart_CB" Content="Camera" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Margin="0,80,0,0"/>
+        <CheckBox x:Name="ManipulatorChart_CB" Content="Manipulator" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Margin="0,100,0,0"/>
+    </Grid>
+</Window>
