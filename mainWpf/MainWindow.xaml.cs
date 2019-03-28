@@ -29,6 +29,7 @@ namespace mainWpf
         System.Media.SoundPlayer TimeOut1 = new System.Media.SoundPlayer();
         // обьявление используемых клаасов
         ROVprojection ProjectionWindow = new ROVprojection();
+        ChartBuilder chartBuilder = new ChartBuilder();
         public JoystickController Maincontroller;
         public UDPController MainUDP;
         public SettingsController setter;
@@ -318,6 +319,11 @@ namespace mainWpf
             {
                 ProjectionWindow.Owner = this;
                 ProjectionWindow.Show();
+            }
+            if (e.KeyboardDevice.Modifiers == ModifierKeys.Shift && e.Key == System.Windows.Input.Key.V)
+            {
+                chartBuilder.Owner = this;
+                chartBuilder.Show();
             }
         }
 

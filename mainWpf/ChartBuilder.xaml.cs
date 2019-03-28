@@ -47,7 +47,7 @@ namespace mainWpf
 
         private void AxisXChart_CB_Checked(object sender, RoutedEventArgs e)
         {
-            chart.Series.Add(new Series("Series1"));
+            chart.Series.Add(new Series("AxisX"));
             chart.Series["AxisX"].ChartArea = "Default";
             chart.Series["AxisX"].ChartType = SeriesChartType.Line;
             string[] axisXData = new string[] { "a", "b", "c" };

@@ -118,7 +118,7 @@ namespace mainWpf
         {
             ConnectionTimer = new DispatcherTimer();
             ConnectionTimer.Tick += new EventHandler(ConnectionTimerTick);
-            ConnectionTimer.Interval = new TimeSpan(0, 0, 1);
+            ConnectionTimer.Interval = new TimeSpan(0, 0, 3);
         }
     }
 }
