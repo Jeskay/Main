@@ -113,7 +113,9 @@ namespace mainWpf
                     ProjectionWindow.Yaw = Model.vSM.yaw;
                     ProjectionWindow.Diff = Model.vSM.pitch;
                     ProjectionWindow.Lurch = Model.vSM.roll;
-                    
+                    chartBuilder.ChartTime = DateTime.Now;
+                    ChartBuilder.vSL.axisX_p = Model.vGM.axisX_p;
+                    chartBuilder.UpdateChart();
                     Thread.Sleep(20);
                 }
                 catch (Exception ex)
