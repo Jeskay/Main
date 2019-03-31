@@ -41,7 +41,7 @@ namespace mainWpf
         }
         private void Chart_Window_Loaded(object sender, RoutedEventArgs e)
         {
-            for(int i = 0;i < 12; i++) vSL.buttons.AddRange(new int[] { });
+            
 
             chart.ChartAreas.Add(new ChartArea("Default"));
             chart.Series.Add(new Series("AxisX"));
