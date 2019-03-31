@@ -79,6 +79,8 @@
     <Compile Include="ChartBuilder.xaml.cs">
       <DependentUpon>ChartBuilder.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Chartbuilder\ChartController.cs" />
+    <Compile Include="Chartbuilder\ChartModel.cs" />
     <Compile Include="ROVprojection.xaml.cs">
       <DependentUpon>ROVprojection.xaml</DependentUpon>
     </Compile>
@@ -188,8 +190,6 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Chartbuilder\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

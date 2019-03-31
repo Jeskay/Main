@@ -14,6 +14,8 @@ using System.Windows.Shapes;
 using System.Windows.Forms.DataVisualization;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Runtime.InteropServices;
+using System.IO;
+using System.Collections;
 
 namespace mainWpf
 {
@@ -22,41 +24,37 @@ namespace mainWpf
     /// </summary>
     public partial class ChartBuilder : Window
     {
-        [StructLayout(LayoutKind.Sequential, Pack = 1)]
-        public struct SL
-        {
-            public sbyte button_data1;
-            public sbyte button_data2;
-            public sbyte axisX_p;
-            public sbyte axisY_p;
-            public sbyte axisW_p;
-            public sbyte axisZ_p;
-            public sbyte camera_rotate;
-            public sbyte manipulator_rotate;
-        };
 
-        public static SL vSL;//M<
-        public DateTime ChartTime;
+            public ArrayList buttons;
+            public sbyte [] axisX_p;
+            public sbyte [] axisY_p;
+            public sbyte [] axisW_p;
+            public sbyte [] axisZ_p;
+            public sbyte [] camera_rotate;
+            public sbyte [] manipulator_rotate;
+   
+        public DateTime []ChartTime;
         public ChartBuilder()
         {
             InitializeComponent();
+            
         }
         private void Chart_Window_Loaded(object sender, RoutedEventArgs e)
         {
+            for(int i = 0;i < 12; i++) vSL.buttons.AddRange(new int[] { });
+
             chart.ChartAreas.Add(new ChartArea("Default"));
             chart.Series.Add(new Series("AxisX"));
             chart.Series["AxisX"].ChartArea = "Default";
             chart.Series["AxisX"].ChartType = SeriesChartType.Line;
-
+            //chart.Series["AxisX"].Points.AddXY(ChartTime, vSL.axisX_p);
+            //chart.Series["AxisX"].Points.DataBindXY(ChartTime,vSL.axisX_p);
         }
-        public void UpdateChart()
-        {
-            chart.Series["AxisX"].Points.AddXY(ChartTime, vSL.axisX_p);
-        }
+        
         private void AxisXChart_CB_Checked(object sender, RoutedEventArgs e)
         {
             string[] axisXData = new string[] { "a", "b", "c" };
-            double[] axisYData = new double[] { 0.1, 1.5, 1.9 };
+            //sbyte[] axisYData = new double[] { 0.1, 1.5, 1.9 };
             
 
         }

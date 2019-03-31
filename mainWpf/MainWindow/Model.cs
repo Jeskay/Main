@@ -30,6 +30,7 @@ namespace mainWpf
             public float roll;
             public float depth;
             public float temperature;
+            public bool core;
         };
         public static SM vSM;
 
@@ -117,6 +118,14 @@ namespace mainWpf
             set
             {
                 vSM.temperature = value;
+            }
+        }
+        public bool Core
+        {
+            get { return vSM.core; }
+            set
+            {
+                vSM.core = value;
             }
         }
         public Model()

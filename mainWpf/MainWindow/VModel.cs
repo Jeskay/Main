@@ -14,6 +14,14 @@ namespace mainWpf
     {
         Model model;
 
+        public bool Core
+        {
+            get { return model.Core; }
+            set
+            {
+                model.Core = value;
+            }
+        }
         public float Pitch
         {
             get { return model.Pitch; }

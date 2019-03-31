@@ -106,16 +106,13 @@ namespace mainWpf
                     vmodel.Roll = Model.vSM.roll;
                     vmodel.Yaw = Model.vSM.yaw;
                     vudp.SendingData = info;
-                    vudp.ReceivingData = "ReseivedData:" + "\n" + "Yaw:   " + Model.vSM.yaw + "\n" + "Pitch:    " + Model.vSM.pitch + "\n" + "Roll:   " + Model.vSM.roll + "\n" + "Depth:   " + Model.vSM.depth + '\n' + "Temperature: " + Model.vSM.temperature;
+                    vudp.ReceivingData = "ReseivedData:" + "\n" + "Yaw:   " + Model.vSM.yaw + "\n" + "Pitch:    " + Model.vSM.pitch + "\n" + "Roll:   " + Model.vSM.roll + "\n" + "Depth:   " + Model.vSM.depth + '\n' + "Temperature: " + Model.vSM.temperature + '\n' + (Model.vSM.core ? "Core found" : "Core not found");
                     vudp.SendingBytes = MainUDP.SendedBytes;
                     vudp.ReceivingBytes = MainUDP.ReceivedBytes;
                     vudp.Connection = MainUDP.Connection;
                     ProjectionWindow.Yaw = Model.vSM.yaw;
                     ProjectionWindow.Diff = Model.vSM.pitch;
                     ProjectionWindow.Lurch = Model.vSM.roll;
-                    chartBuilder.ChartTime = DateTime.Now;
-                    ChartBuilder.vSL.axisX_p = Model.vGM.axisX_p;
-                    chartBuilder.UpdateChart();
                     Thread.Sleep(20);
                 }
                 catch (Exception ex)
