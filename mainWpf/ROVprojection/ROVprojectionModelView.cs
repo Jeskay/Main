@@ -10,7 +10,10 @@ namespace mainWpf
     public class ROVprojectionModelView : INotifyPropertyChanged
     {
         ROVprojectionModel ROVprojection = new ROVprojectionModel();
-        
+        public string axis_X;
+        public string axis_Y;
+        public string axis_Z;
+
         public float RotationZ
         {
             get
@@ -32,6 +35,7 @@ namespace mainWpf
             set
             {
                 ROVprojection.ROVrotationX = value;
+                Axis_X = Convert.ToString(value);
                 OnPropertyChanged("RotationX");
             }
         }
@@ -44,8 +48,45 @@ namespace mainWpf
             set
             {
                 ROVprojection.ROVrotationY = value;
+                Axis_Y = Convert.ToString(value);
                 OnPropertyChanged("RotationY");
 
+            }
+        }
+        public string Axis_X
+        {
+            get
+            {
+                return axis_X;
+            }
+            set
+            {
+                axis_X = "Yaw: " + value;
+                OnPropertyChanged("AxisX");
+            }
+        }
+        public string Axis_Y
+        {
+            get
+            {
+                return axis_Y;
+            }
+            set
+            {
+                axis_Y = "Lurch: " + value;
+                OnPropertyChanged("AxisY");
+            }
+        }
+        public string Axis_Z
+        {
+            get
+            {
+                return axis_Z;
+            }
+            set
+            {
+                axis_Z = "Pitch: " + value;
+                OnPropertyChanged("AxisZ");
             }
         }
         public event PropertyChangedEventHandler PropertyChanged; // Событие, которое нужно вызывать при изменении

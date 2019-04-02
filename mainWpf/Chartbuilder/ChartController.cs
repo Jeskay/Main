@@ -12,13 +12,13 @@ namespace mainWpf
         public void ReadData(string Path)
         {
             StreamReader sr = new StreamReader(Path);
+            
             string line;
             while ((line = sr.ReadLine()) != null)
             {
+                
 
             }
         }
-       
-
     }
 }

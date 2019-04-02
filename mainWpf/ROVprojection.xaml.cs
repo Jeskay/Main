@@ -59,48 +59,5 @@ namespace mainWpf
             DataContext = projectionmodelview;
             Models.Content = model;
         }
-
-        private void TextBox_X_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            float number;
-            if (float.TryParse(TextBox_X.Text, out number))
-            {
-                Yaw = number;
-            }
-            
-        }
-
-        private void TextBox_Y_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            float number;
-            if (float.TryParse(TextBox_Y.Text, out number))
-            {
-                Lurch = number;
-            }
-        }
-
-        private void TextBox_Z_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            float number;
-            if (float.TryParse(TextBox_Z.Text, out number))
-            {
-                Diff = number;
-            }
-        }
-
-        private void Yaw_Szlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            Yaw = (float)Yaw_Szlider.Value;
-        }
-
-        private void Lurch_Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            Lurch = (float)Lurch_Slider.Value;
-        }
-
-        private void Diff_Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            Diff = (float)Diff_Slider.Value;
-        }
     }
 }
