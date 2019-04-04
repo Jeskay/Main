@@ -32,7 +32,7 @@ namespace mainWpf
             public float roll;
             public float depth;
             public float temperature;
-            public bool core;
+            public bool  core;
         };
         public static SM vSM;
 

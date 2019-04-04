@@ -24,20 +24,19 @@ namespace mainWpf
     /// </summary>
     public partial class ChartBuilder : Window
     {
-
-            public ArrayList buttons;
-            public sbyte [] axisX_p;
-            public sbyte [] axisY_p;
-            public sbyte [] axisW_p;
-            public sbyte [] axisZ_p;
-            public sbyte [] camera_rotate;
-            public sbyte [] manipulator_rotate;
+            public static List<List<int>> buttons;
+            public static List<sbyte> axisX_p;
+            public static List<sbyte> axisY_p;
+            public static List<sbyte> axisW_p;
+            public static List<sbyte> axisZ_p;
+            public static List<sbyte> camera_rotate;
+            public static List<sbyte> manipulator_rotate;
    
         public DateTime []ChartTime;
         public ChartBuilder()
         {
             InitializeComponent();
-            
+            buttons = new List<List<int>>();
         }
         private void Chart_Window_Loaded(object sender, RoutedEventArgs e)
         {
