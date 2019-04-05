@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="ChartBuilder" Height="450" Width="800" Loaded="Chart_Window_Loaded">
     <Grid x:Name="ChartWindow_Grid">
-        <WindowsFormsHost x:Name="Main_WFHost" Margin="89,0,-0.4,0" Height="420" VerticalAlignment="Top" HorizontalAlignment="Left" Width="705">
+        <WindowsFormsHost x:Name="Main_WFHost" Margin="89,0,0,0">
             <dvc:Chart x:Name="chart" />
         </WindowsFormsHost>
         <CheckBox x:Name="AxisXChart_CB" Content="AxisX" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Checked="AxisXChart_CB_Checked"/>
