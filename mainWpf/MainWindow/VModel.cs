@@ -14,14 +14,15 @@ namespace mainWpf
     {
         Model model;
 
-        public bool Core
+        public sbyte Core
         {
             get { return model.Core; }
             set
             {
-                if (value) Lamp = Visibility.Visible;
-                else Lamp = Visibility.Hidden;
                 model.Core = value;
+                if (value != 0) Lamp = Visibility.Visible;
+                else Lamp = Visibility.Hidden;
+                
             }
         }
         public float Pitch

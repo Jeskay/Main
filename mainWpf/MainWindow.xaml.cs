@@ -106,8 +106,9 @@ namespace mainWpf
                     vmodel.Pitch = Model.vSM.pitch;
                     vmodel.Roll = Model.vSM.roll;
                     vmodel.Yaw = Model.vSM.yaw;
+                    vmodel.Core = Model.vSM.core;
                     vudp.SendingData = info;
-                    vudp.ReceivingData = "ReseivedData:" + "\n" + "Yaw:   " + Model.vSM.yaw + "\n" + "Pitch:    " + Model.vSM.pitch + "\n" + "Roll:   " + Model.vSM.roll + "\n" + "Depth:   " + Model.vSM.depth + '\n' + "Temperature: " + Model.vSM.temperature + '\n' + (Model.vSM.core ? "Core found" : "Core not found");
+                    vudp.ReceivingData = "ReseivedData:" + "\n" + "Yaw:   " + Model.vSM.yaw + "\n" + "Pitch:    " + Model.vSM.pitch + "\n" + "Roll:   " + Model.vSM.roll + "\n" + "Depth:   " + Model.vSM.depth + '\n' + "Temperature: " + Model.vSM.temperature + '\n' + (Model.vSM.core == 1 ? "Core found" : "Core not found");
                     vudp.SendingBytes = MainUDP.SendedBytes;
                     vudp.ReceivingBytes = MainUDP.ReceivedBytes;
                     vudp.Connection = MainUDP.Connection;
@@ -149,6 +150,7 @@ namespace mainWpf
         {
             timercontroller.UpdateTimer();
             vtimer.TimeLeft = timercontroller.TimeLeft;
+            //vmodel.Core = 0;
         }
         
         public void timer3Tick(object sender, EventArgs e)
@@ -219,7 +221,7 @@ namespace mainWpf
 
             TextBox1.Visibility             = Visibility.Collapsed;
             ctext.Visibility                = Visibility.Collapsed;
-            Image_lantern.Visibility        = Visibility.Collapsed;
+            //Image_lantern.Visibility        = Visibility.Hidden;
             Label_ByteData.Visibility       = Visibility.Collapsed;
             //Label_DephMeter.Visibility    = Visibility.Collapsed;
             Label_SendingBytes.Visibility   = Visibility.Collapsed;//V<

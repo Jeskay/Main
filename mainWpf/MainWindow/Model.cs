@@ -32,7 +32,7 @@ namespace mainWpf
             public float roll;
             public float depth;
             public float temperature;
-            public bool  core;
+            public sbyte  core;
         };
         public static SM vSM;
 
@@ -122,7 +122,7 @@ namespace mainWpf
                 vSM.temperature = value;
             }
         }
-        public bool Core
+        public sbyte Core
         {
             get { return vSM.core; }
             set
@@ -148,6 +148,8 @@ namespace mainWpf
             FirstDepth     = 0;
             SecondDepth    = 0;
             speedmode      = 1;
+            Core           = 0;
+            Lamp = Visibility.Collapsed;
         }
 
 }

@@ -31,8 +31,8 @@
                 </ModelVisual3D.Transform>
             </ModelVisual3D>
         </HelixToolkit:HelixViewport3D>
-        <Label x:Name="Label_X" Content="{Binding Path=AxisX, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="35" Margin="307,0,0,0" VerticalAlignment="Top" Width="76"/>
-        <Label x:Name="Label_Y" Content="{Binding Path=AxisY, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="35" Margin="307,35,0,0" VerticalAlignment="Top" Width="73"/>
-        <Label x:Name="Label_Z" Content="{Binding Path=AxisZ, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="35" Margin="307,70,0,0" VerticalAlignment="Top" Width="73"/>
+        <Label x:Name="Label_X" Content="{Binding Path=Axis_X, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="35" Margin="307,0,0,0" VerticalAlignment="Top" Width="76"/>
+        <Label x:Name="Label_Y" Content="{Binding Path=Axis_Y, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="35" Margin="307,35,0,0" VerticalAlignment="Top" Width="73"/>
+        <Label x:Name="Label_Z" Content="{Binding Path=Axis_Z, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="35" Margin="307,70,0,0" VerticalAlignment="Top" Width="73"/>
     </Grid>
 </Window>

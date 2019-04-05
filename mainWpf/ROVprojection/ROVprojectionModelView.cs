@@ -23,6 +23,7 @@ namespace mainWpf
             set
             {
                 ROVprojection.ROVrotationZ = value;
+                Axis_Z = Convert.ToString(value);
                 OnPropertyChanged("RotationZ");
             }
         }
@@ -62,7 +63,7 @@ namespace mainWpf
             set
             {
                 axis_X = "Yaw: " + value;
-                OnPropertyChanged("AxisX");
+                OnPropertyChanged("Axis_X");
             }
         }
         public string Axis_Y
@@ -74,7 +75,7 @@ namespace mainWpf
             set
             {
                 axis_Y = "Lurch: " + value;
-                OnPropertyChanged("AxisY");
+                OnPropertyChanged("Axis_Y");
             }
         }
         public string Axis_Z
@@ -86,7 +87,7 @@ namespace mainWpf
             set
             {
                 axis_Z = "Pitch: " + value;
-                OnPropertyChanged("AxisZ");
+                OnPropertyChanged("Axis_Z");
             }
         }
         public event PropertyChangedEventHandler PropertyChanged; // Событие, которое нужно вызывать при изменении

@@ -44,5 +44,9 @@ namespace mainWpf
                 rovrotationX = value;
             }
         }
+        public ROVprojectionModel()
+        {
+ 
+        }
     }
 }
