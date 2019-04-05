@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Windows.Media;
+using System.Windows;
 
 namespace mainWpf
 {
@@ -20,6 +21,7 @@ namespace mainWpf
         private RotateTransform yawangle;
         private string advdepth;
         private static int speedmode;
+        private Visibility lamp;
         
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -30,6 +32,7 @@ namespace mainWpf
             public float roll;
             public float depth;
             public float temperature;
+            public bool  core;
         };
         public static SM vSM;
 
@@ -117,6 +120,22 @@ namespace mainWpf
             set
             {
                 vSM.temperature = value;
+            }
+        }
+        public bool Core
+        {
+            get { return vSM.core; }
+            set
+            {
+                vSM.core = value;
+            }
+        }
+        public Visibility Lamp
+        {
+            get { return lamp; }
+            set
+            {
+                lamp = value;
             }
         }
         public Model()

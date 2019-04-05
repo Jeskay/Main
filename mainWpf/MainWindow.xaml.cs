@@ -37,12 +37,13 @@ namespace mainWpf
         public VTimerModel vtimer;
         public VUDPModel vudp;
         FileStream SendLog;
+        FileStream ReceiveLog;
 
-        string path;
         bool mark = false;
-        int NoSoundEffects = 0;
         bool TimerIsStoped = false;
         bool SecondLeft = true;
+        string path;
+        int NoSoundEffects = 0;
         private WebCamCapture webcam;//M
         private Image _FrameImage;
         public VModel vmodel;
@@ -106,16 +107,13 @@ namespace mainWpf
                     vmodel.Roll = Model.vSM.roll;
                     vmodel.Yaw = Model.vSM.yaw;
                     vudp.SendingData = info;
-                    vudp.ReceivingData = "ReseivedData:" + "\n" + "Yaw:   " + Model.vSM.yaw + "\n" + "Pitch:    " + Model.vSM.pitch + "\n" + "Roll:   " + Model.vSM.roll + "\n" + "Depth:   " + Model.vSM.depth + '\n' + "Temperature: " + Model.vSM.temperature;
+                    vudp.ReceivingData = "ReseivedData:" + "\n" + "Yaw:   " + Model.vSM.yaw + "\n" + "Pitch:    " + Model.vSM.pitch + "\n" + "Roll:   " + Model.vSM.roll + "\n" + "Depth:   " + Model.vSM.depth + '\n' + "Temperature: " + Model.vSM.temperature + '\n' + (Model.vSM.core ? "Core found" : "Core not found");
                     vudp.SendingBytes = MainUDP.SendedBytes;
                     vudp.ReceivingBytes = MainUDP.ReceivedBytes;
                     vudp.Connection = MainUDP.Connection;
                     ProjectionWindow.Yaw = Model.vSM.yaw;
                     ProjectionWindow.Diff = Model.vSM.pitch;
                     ProjectionWindow.Lurch = Model.vSM.roll;
-                    chartBuilder.ChartTime = DateTime.Now;
-                    ChartBuilder.vSL.axisX_p = Model.vGM.axisX_p;
-                    chartBuilder.UpdateChart();
                     Thread.Sleep(20);
                 }
                 catch (Exception ex)
@@ -130,6 +128,11 @@ namespace mainWpf
                     Byte[] sendlog = new UTF8Encoding(true).GetBytes(senddata);
                     // Add some information to the file.
                     SendLog.Write(sendlog, 0, sendlog.Length);
+                    string receivedata = Model.vSM.yaw + "-" + Model.vSM.pitch + "-" + Model.vSM.roll + "-" + Model.vSM.depth + "-" + Model.vSM.temperature + "-" + Model.vSM.core + "-";
+                    receivedata += ":" + DateTime.Now.ToLongTimeString() + "\n";
+                    Byte[] receivelog = new UTF8Encoding(true).GetBytes(receivedata);
+                    // Add some information to the file.
+                    ReceiveLog.Write(receivelog, 0, receivelog.Length);
                 }
             }
             
@@ -250,6 +253,8 @@ namespace mainWpf
             //создание файла для записи
             path = Path.GetFullPath(@"ResourseFiles") + "\\Sendlog" + DateTime.Now.Hour + "h" + DateTime.Now.Minute + "m" + DateTime.Now.Second + "s" + ".txt";
             SendLog = File.Create(@path);
+            path = Path.GetFullPath(@"ResourseFiles") + "\\Receivelog" + DateTime.Now.Hour + "h" + DateTime.Now.Minute + "m" + DateTime.Now.Second + "s" + ".txt";
+            ReceiveLog = File.Create(@path);
             //StreamReader sr = File.OpenText(@"ResourseFiles\\SendLog.txt");
             //setter.ReadCoefficients("Coefficents.txt");
             timercontroller.StartTimer(15);
@@ -332,6 +337,7 @@ namespace mainWpf
         private void MainWin_Closed(object sender, EventArgs e)//V
         {
             SendLog.Close();
+            ReceiveLog.Close();
             Environment.Exit(0);
         }
 

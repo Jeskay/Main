@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Windows.Media;
 using System.Runtime.CompilerServices;
-
+using System.Windows;
 
 namespace mainWpf
 {
@@ -14,6 +14,16 @@ namespace mainWpf
     {
         Model model;
 
+        public bool Core
+        {
+            get { return model.Core; }
+            set
+            {
+                if (value) Lamp = Visibility.Visible;
+                else Lamp = Visibility.Hidden;
+                model.Core = value;
+            }
+        }
         public float Pitch
         {
             get { return model.Pitch; }
@@ -70,6 +80,18 @@ namespace mainWpf
             set
             {
                 model.SecondDepth = value;
+            }
+        }
+        public Visibility Lamp
+        {
+            get
+            {
+                return model.Lamp;
+            }
+            set
+            {
+                model.Lamp = value;
+                OnPropertyChanged("Lamp");
             }
         }
         public string SpeedMode

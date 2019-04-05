@@ -85,7 +85,7 @@
 				<Image x:Name="Image_compass" HorizontalAlignment="Left" Height="124" Margin="154,222,-25,0" VerticalAlignment="Top" Width="176" Source="Images/modern-compass-without-needle-hi.png" RenderTransformOrigin="0.444,0.488" Panel.ZIndex="2"/>
 				<Image x:Name="Image_strelka" HorizontalAlignment="Left" Height="90" Margin="194,240,0,0" VerticalAlignment="Top" Width="94" Source="Images/trelka.png" RenderTransformOrigin="{Binding Path=YawAngle, UpdateSourceTrigger=PropertyChanged}" Panel.ZIndex="2"/>
 				<Rectangle x:Name="Rectangle_Depth" Fill="#CCFFFFFF" HorizontalAlignment="Left" Height="108" Margin="70,0,0,59" Stroke="White" VerticalAlignment="Bottom" Width="26" Panel.ZIndex="2"/>
-				<Image x:Name="Image_lantern" HorizontalAlignment="Left" Height="93" Margin="206,85,0,0" VerticalAlignment="Top" Width="89" Source="Images/lantern.png"/>
+				<Image x:Name="Image_lantern" HorizontalAlignment="Left" Height="93" Margin="206,85,0,0" VerticalAlignment="Top" Width="89" Visibility="{Binding Path=Lamp, UpdateSourceTrigger=PropertyChanged}" Source="Images/lantern.png"/>
 			</Grid>
 		</GroupBox>
 		<Image x:Name="Image_Background" HorizontalAlignment="Left" Height="737" VerticalAlignment="Top" Width="1300" Source="Images/nostalgic_blue_background_06_hd_pictures_169782.jpg" Margin="58,0,0,0"/>

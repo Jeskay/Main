@@ -31,14 +31,8 @@
                 </ModelVisual3D.Transform>
             </ModelVisual3D>
         </HelixToolkit:HelixViewport3D>
-        <TextBox x:Name="TextBox_X" HorizontalAlignment="Left" Height="35" Margin="304,0,-121,0" TextWrapping="Wrap" Text="&#xD;&#xA;" VerticalAlignment="Top" Width="76" TextChanged="TextBox_X_TextChanged"/>
-        <Label x:Name="Label_X" Content="Yaw:" HorizontalAlignment="Left" Height="35" Margin="259,0,-45,0" VerticalAlignment="Top" Width="45"/>
-        <TextBox x:Name="TextBox_Y" HorizontalAlignment="Left" Height="35" Margin="304,35,-121,0" TextWrapping="Wrap" Text="&#xA;" VerticalAlignment="Top" Width="76" TextChanged="TextBox_Y_TextChanged"/>
-        <Label x:Name="Label_Y" Content="Lurch:" HorizontalAlignment="Left" Height="35" Margin="259,35,-45,0" VerticalAlignment="Top" Width="45"/>
-        <TextBox x:Name="TextBox_Z" HorizontalAlignment="Left" Height="35" Margin="304,70,-121,0" TextWrapping="Wrap" Text="&#xA;" VerticalAlignment="Top" Width="76" TextChanged="TextBox_Z_TextChanged"/>
-        <Label x:Name="Label_Z" Content="Diff:" HorizontalAlignment="Left" Height="35" Margin="259,70,-45,0" VerticalAlignment="Top" Width="45"/>
-        <Slider x:Name="Yaw_Szlider" HorizontalAlignment="Left" Height="36" Margin="259,110,0,0" VerticalAlignment="Top" Width="121" ValueChanged="Yaw_Szlider_ValueChanged"/>
-        <Slider x:Name="Lurch_Slider" HorizontalAlignment="Left" Height="36" Margin="259,146,0,0" VerticalAlignment="Top" Width="121" ValueChanged="Lurch_Slider_ValueChanged"/>
-        <Slider x:Name="Diff_Slider" HorizontalAlignment="Left" Height="36" Margin="259,182,0,0" VerticalAlignment="Top" Width="121" ValueChanged="Diff_Slider_ValueChanged"/>
+        <Label x:Name="Label_X" Content="{Binding Path=AxisX, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="35" Margin="307,0,0,0" VerticalAlignment="Top" Width="76"/>
+        <Label x:Name="Label_Y" Content="{Binding Path=AxisY, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="35" Margin="307,35,0,0" VerticalAlignment="Top" Width="73"/>
+        <Label x:Name="Label_Z" Content="{Binding Path=AxisZ, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="35" Margin="307,70,0,0" VerticalAlignment="Top" Width="73"/>
     </Grid>
 </Window>
