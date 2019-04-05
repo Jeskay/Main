@@ -36,7 +36,6 @@ namespace mainWpf
         };
 
         public static SL vSL;//M<
-        public DateTime ChartTime;
         public ChartBuilder()
         {
             InitializeComponent();
@@ -44,20 +43,16 @@ namespace mainWpf
         private void Chart_Window_Loaded(object sender, RoutedEventArgs e)
         {
             chart.ChartAreas.Add(new ChartArea("Default"));
+        }
+
+        private void AxisXChart_CB_Checked(object sender, RoutedEventArgs e)
+        {
             chart.Series.Add(new Series("AxisX"));
             chart.Series["AxisX"].ChartArea = "Default";
             chart.Series["AxisX"].ChartType = SeriesChartType.Line;
-
-        }
-        public void UpdateChart()
-        {
-            chart.Series["AxisX"].Points.AddXY(ChartTime, vSL.axisX_p);
-        }
-        private void AxisXChart_CB_Checked(object sender, RoutedEventArgs e)
-        {
             string[] axisXData = new string[] { "a", "b", "c" };
             double[] axisYData = new double[] { 0.1, 1.5, 1.9 };
-            
+            chart.Series["AxisX"].Points.DataBindXY(axisXData, axisYData);
 
         }
     }
