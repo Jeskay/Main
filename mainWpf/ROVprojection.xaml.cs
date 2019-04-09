@@ -55,7 +55,7 @@ namespace mainWpf
 
             InitializeComponent();
 
-            model = importer.Load(@"ResourseFiles\\15981_Hollow_Cylinder_v1.obj");
+            model = importer.Load(@"ResourseFiles\\ROV.obj");
             DataContext = projectionmodelview;
             Models.Content = model;
         }
