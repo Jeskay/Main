@@ -32,7 +32,7 @@ namespace mainWpf
             public static List<sbyte> camera_rotate;
             public static List<sbyte> manipulator_rotate;
    
-        public DateTime []ChartTime;
+        public static DateTime []ChartTime;
         public ChartBuilder()
         {
             InitializeComponent();

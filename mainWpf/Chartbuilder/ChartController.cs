@@ -23,7 +23,11 @@ namespace mainWpf
                 ReadNumber(line, ChartBuilder.manipulator_rotate);
                 ReadNumber(line, ChartBuilder.camera_rotate);
                 for (int limit = position + 24; position < limit; position+=2) String.Add(line[position]);
-                //чтение времени
+                Array.Resize( ref ChartBuilder.ChartTime, ChartBuilder.ChartTime.Length + 1);
+                string time = "";
+                for (; position <= line.Length; position++)
+                    time += line[position];
+                ChartBuilder.ChartTime[ChartBuilder.ChartTime.Length - 1] = Convert.ToDateTime(time);
             }
         }
         private void ReadNumber(string line, List<sbyte> list)
