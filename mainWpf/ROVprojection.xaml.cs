@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.Windows.Media.Media3D;
 using HelixToolkit.Wpf;
 using mainWpf;
+using System.Windows.Threading;
 
 namespace mainWpf
 {
@@ -52,12 +53,14 @@ namespace mainWpf
         {
             projectionmodelview = new ROVprojectionModelView(new ROVprojectionModel());
             importer = new ModelImporter();
-
+            
             InitializeComponent();
 
             model = importer.Load(@"ResourseFiles\\ROV.obj");
             DataContext = projectionmodelview;
             Models.Content = model;
+            
+            
         }
     }
 }
