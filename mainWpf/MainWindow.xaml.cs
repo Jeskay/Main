@@ -125,12 +125,12 @@ namespace mainWpf
                 {
                     string senddata = Model.vGM.axisX_p + "-" + Model.vGM.axisY_p + "-" + Model.vGM.axisW_p + "-" + Model.vGM.axisZ_p + "-" + Model.vGM.manipulator_rotate + "-" + Model.vGM.camera_rotate + "-";
                     for (int i = 0; i < 12; i++) senddata += Maincontroller.GetButtons[i] + "-";
-                    senddata += ":" + DateTime.Now.ToLongTimeString() + "\n";
+                    senddata += ":" + DateTime.Now.ToLongTimeString() + '\n';
                     Byte[] sendlog = new UTF8Encoding(true).GetBytes(senddata);
                     // Add some information to the file.
                     SendLog.Write(sendlog, 0, sendlog.Length);
                     string receivedata = Model.vSM.yaw + "-" + Model.vSM.pitch + "-" + Model.vSM.roll + "-" + Model.vSM.depth + "-" + Model.vSM.temperature + "-" + Model.vSM.core + "-";
-                    receivedata += ":" + DateTime.Now.ToLongTimeString() + "\n";
+                    receivedata += ":" + DateTime.Now.ToLongTimeString() + '\n';
                     Byte[] receivelog = new UTF8Encoding(true).GetBytes(receivedata);
                     // Add some information to the file.
                     ReceiveLog.Write(receivelog, 0, receivelog.Length);

@@ -11,8 +11,9 @@ namespace mainWpf
     {
         public void ReadReceivedData(string Path)
         {
-            StreamReader sr = new StreamReader(Path);
+            StreamReader sr = new StreamReader(@"ResourseFiles\\Receivelog18h0m46s.txt");
             string line = "";
+            position = 0;
             try
             {
                 while ((line = sr.ReadLine()) != null)
@@ -38,7 +39,7 @@ namespace mainWpf
         }
         public void ReadSentData(string Path)
         {
-            StreamReader sr = new StreamReader(@"ResourseFiles\\Sendlog13h41m42s.txt");
+            StreamReader sr = new StreamReader(@"ResourseFiles\\Sendlog16h47m23s.txt");
             List<int> String = new List<int>();
             string line = "";
             try

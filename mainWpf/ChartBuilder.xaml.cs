@@ -50,11 +50,18 @@ namespace mainWpf
             axisZ_p = new List<sbyte>();
             camera_rotate = new List<sbyte>();
             manipulator_rotate = new List<sbyte>();
+            Yaw = new List<float>();
+            Pitch = new List<float>();
+            Roll = new List<float>();
+            Depth = new List<float>();
+            Temperature = new List<float>();
+            core = new List<sbyte>();
         }
         private void Chart_Window_Loaded(object sender, RoutedEventArgs e)
         {
 
             chartcontroller.ReadSentData("C:\\Users\\ASUS\\source\repos\\Main\\mainWpf\bin\\Release\\ResourseFiles\\Sendlog13h41m42s.txt");
+            chartcontroller.ReadReceivedData("ff");
             chart.ChartAreas.Add(new ChartArea("Default"));
             chart.Series.Add(new Series("AxisX"));
             chart.Series["AxisX"].ChartArea = "Default";
