@@ -11,7 +11,7 @@ namespace mainWpf
     {
         public void ReadReceivedData(string Path)
         {
-            StreamReader sr = new StreamReader(@"ResourseFiles\\Receivelog18h0m46s.txt");
+            StreamReader sr = new StreamReader(@"ResourseFiles\\Receivelog22h29m31s.txt");
             string line = "";
             position = 0;
             try
@@ -25,10 +25,11 @@ namespace mainWpf
                     ReadFloatNumber(line, ChartBuilder.Temperature);
                     ReadSBNumber(line, ChartBuilder.core);
                     string time = "";
+                    Array.Resize(ref ChartBuilder.ReceiveTime, ChartBuilder.ReceiveTime.Length + 1);
                     position++;
                     for (; position < line.Length; position++)
                         time += line[position];
-                    ChartBuilder.ReceiveTime[ChartBuilder.ReceiveTime.Length - 1] = Convert.ToDateTime(time);
+                    ChartBuilder.ReceiveTime[ChartBuilder.ReceiveTime.Length - 1] = Convert.ToDateTime(time).ToLongTimeString();
                     position = 0;
                 }
             }
@@ -39,7 +40,7 @@ namespace mainWpf
         }
         public void ReadSentData(string Path)
         {
-            StreamReader sr = new StreamReader(@"ResourseFiles\\Sendlog16h47m23s.txt");
+            StreamReader sr = new StreamReader(@"ResourseFiles\\Sendlog22h29m31s.txt");
             List<int> String = new List<int>();
             string line = "";
             try
@@ -58,7 +59,7 @@ namespace mainWpf
                     position++;
                     for (; position < line.Length; position++)
                         time += line[position];
-                    ChartBuilder.SendTime[ChartBuilder.SendTime.Length - 1] = Convert.ToDateTime(time);
+                    ChartBuilder.SendTime[ChartBuilder.SendTime.Length - 1] = Convert.ToDateTime(time).ToLongTimeString();
                     ChartBuilder.buttons.Add(String);
                     position = 0;
                 }

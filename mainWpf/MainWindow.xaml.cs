@@ -28,6 +28,7 @@ namespace mainWpf
         System.Media.SoundPlayer sp = new System.Media.SoundPlayer();
         System.Media.SoundPlayer TimeOut1 = new System.Media.SoundPlayer();
         // обьявление используемых клаасов
+        public static VModel vmodel;
         ROVprojection ProjectionWindow = new ROVprojection();
         ChartBuilder chartBuilder = new ChartBuilder();
         public JoystickController Maincontroller;
@@ -46,7 +47,7 @@ namespace mainWpf
         int NoSoundEffects = 0;
         private WebCamCapture webcam;//M
         private Image _FrameImage;
-        public VModel vmodel;
+
         
         public DateTime dtm;
         public TimeSpan StopRange;

@@ -11,10 +11,14 @@
             <dvc:Chart x:Name="chart" />
         </WindowsFormsHost>
         <CheckBox x:Name="AxisXChart_CB" Content="AxisX" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Checked="AxisXChart_CB_Checked"/>
-        <CheckBox x:Name="AxisYChart_CB" Content="AxisY" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Margin="0,20,0,0"/>
-        <CheckBox x:Name="AxisWChart_CB" Content="AxisW" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Margin="0,40,0,0"/>
-        <CheckBox x:Name="AxisZChart_CB" Content="AxisZ" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Margin="0,60,0,0"/>
+        <CheckBox x:Name="AxisYChart_CB" Content="AxisY" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Margin="0,20,0,0" Checked="AxisYChart_CB_Checked"/>
+        <CheckBox x:Name="AxisWChart_CB" Content="AxisW" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Margin="0,40,0,0" Checked="AxisWChart_CB_Checked"/>
+        <CheckBox x:Name="AxisZChart_CB" Content="AxisZ" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Margin="0,60,0,0" Checked="AxisZChart_CB_Checked"/>
         <CheckBox x:Name="CameraChart_CB" Content="Camera" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Margin="0,80,0,0"/>
         <CheckBox x:Name="ManipulatorChart_CB" Content="Manipulator" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Margin="0,100,0,0"/>
+        <ComboBox x:Name="TypeOfData" HorizontalAlignment="Left" Height="31" Margin="-5,125,0,0" VerticalAlignment="Top" Width="89">
+            <ComboBoxItem x:Name="ReadFromFile" Selected="ReadFromFile_Selected" Content="ReadFromFile"/>
+            <ComboBoxItem x:Name="ReadFromReal" Selected="ReadFromReal_Selected" Content="ReadFromReal"/>
+        </ComboBox>
     </Grid>
 </Window>
