@@ -25,11 +25,10 @@ namespace mainWpf
                     ReadFloatNumber(line, ChartBuilder.Temperature);
                     ReadSBNumber(line, ChartBuilder.core);
                     string time = "";
-                    Array.Resize(ref ChartBuilder.ReceiveTime, ChartBuilder.ReceiveTime.Length + 1);
                     position++;
                     for (; position < line.Length; position++)
                         time += line[position];
-                    ChartBuilder.ReceiveTime[ChartBuilder.ReceiveTime.Length - 1] = Convert.ToDateTime(time).ToLongTimeString();
+                    ChartBuilder.ReceiveTime.Add(Convert.ToDateTime(time).ToLongTimeString());
                     position = 0;
                 }
             }
@@ -54,13 +53,11 @@ namespace mainWpf
                     ReadSBNumber(line, ChartBuilder.manipulator_rotate);
                     ReadSBNumber(line, ChartBuilder.camera_rotate);
                     for (int limit = position + 24; position < limit; position += 2) String.Add(line[position]);
-                    Array.Resize(ref ChartBuilder.SendTime, ChartBuilder.SendTime.Length + 1);
                     string time = "";
                     position++;
                     for (; position < line.Length; position++)
                         time += line[position];
-                    ChartBuilder.SendTime[ChartBuilder.SendTime.Length - 1] = Convert.ToDateTime(time).ToLongTimeString();
-                    ChartBuilder.buttons.Add(String);
+                    ChartBuilder.SendTime.Add(Convert.ToDateTime(time).ToLongTimeString());
                     position = 0;
                 }
             }

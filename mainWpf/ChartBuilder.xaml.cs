@@ -39,8 +39,8 @@ namespace mainWpf
             public static List<float> Depth;
             public static List<float> Temperature;
             public static List<sbyte> core;
-        public static string[] ReceiveTime = new string[0];
-        public static string []SendTime = new string[0];
+        public static List<string> ReceiveTime;
+        public static List<string> SendTime;
         ChartController chartcontroller = new ChartController();
         DispatcherTimer charttimer = new DispatcherTimer();
         public ChartBuilder()
@@ -63,73 +63,134 @@ namespace mainWpf
             Depth = new List<float>();
             Temperature = new List<float>();
             core = new List<sbyte>();
-            charttimer.Interval = new TimeSpan(0, 0, 0, 0, 55);
+            SendTime = new List<string>();
+            ReceiveTime = new List<string>();
+            charttimer.Interval = new TimeSpan(0, 0, 0, 0, 80);
             charttimer.Tick += new EventHandler(ChartUpdate);
-            chart.ChartAreas.Add(new ChartArea("Default"));
-            chart.Series.Add(new Series("AxisY"));
-            chart.Series.Add(new Series("AxisX"));
-            chart.Series.Add(new Series("AxisW"));
-            chart.Series.Add(new Series("AxisZ"));
+            Sendchart.ChartAreas.Add(new ChartArea("Default"));
+            Receivechart.ChartAreas.Add(new ChartArea("Receive"));
+            Receivechart.Series.Add(new Series("Yaw"));
+            Receivechart.Series.Add(new Series("Pitch"));
+            Receivechart.Series.Add(new Series("Roll"));
+            Receivechart.Series.Add(new Series("Depth"));
+            Receivechart.Series.Add(new Series("Temperature"));
+            Receivechart.Series.Add(new Series("Core"));
+            Sendchart.Series.Add(new Series("AxisY"));
+            Sendchart.Series.Add(new Series("AxisX"));
+            Sendchart.Series.Add(new Series("AxisW"));
+            Sendchart.Series.Add(new Series("AxisZ"));
+            Sendchart.Series.Add(new Series("Camera"));
+            Sendchart.Series.Add(new Series("Manipulator"));
+
         }
-        
+        #region checkbox
         private void AxisXChart_CB_Checked(object sender, RoutedEventArgs e)
         {
-           
-            chart.Series["AxisX"].ChartArea = "Default";
-            chart.Series["AxisX"].ChartType = SeriesChartType.Line;
+            Sendchart.Series["AxisX"].Enabled = true;
+            Sendchart.Series["AxisX"].ChartArea = "Default";
+            Sendchart.Series["AxisX"].ChartType = SeriesChartType.Line;
         }
 
         private void AxisYChart_CB_Checked(object sender, RoutedEventArgs e)
         {
-            
-            chart.Series["AxisY"].ChartArea = "Default";
-            chart.Series["AxisY"].ChartType = SeriesChartType.Line;
-            chart.Series["AxisY"].Color = Color.FromArgb(200, 20, 10);
+            Sendchart.Series["AxisY"].Enabled = true;
+            Sendchart.Series["AxisY"].ChartArea = "Default";
+            Sendchart.Series["AxisY"].ChartType = SeriesChartType.Line;
+            Sendchart.Series["AxisY"].Color = Color.FromArgb(200, 20, 10);
            
         }
 
         private void AxisWChart_CB_Checked(object sender, RoutedEventArgs e)
         {
-            
-            chart.Series["AxisW"].ChartArea = "Default";
-            chart.Series["AxisW"].ChartType = SeriesChartType.Line;
-            chart.Series["AxisW"].Color = Color.FromArgb(100, 20, 200);
+
+            Sendchart.Series["AxisW"].ChartArea = "Default";
+            Sendchart.Series["AxisW"].ChartType = SeriesChartType.Line;
+            Sendchart.Series["AxisW"].Color = Color.FromArgb(100, 20, 200);
             
         }
 
         private void AxisZChart_CB_Checked(object sender, RoutedEventArgs e)
         {
-            
-            chart.Series["AxisZ"].ChartArea = "Default";
-            chart.Series["AxisZ"].ChartType = SeriesChartType.Line;
-            chart.Series["AxisZ"].Color = Color.FromArgb(200, 20, 200);
+
+            Sendchart.Series["AxisZ"].ChartArea = "Default";
+            Sendchart.Series["AxisZ"].ChartType = SeriesChartType.Line;
+            Sendchart.Series["AxisZ"].Color = Color.FromArgb(200, 20, 200);
         }
 
+        private void CameraChart_CB_Checked(object sender, RoutedEventArgs e)
+        {
+            Sendchart.Series["Camera"].ChartArea = "Default";
+            Sendchart.Series["Camera"].ChartType = SeriesChartType.Line;
+            Sendchart.Series["Camera"].Color = Color.FromArgb(50, 100, 200);
+        }
+
+        private void ManipulatorChart_CB_Checked(object sender, RoutedEventArgs e)
+        {
+            Sendchart.Series["Manipulator"].ChartArea = "Default";
+            Sendchart.Series["Manipulator"].ChartType = SeriesChartType.Line;
+            Sendchart.Series["Manipulator"].Color = Color.FromArgb(200, 200, 10);
+        }
+
+        private void YawChart_CB_Checked(object sender, RoutedEventArgs e)
+        {
+            Receivechart.Series["Yaw"].ChartArea = "Receive";
+            Receivechart.Series["Yaw"].ChartType = SeriesChartType.Line;
+            Receivechart.Series["Yaw"].Color = Color.FromArgb(200, 200, 10);
+        }
+
+        private void PitchChart_CB_Checked(object sender, RoutedEventArgs e)
+        {
+            Receivechart.Series["Pitch"].ChartArea = "Receive";
+            Receivechart.Series["Pitch"].ChartType = SeriesChartType.Line;
+            Receivechart.Series["Pitch"].Color = Color.FromArgb(200, 10, 200);
+        }
+
+        private void RollChart_CB_Checked(object sender, RoutedEventArgs e)
+        {
+            Receivechart.Series["Roll"].ChartArea = "Receive";
+            Receivechart.Series["Roll"].ChartType = SeriesChartType.Line;
+            Receivechart.Series["Roll"].Color = Color.FromArgb(200, 10, 10);
+        }
+
+        private void DepthChart_CB_Checked(object sender, RoutedEventArgs e)
+        {
+            Receivechart.Series["Depth"].ChartArea = "Receive";
+            Receivechart.Series["Depth"].ChartType = SeriesChartType.Line;
+            Receivechart.Series["Depth"].Color = Color.FromArgb(10, 200, 200);
+        }
+
+        private void TemperatureChart_CB_Checked(object sender, RoutedEventArgs e)
+        {
+            Receivechart.Series["Temperature"].ChartArea = "Receive";
+            Receivechart.Series["Temperature"].ChartType = SeriesChartType.Line;
+            Receivechart.Series["Temperature"].Color = Color.FromArgb(50, 200, 100);
+        }
+
+        private void CoreChart_CB_Checked(object sender, RoutedEventArgs e)
+        {
+            Receivechart.Series["Core"].ChartArea = "Receive";
+            Receivechart.Series["Core"].ChartType = SeriesChartType.Line;
+            Receivechart.Series["Core"].Color = Color.FromArgb(250, 50, 100);
+        }
+        #endregion
         private void ReadFromFile_Selected(object sender, RoutedEventArgs e)
         {
+            ClearData();
+            charttimer.Stop();
             chartcontroller.ReadSentData("C:\\Users\\ASUS\\source\repos\\Main\\mainWpf\bin\\Release\\ResourseFiles\\Sendlog13h41m42s.txt");
             chartcontroller.ReadReceivedData("ff");
-            chart.ChartAreas.Add(new ChartArea("Default"));
+            UpdateChart();
         }
 
         private void ReadFromReal_Selected(object sender, RoutedEventArgs e)
-        { 
-            axisX_p.Clear();
-            axisY_p.Clear();
-            axisW_p.Clear();
-            axisZ_p.Clear();
-            camera_rotate.Clear();
-            manipulator_rotate.Clear();
-            Array.Clear(SendTime, 0, SendTime.Length);
+        {
+            ClearData();
             charttimer.Start();
         }
         private void ChartUpdate(object sender, EventArgs e)
         {
             ChartDataupdate();
-            chart.Series["AxisX"].Points.DataBindXY(SendTime, axisX_p);
-            chart.Series["AxisY"].Points.DataBindXY(SendTime, axisY_p);
-            chart.Series["AxisW"].Points.DataBindXY(SendTime, axisW_p);
-            chart.Series["AxisZ"].Points.DataBindXY(SendTime, axisZ_p);
+            UpdateChart();
         }
         private void ChartDataupdate()
         {
@@ -139,9 +200,72 @@ namespace mainWpf
             axisZ_p.Add(Model.vGM.axisZ_p);
             camera_rotate.Add(Model.vGM.camera_rotate);
             manipulator_rotate.Add(Model.vGM.manipulator_rotate);
-            Array.Resize(ref SendTime, SendTime.Length + 1);
-            SendTime[SendTime.Length - 1] = DateTime.Now.ToLongTimeString();
+            SendTime.Add(DateTime.Now.ToLongTimeString());
+            Yaw.Add(Model.vSM.yaw);
+            Pitch.Add(Model.vSM.pitch);
+            Roll.Add(Model.vSM.roll);
+            Depth.Add(Model.vSM.depth);
+            Temperature.Add(Model.vSM.depth);
+            core.Add(Model.vSM.core);
+            ReceiveTime.Add(DateTime.Now.ToLongTimeString());
+            if (SendTime.Count > 100)
+            {
+                axisX_p.Remove(axisX_p.First());
+                axisY_p.Remove(axisY_p.First());
+                axisW_p.Remove(axisW_p.First());
+                axisZ_p.Remove(axisZ_p.First());
+                camera_rotate.Remove(camera_rotate.First());
+                manipulator_rotate.Remove(manipulator_rotate.First());
+                SendTime.Remove(SendTime.First());
+                Yaw.Remove(Yaw.First());
+                Pitch.Remove(Pitch.First());
+                Roll.Remove(Roll.First());
+                Depth.Remove(Depth.First());
+                Temperature.Remove(Temperature.First());
+                core.Remove(core.First());
+                ReceiveTime.Remove(ReceiveTime.First());
+            }
+        }
+        private void UpdateChart()
+        {
+            Sendchart.Series["AxisX"].Points.DataBindXY(SendTime, axisX_p);
+            Sendchart.Series["AxisY"].Points.DataBindXY(SendTime, axisY_p);
+            Sendchart.Series["AxisW"].Points.DataBindXY(SendTime, axisW_p);
+            Sendchart.Series["AxisZ"].Points.DataBindXY(SendTime, axisZ_p);
+            Sendchart.Series["Camera"].Points.DataBindXY(SendTime, camera_rotate);
+            Sendchart.Series["Manipulator"].Points.DataBindXY(SendTime, manipulator_rotate);
+            Receivechart.Series["Yaw"].Points.DataBindXY(ReceiveTime, Yaw);
+            Receivechart.Series["Pitch"].Points.DataBindXY(ReceiveTime, Pitch);
+            Receivechart.Series["Roll"].Points.DataBindXY(ReceiveTime, Roll);
+            Receivechart.Series["Depth"].Points.DataBindXY(ReceiveTime, Depth);
+            Receivechart.Series["Temperature"].Points.DataBindXY(ReceiveTime, Temperature);
+        }
+        private void ClearData()
+        {
+            axisX_p.Clear();
+            axisY_p.Clear();
+            axisW_p.Clear();
+            axisZ_p.Clear();
+            camera_rotate.Clear();
+            manipulator_rotate.Clear();
+            Yaw.Clear();
+            Pitch.Clear();
+            Roll.Clear();
+            Depth.Clear();
+            Temperature.Clear();
+            core.Clear();
+            SendTime.Clear();
+            ReceiveTime.Clear();
+        }
 
+        private void AxisXChart_CB_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Sendchart.Series["AxisX"].Enabled = false;
+        }
+
+        private void AxisYChart_CB_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Sendchart.Series["AxisY"].Enabled = false;
         }
     }
 }
