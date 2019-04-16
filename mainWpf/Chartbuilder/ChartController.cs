@@ -11,7 +11,7 @@ namespace mainWpf
     {
         public void ReadReceivedData(string Path)
         {
-            StreamReader sr = new StreamReader(@"ResourseFiles\\Receivelog22h29m31s.txt");
+            StreamReader sr = new StreamReader(Path);
             string line = "";
             position = 0;
             try
@@ -39,7 +39,7 @@ namespace mainWpf
         }
         public void ReadSentData(string Path)
         {
-            StreamReader sr = new StreamReader(@"ResourseFiles\\Sendlog22h29m31s.txt");
+            StreamReader sr = new StreamReader(Path);
             List<int> String = new List<int>();
             string line = "";
             try
