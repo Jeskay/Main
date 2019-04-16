@@ -183,9 +183,11 @@ namespace mainWpf
         #endregion
         private void ReadFromFile_Selected(object sender, RoutedEventArgs e)
         {
-            ClearData();
             charttimer.Stop();
+            ClearData();
+
             Microsoft.Win32.OpenFileDialog Sentdlg = new Microsoft.Win32.OpenFileDialog();
+
             Sentdlg.FileName = "SendLog"; // Default file name
             Sentdlg.DefaultExt = ".txt"; // Default file extension
             Sentdlg.Filter = "Text documents (.txt)|*.txt"; // Filter files by extension
