@@ -23,9 +23,9 @@ namespace mainWpf
         private Device joystick;
         private double SpeedK = 0.25;
         private bool NoneJoystick = false;
-        private int[] Buttons = new int[12];
+        private static int[] Buttons = new int[12];
 
-        public int[] GetButtons
+        public static int[] GetButtons
         {
             get
             {

@@ -26,7 +26,7 @@ namespace mainWpf
     /// </summary>
     public partial class ChartBuilder : Window
     {
-            public static List<List<int>> buttons;
+            public static List<int>[] buttons;
             public static List<sbyte> axisX_p;
             public static List<sbyte> axisY_p;
             public static List<sbyte> axisW_p;
@@ -50,7 +50,7 @@ namespace mainWpf
         }
         private void Chart_Window_Loaded(object sender, RoutedEventArgs e)
         {
-            buttons = new List<List<int>>();
+            buttons = new List<int>[12];
             axisX_p = new List<sbyte>();
             axisY_p = new List<sbyte>();
             axisW_p = new List<sbyte>();
@@ -69,6 +69,7 @@ namespace mainWpf
             charttimer.Tick += new EventHandler(ChartUpdate);
             Sendchart.ChartAreas.Add(new ChartArea("Default"));
             Receivechart.ChartAreas.Add(new ChartArea("Receive"));
+            Buttonchart.ChartAreas.Add(new ChartArea("Buttons"));
             Receivechart.Series.Add(new Series("Yaw"));
             Receivechart.Series.Add(new Series("Pitch"));
             Receivechart.Series.Add(new Series("Roll"));
@@ -81,6 +82,11 @@ namespace mainWpf
             Sendchart.Series.Add(new Series("AxisZ"));
             Sendchart.Series.Add(new Series("Camera"));
             Sendchart.Series.Add(new Series("Manipulator"));
+            for (int i = 0; i < 12; i++)
+            {
+                Buttonchart.Series.Add(new Series("button" + i.ToString()));
+                buttons[i] = new List<int>();
+            }
 
         }
         #region checkbox
@@ -244,6 +250,8 @@ namespace mainWpf
             Temperature.Add(Model.vSM.depth);
             core.Add(Model.vSM.core);
             ReceiveTime.Add(DateTime.Now.ToLongTimeString());
+            for (int i = 0; i < 12; i++)
+                buttons[i].Add(JoystickController.GetButtons[i]);
             if (SendTime.Count > 100)
             {
                 axisX_p.Remove(axisX_p.First());
@@ -260,6 +268,8 @@ namespace mainWpf
                 Temperature.Remove(Temperature.First());
                 core.Remove(core.First());
                 ReceiveTime.Remove(ReceiveTime.First());
+                for (int i = 0; i < 12; i++)
+                    buttons[i].Remove(buttons[i].First());
             }
         }
         private void UpdateChart()
@@ -276,6 +286,8 @@ namespace mainWpf
             Receivechart.Series["Depth"].Points.DataBindXY(ReceiveTime, Depth);
             Receivechart.Series["Temperature"].Points.DataBindXY(ReceiveTime, Temperature);
             Receivechart.Series["Core"].Points.DataBindXY(ReceiveTime, core);
+            for (int i = 0; i < 12; i++)
+                Buttonchart.Series["button" + i.ToString()].Points.DataBindXY(SendTime, buttons[i]);
         }
         private void ClearData()
         {
@@ -293,6 +305,7 @@ namespace mainWpf
             core.Clear();
             SendTime.Clear();
             ReceiveTime.Clear();
+            for (int i = 0; i < 12; i++) buttons[i].Clear();
         }
 
         private void AxisXChart_CB_Unchecked(object sender, RoutedEventArgs e)
@@ -353,6 +366,126 @@ namespace mainWpf
         private void AxisWChart_CB_Unchecked(object sender, RoutedEventArgs e)
         {
             Sendchart.Series["AxisW"].Enabled = false;
+        }
+
+        private void FirstButton_CB_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Buttonchart.Series["button0"].Enabled = false;
+        }
+
+        private void FirstButton_CB_Checked(object sender, RoutedEventArgs e)
+        {
+            Buttonchart.Series["button0"].Enabled = true;
+        }
+
+        private void SecondButton_CB_Checked(object sender, RoutedEventArgs e)
+        {
+            Buttonchart.Series["button1"].Enabled = true;
+        }
+
+        private void ThirdButton_CB_Checked(object sender, RoutedEventArgs e)
+        {
+            Buttonchart.Series["button2"].Enabled = true;
+        }
+
+        private void FourthButton_CB_Checked(object sender, RoutedEventArgs e)
+        {
+            Buttonchart.Series["button3"].Enabled = true;
+        }
+
+        private void FifthButton_CB_Checked(object sender, RoutedEventArgs e)
+        {
+            Buttonchart.Series["button4"].Enabled = true;
+        }
+
+        private void SixthButton_CB_Checked(object sender, RoutedEventArgs e)
+        {
+            Buttonchart.Series["button5"].Enabled = true;
+        }
+
+        private void SevethButton_CB_Checked(object sender, RoutedEventArgs e)
+        {
+            Buttonchart.Series["button6"].Enabled = true;
+        }
+
+        private void EighthButton_CB_Checked(object sender, RoutedEventArgs e)
+        {
+            Buttonchart.Series["button7"].Enabled = true;
+        }
+
+        private void NinthButton_CB_Checked(object sender, RoutedEventArgs e)
+        {
+            Buttonchart.Series["button8"].Enabled = true;
+        }
+
+        private void TenthButton_CB_Checked(object sender, RoutedEventArgs e)
+        {
+            Buttonchart.Series["button9"].Enabled = true;
+        }
+
+        private void EleventhButton_CB_Checked(object sender, RoutedEventArgs e)
+        {
+            Buttonchart.Series["button10"].Enabled = true;
+        }
+
+        private void TwelvethButton_CB_Checked(object sender, RoutedEventArgs e)
+        {
+            Buttonchart.Series["button11"].Enabled = true;
+        }
+
+        private void SecondButton_CB_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Buttonchart.Series["button1"].Enabled = false;
+        }
+
+        private void ThirdButton_CB_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Buttonchart.Series["button2"].Enabled = false;
+        }
+
+        private void FourthButton_CB_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Buttonchart.Series["button3"].Enabled = false;
+        }
+
+        private void FifthButton_CB_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Buttonchart.Series["button4"].Enabled = false;
+        }
+
+        private void SixthButton_CB_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Buttonchart.Series["button5"].Enabled = false;
+        }
+
+        private void SevethButton_CB_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Buttonchart.Series["button6"].Enabled = false;
+        }
+
+        private void EighthButton_CB_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Buttonchart.Series["button7"].Enabled = false;
+        }
+
+        private void NinthButton_CB_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Buttonchart.Series["button8"].Enabled = false;
+        }
+
+        private void TenthButton_CB_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Buttonchart.Series["button9"].Enabled = false;
+        }
+
+        private void EleventhButton_CB_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Buttonchart.Series["button10"].Enabled = false;
+        }
+
+        private void TwelvethButton_CB_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Buttonchart.Series["button11"].Enabled = false;
         }
     }
 }

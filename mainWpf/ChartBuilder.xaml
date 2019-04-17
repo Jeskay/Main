@@ -5,29 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:dvc="clr-namespace:System.Windows.Forms.DataVisualization.Charting;assembly=System.Windows.Forms.DataVisualization"
         mc:Ignorable="d"
-        Title="ChartBuilder" Height="450" Width="800" Loaded="Chart_Window_Loaded">
-    <Grid x:Name="ChartWindow_Grid">
-        <WindowsFormsHost x:Name="Main_WFHost" Margin="89,0,0,227">
-            <dvc:Chart x:Name="Sendchart" />
-        </WindowsFormsHost>
-        <WindowsFormsHost x:Name="Second_WFHost" Margin="89,217,0,10">
-            <dvc:Chart x:Name="Receivechart" />
-        </WindowsFormsHost>
-        <CheckBox x:Name="AxisXChart_CB" Content="AxisX" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Checked="AxisXChart_CB_Checked" Margin="0,72,0,0" Unchecked="AxisXChart_CB_Unchecked"/>
-        <CheckBox x:Name="AxisYChart_CB" Content="AxisY" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Margin="0,92,0,0" Checked="AxisYChart_CB_Checked" Unchecked="AxisYChart_CB_Unchecked"/>
-        <CheckBox x:Name="AxisWChart_CB" Content="AxisW" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Margin="0,112,0,0" Checked="AxisWChart_CB_Checked" Unchecked="AxisWChart_CB_Unchecked"/>
-        <CheckBox x:Name="AxisZChart_CB" Content="AxisZ" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Margin="0,132,0,0" Checked="AxisZChart_CB_Checked" Unchecked="AxisZChart_CB_Unchecked"/>
-        <CheckBox x:Name="CameraChart_CB" Content="Camera" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Margin="0,152,0,0" Checked="CameraChart_CB_Checked" Unchecked="CameraChart_CB_Unchecked"/>
-        <CheckBox x:Name="ManipulatorChart_CB" Content="Manipulator" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Margin="0,172,0,0" Checked="ManipulatorChart_CB_Checked" Unchecked="ManipulatorChart_CB_Unchecked"/>
-        <ComboBox x:Name="TypeOfData" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="89">
-            <ComboBoxItem x:Name="ReadFromFile" Selected="ReadFromFile_Selected" Content="ReadFromFile"/>
-            <ComboBoxItem x:Name="ReadFromReal" Selected="ReadFromReal_Selected" Content="ReadFromReal"/>
+        Title="ChartBuilder" Height="542.143" Width="822.5" Loaded="Chart_Window_Loaded">
+    <Grid x:Name="ChartWindow_Grid" Margin="0,10,0,0">
+        
+                    <WindowsFormsHost x:Name="Main_WFHost" Margin="133,6,0,329">
+                        <dvc:Chart x:Name="Sendchart" />
+                    </WindowsFormsHost>
+                    <WindowsFormsHost x:Name="Second_WFHost" Margin="133,346,0,0">
+                        <dvc:Chart x:Name="Receivechart" />
+                    </WindowsFormsHost>
+                    <WindowsFormsHost x:Name="Main_ButtonHost" Margin="133,177,0,160">
+                        <dvc:Chart x:Name="Buttonchart" />
+                    </WindowsFormsHost>
+                    <CheckBox x:Name="AxisXChart_CB" Content="AxisX" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Checked="AxisXChart_CB_Checked" Margin="0,41,0,0" Unchecked="AxisXChart_CB_Unchecked"/>
+                    <CheckBox x:Name="AxisYChart_CB" Content="AxisY" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Margin="0,61,0,0" Checked="AxisYChart_CB_Checked" Unchecked="AxisYChart_CB_Unchecked"/>
+                    <CheckBox x:Name="AxisWChart_CB" Content="AxisW" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Margin="0,81,0,0" Checked="AxisWChart_CB_Checked" Unchecked="AxisWChart_CB_Unchecked"/>
+                    <CheckBox x:Name="AxisZChart_CB" Content="AxisZ" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Margin="0,101,0,0" Checked="AxisZChart_CB_Checked" Unchecked="AxisZChart_CB_Unchecked"/>
+                    <CheckBox x:Name="CameraChart_CB" Content="Camera" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Margin="0,121,0,0" Checked="CameraChart_CB_Checked" Unchecked="CameraChart_CB_Unchecked"/>
+                    <CheckBox x:Name="ManipulatorChart_CB" Content="Manipulator" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Margin="0,141,0,0" Checked="ManipulatorChart_CB_Checked" Unchecked="ManipulatorChart_CB_Unchecked"/>
+                    <CheckBox x:Name="YawChart_CB" Content="Yaw" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Checked="YawChart_CB_Checked" Margin="0,346,0,0" Unchecked="YawChart_CB_Unchecked"/>
+                    <CheckBox x:Name="PitchChart_CB" Content="Pitch" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Checked="PitchChart_CB_Checked" Margin="0,366,0,0" Unchecked="PitchChart_CB_Unchecked"/>
+                    <CheckBox x:Name="RollChart_CB" Content="Roll" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Checked="RollChart_CB_Checked" Margin="0,386,0,0" Unchecked="RollChart_CB_Unchecked"/>
+                    <CheckBox x:Name="DepthChart_CB" Content="Depth" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Checked="DepthChart_CB_Checked" Margin="0,406,0,0" Unchecked="DepthChart_CB_Unchecked"/>
+                    <CheckBox x:Name="TemperatureChart_CB" Content="Temperature" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="89" Checked="TemperatureChart_CB_Checked" Margin="0,426,0,0" Unchecked="TemperatureChart_CB_Unchecked"/>
+                    <CheckBox x:Name="CoreChart_CB" Content="Core" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Checked="CoreChart_CB_Checked" Margin="0,446,0,0" Unchecked="CoreChart_CB_Unchecked"/>
+                    <ComboBox x:Name="TypeOfData" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="133">
+                        <ComboBoxItem x:Name="ReadFromFile" Selected="ReadFromFile_Selected" Content="ReadFromFile"/>
+                        <ComboBoxItem x:Name="ReadFromReal" Selected="ReadFromReal_Selected" Content="ReadFromReal"/>
+                    </ComboBox>
+        <ComboBox x:Name="Buttons_CB" HorizontalAlignment="Left" Height="30" Margin="0,177,0,0" VerticalAlignment="Top" Width="117">
+            <CheckBox x:Name="FirstButton_CB" Content="Botton 1" HorizontalAlignment="Left"  Height="20" VerticalAlignment="Top" Width="84" Margin="0,10,0,0" Unchecked="FirstButton_CB_Unchecked" Checked="FirstButton_CB_Checked"/>
+            <CheckBox x:Name="SecondButton_CB" Content="Botton 2" HorizontalAlignment="Left"  Height="20" VerticalAlignment="Top" Width="84" Checked="SecondButton_CB_Checked" Unchecked="SecondButton_CB_Unchecked"/>
+            <CheckBox x:Name="ThirdButton_CB" Content="Botton 3" HorizontalAlignment="Left"  Height="20" VerticalAlignment="Top" Width="84" Checked="ThirdButton_CB_Checked" Unchecked="ThirdButton_CB_Unchecked"/>
+            <CheckBox x:Name="FourthButton_CB" Content="Botton 4" HorizontalAlignment="Left"  Height="20" VerticalAlignment="Top" Width="84" Checked="FourthButton_CB_Checked" Unchecked="FourthButton_CB_Unchecked"/>
+            <CheckBox x:Name="FifthButton_CB" Content="Botton 5" HorizontalAlignment="Left"  Height="20" VerticalAlignment="Top" Width="84" Checked="FifthButton_CB_Checked" Unchecked="FifthButton_CB_Unchecked"/>
+            <CheckBox x:Name="SixthButton_CB" Content="Botton 6" HorizontalAlignment="Left"  Height="20" VerticalAlignment="Top" Width="84" Checked="SixthButton_CB_Checked" Unchecked="SixthButton_CB_Unchecked"/>
+            <CheckBox x:Name="SevethButton_CB" Content="Botton 7" HorizontalAlignment="Left"  Height="20" VerticalAlignment="Top" Width="84" Checked="SevethButton_CB_Checked" Unchecked="SevethButton_CB_Unchecked"/>
+            <CheckBox x:Name="EighthButton_CB" Content="Botton 8" HorizontalAlignment="Left"  Height="20" VerticalAlignment="Top" Width="84" Checked="EighthButton_CB_Checked" Unchecked="EighthButton_CB_Unchecked"/>
+            <CheckBox x:Name="NinthButton_CB" Content="Botton 9" HorizontalAlignment="Left"  Height="20" VerticalAlignment="Top" Width="84" Checked="NinthButton_CB_Checked" Unchecked="NinthButton_CB_Unchecked"/>
+            <CheckBox x:Name="TenthButton_CB" Content="Botton 10" HorizontalAlignment="Left"  Height="20" VerticalAlignment="Top" Width="84" Checked="TenthButton_CB_Checked" Unchecked="TenthButton_CB_Unchecked"/>
+            <CheckBox x:Name="EleventhButton_CB" Content="Botton 11" HorizontalAlignment="Left"  Height="20" VerticalAlignment="Top" Width="84" Checked="EleventhButton_CB_Checked" Unchecked="EleventhButton_CB_Unchecked"/>
+            <CheckBox x:Name="TwelvethButton_CB" Content="Botton 12" HorizontalAlignment="Left"  Height="20" VerticalAlignment="Top" Width="84" Checked="TwelvethButton_CB_Checked" Unchecked="TwelvethButton_CB_Unchecked"/>
         </ComboBox>
-        <CheckBox x:Name="YawChart_CB" Content="Yaw" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Checked="YawChart_CB_Checked" Margin="0,217,0,0" Unchecked="YawChart_CB_Unchecked"/>
-        <CheckBox x:Name="PitchChart_CB" Content="Pitch" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Checked="PitchChart_CB_Checked" Margin="0,237,0,0" Unchecked="PitchChart_CB_Unchecked"/>
-        <CheckBox x:Name="RollChart_CB" Content="Roll" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Checked="RollChart_CB_Checked" Margin="0,257,0,0" Unchecked="RollChart_CB_Unchecked"/>
-        <CheckBox x:Name="DepthChart_CB" Content="Depth" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Checked="DepthChart_CB_Checked" Margin="0,277,0,0" Unchecked="DepthChart_CB_Unchecked"/>
-        <CheckBox x:Name="TemperatureChart_CB" Content="Temperature" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Checked="TemperatureChart_CB_Checked" Margin="0,297,0,0" Unchecked="TemperatureChart_CB_Unchecked"/>
-        <CheckBox x:Name="CoreChart_CB" Content="Core" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Checked="CoreChart_CB_Checked" Margin="0,317,0,0" Unchecked="CoreChart_CB_Unchecked"/>
     </Grid>
 </Window>

@@ -100,7 +100,7 @@ namespace mainWpf
                     info += "AxisZ: " + Model.vGM.axisZ_p + "\n";//state.Z + ";";
                     info += "Slighter:  " + Model.vGM.manipulator_rotate + "\n"; //sligterP[0] + ";";
                     info += "PointOfView:   " + Model.vGM.camera_rotate + "\n";
-                    for (int i = 0; i < 12; i++) info += "Key" + i + ": " + Maincontroller.GetButtons[i] + "\n";
+                    for (int i = 0; i < 12; i++) info += "Key" + i + ": " + JoystickController.GetButtons[i] + "\n";
                     MainUDP.Send(info);
 
                     vmodel.Depth = Model.vSM.depth;
@@ -123,7 +123,7 @@ namespace mainWpf
                     Console.WriteLine("Возникло исключение1: " + ex.ToString() + "\n  " + ex.Message);
                 }
                     string senddata = Model.vGM.axisX_p + "!" + Model.vGM.axisY_p + "!" + Model.vGM.axisW_p + "!" + Model.vGM.axisZ_p + "!" + Model.vGM.manipulator_rotate + "!" + Model.vGM.camera_rotate + "!";
-                    for (int i = 0; i < 12; i++) senddata += Maincontroller.GetButtons[i] + "!";
+                    for (int i = 0; i < 12; i++) senddata += JoystickController.GetButtons[i] + "!";
                     senddata += ":" + DateTime.Now.ToLongTimeString() + '\n';
                     Byte[] sendlog = new UTF8Encoding(true).GetBytes(senddata);
                     // Add some information to the file.
