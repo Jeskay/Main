@@ -376,61 +376,97 @@ namespace mainWpf
         private void FirstButton_CB_Checked(object sender, RoutedEventArgs e)
         {
             Buttonchart.Series["button0"].Enabled = true;
+            Buttonchart.Series["button0"].ChartArea = "Buttons";
+            Buttonchart.Series["button0"].ChartType = SeriesChartType.Line;
+            Buttonchart.Series["button0"].Color = Color.FromArgb(200, 10, 10);
         }
 
         private void SecondButton_CB_Checked(object sender, RoutedEventArgs e)
         {
             Buttonchart.Series["button1"].Enabled = true;
+            Buttonchart.Series["button1"].ChartArea = "Buttons";
+            Buttonchart.Series["button1"].ChartType = SeriesChartType.Line;
+            Buttonchart.Series["button1"].Color = Color.FromArgb(10, 200, 10);
         }
 
         private void ThirdButton_CB_Checked(object sender, RoutedEventArgs e)
         {
             Buttonchart.Series["button2"].Enabled = true;
+            Buttonchart.Series["button2"].ChartArea = "Buttons";
+            Buttonchart.Series["button2"].ChartType = SeriesChartType.Line;
+            Buttonchart.Series["button2"].Color = Color.FromArgb(10, 10, 200);
         }
 
         private void FourthButton_CB_Checked(object sender, RoutedEventArgs e)
         {
             Buttonchart.Series["button3"].Enabled = true;
+            Buttonchart.Series["button3"].ChartArea = "Buttons";
+            Buttonchart.Series["button3"].ChartType = SeriesChartType.Line;
+            Buttonchart.Series["button3"].Color = Color.FromArgb(200, 200, 10);
         }
 
         private void FifthButton_CB_Checked(object sender, RoutedEventArgs e)
         {
             Buttonchart.Series["button4"].Enabled = true;
+            Buttonchart.Series["button4"].ChartArea = "Buttons";
+            Buttonchart.Series["button4"].ChartType = SeriesChartType.Line;
+            Buttonchart.Series["button4"].Color = Color.FromArgb(200, 10, 200);
         }
 
         private void SixthButton_CB_Checked(object sender, RoutedEventArgs e)
         {
             Buttonchart.Series["button5"].Enabled = true;
+            Buttonchart.Series["button5"].ChartArea = "Buttons";
+            Buttonchart.Series["button5"].ChartType = SeriesChartType.Line;
+            Buttonchart.Series["button5"].Color = Color.FromArgb(10, 200, 200);
         }
 
         private void SevethButton_CB_Checked(object sender, RoutedEventArgs e)
         {
             Buttonchart.Series["button6"].Enabled = true;
+            Buttonchart.Series["button6"].ChartArea = "Buttons";
+            Buttonchart.Series["button6"].ChartType = SeriesChartType.Line;
+            Buttonchart.Series["button6"].Color = Color.FromArgb(235, 20, 177);
         }
 
         private void EighthButton_CB_Checked(object sender, RoutedEventArgs e)
         {
             Buttonchart.Series["button7"].Enabled = true;
+            Buttonchart.Series["button7"].ChartArea = "Buttons";
+            Buttonchart.Series["button7"].ChartType = SeriesChartType.Line;
+            Buttonchart.Series["button7"].Color = Color.FromArgb(116, 19, 235);
         }
 
         private void NinthButton_CB_Checked(object sender, RoutedEventArgs e)
         {
             Buttonchart.Series["button8"].Enabled = true;
+            Buttonchart.Series["button8"].ChartArea = "Buttons";
+            Buttonchart.Series["button8"].ChartType = SeriesChartType.Line;
+            Buttonchart.Series["button8"].Color = Color.FromArgb(224, 125, 11);
         }
 
         private void TenthButton_CB_Checked(object sender, RoutedEventArgs e)
         {
             Buttonchart.Series["button9"].Enabled = true;
+            Buttonchart.Series["button9"].ChartArea = "Buttons";
+            Buttonchart.Series["button9"].ChartType = SeriesChartType.Line;
+            Buttonchart.Series["button9"].Color = Color.FromArgb(11, 224, 100);
         }
 
         private void EleventhButton_CB_Checked(object sender, RoutedEventArgs e)
         {
             Buttonchart.Series["button10"].Enabled = true;
+            Buttonchart.Series["button10"].ChartArea = "Buttons";
+            Buttonchart.Series["button10"].ChartType = SeriesChartType.Line;
+            Buttonchart.Series["button10"].Color = Color.FromArgb(70, 40, 20);
         }
 
         private void TwelvethButton_CB_Checked(object sender, RoutedEventArgs e)
         {
             Buttonchart.Series["button11"].Enabled = true;
+            Buttonchart.Series["button11"].ChartArea = "Buttons";
+            Buttonchart.Series["button11"].ChartType = SeriesChartType.Line;
+            Buttonchart.Series["button11"].Color = Color.FromArgb(70, 105, 14);
         }
 
         private void SecondButton_CB_Unchecked(object sender, RoutedEventArgs e)
@@ -486,6 +522,18 @@ namespace mainWpf
         private void TwelvethButton_CB_Unchecked(object sender, RoutedEventArgs e)
         {
             Buttonchart.Series["button11"].Enabled = false;
+        }
+
+        private void Main_WFHost_MouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            if (e.Delta > 0)
+            {
+                Sendchart.ChartAreas["Defult"].AxisY.Interval++;
+            }
+            else
+            {
+                Sendchart.ChartAreas["Defult"].AxisY.Interval--;
+            }
         }
     }
 }

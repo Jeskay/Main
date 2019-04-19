@@ -114,8 +114,8 @@ namespace mainWpf
                     vudp.ReceivingBytes = MainUDP.ReceivedBytes;
                     vudp.Connection = MainUDP.Connection;
                     ProjectionWindow.Yaw = Model.vSM.yaw;
-                    ProjectionWindow.Diff = Model.vSM.pitch;
-                    ProjectionWindow.Lurch = Model.vSM.roll;
+                    ProjectionWindow.Pitch = Model.vSM.pitch;
+                    ProjectionWindow.Roll = Model.vSM.roll;
                     Thread.Sleep(20);
                 }
                 catch (Exception ex)

@@ -31,17 +31,17 @@ namespace mainWpf
         {
             set
             {
-                projectionmodelview.RotationZ = value;
-            }
-        }
-        public float Diff
-        {
-            set
-            {
                 projectionmodelview.RotationX = value;
             }
         }
-        public float Lurch
+        public float Pitch
+        {
+            set
+            {
+                projectionmodelview.RotationZ = value;
+            }
+        }
+        public float Roll
         {
             set
             {
@@ -58,8 +58,8 @@ namespace mainWpf
 
             model = importer.Load(@"ResourseFiles\\ROV.obj");
             DataContext = projectionmodelview;
+
             Models.Content = model;
-            
             
         }
     }
