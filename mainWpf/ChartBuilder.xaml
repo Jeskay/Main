@@ -8,7 +8,7 @@
         Title="ChartBuilder" Height="542.143" Width="822.5" Loaded="Chart_Window_Loaded">
     <Grid x:Name="ChartWindow_Grid" Margin="0,10,0,0">
         
-                    <WindowsFormsHost x:Name="Main_WFHost" Margin="133,6,0,329" MouseWheel="Main_WFHost_MouseWheel">
+                    <WindowsFormsHost x:Name="Main_WFHost" Margin="133,6,0,329" KeyUp="Main_WFHost_KeyUp">
                         <dvc:Chart x:Name="Sendchart" />
                     </WindowsFormsHost>
                     <WindowsFormsHost x:Name="Second_WFHost" Margin="133,346,0,0">

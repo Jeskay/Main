@@ -41,7 +41,6 @@ namespace mainWpf
         public void ReadSentData(string Path)
         {
             StreamReader sr = new StreamReader(Path);
-            List<int> String = new List<int>();
             string line = "";
             try
             {
@@ -53,7 +52,12 @@ namespace mainWpf
                     ReadSBNumber(line, ChartBuilder.axisZ_p);
                     ReadSBNumber(line, ChartBuilder.manipulator_rotate);
                     ReadSBNumber(line, ChartBuilder.camera_rotate);
-                    for (int limit = position + 24; position < limit; position += 2) String.Add(line[position]);
+                    int count = 0;
+                    for (int limit = position + 24; position < limit; position += 2)
+                    {
+                        ChartBuilder.buttons[count].Add(line[position]);
+                        count++;
+                    }
                     string time = "";
                     position++;
                     for (; position < line.Length; position++)
@@ -101,6 +105,12 @@ namespace mainWpf
                 ChartBuilder.camera_rotate.Remove(ChartBuilder.camera_rotate.Last());
                 CheckSendData();
             }
+            for (int i = 0; i < 12; i++)
+                if (ChartBuilder.buttons[i].Count > min)
+                {
+                    ChartBuilder.buttons[i].Remove(ChartBuilder.buttons[i].Last());
+                    CheckReceiveData();
+                }
         }
         private void CheckReceiveData()
         {
@@ -135,6 +145,7 @@ namespace mainWpf
                 ChartBuilder.core.Remove(ChartBuilder.core.Last());
                 CheckReceiveData();
             }
+            
         }
         private void ReadSBNumber(string line, List<sbyte> list)
         {

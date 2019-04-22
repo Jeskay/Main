@@ -524,15 +524,15 @@ namespace mainWpf
             Buttonchart.Series["button11"].Enabled = false;
         }
 
-        private void Main_WFHost_MouseWheel(object sender, MouseWheelEventArgs e)
+        private void Main_WFHost_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.Delta > 0)
+            if (e.Key == System.Windows.Input.Key.OemPlus)//V
             {
-                Sendchart.ChartAreas["Defult"].AxisY.Interval++;
+                Sendchart.ChartAreas["Default"].AxisX.Interval-=10;
             }
-            else
+            if (e.Key == Key.OemMinus)
             {
-                Sendchart.ChartAreas["Defult"].AxisY.Interval--;
+                Sendchart.ChartAreas["Default"].AxisX.Interval+=10;
             }
         }
     }

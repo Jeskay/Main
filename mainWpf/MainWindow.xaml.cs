@@ -116,7 +116,6 @@ namespace mainWpf
                     ProjectionWindow.Yaw = Model.vSM.yaw;
                     ProjectionWindow.Pitch = Model.vSM.pitch;
                     ProjectionWindow.Roll = Model.vSM.roll;
-                    Thread.Sleep(20);
                 }
                 catch (Exception ex)
                 {
@@ -133,7 +132,7 @@ namespace mainWpf
                     Byte[] receivelog = new UTF8Encoding(true).GetBytes(receivedata);
                     // Add some information to the file.
                     ReceiveLog.Write(receivelog, 0, receivelog.Length);
-                
+                    Thread.Sleep(100);
             }
             
         }//C<
