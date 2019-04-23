@@ -219,15 +219,32 @@ namespace mainWpf
                     filename = Receivedlg.FileName;
                     chartcontroller.ReadReceivedData(filename);
                     UpdateChart();
+                    SetUserSettings(true);
                 }
             }
             
         }
+        private void SetUserSettings(bool turn)
+        {
+            Sendchart.ChartAreas["Default"].CursorX.IsUserSelectionEnabled = turn;
+            Sendchart.ChartAreas["Default"].CursorX.IsUserEnabled = turn;
+            Buttonchart.ChartAreas["Buttons"].CursorX.IsUserEnabled = turn;
+            Buttonchart.ChartAreas["Buttons"].CursorX.IsUserSelectionEnabled = turn;
+            Receivechart.ChartAreas["Receive"].CursorX.IsUserEnabled = turn;
+            Receivechart.ChartAreas["Receive"].CursorX.IsUserSelectionEnabled = turn;
+            Sendchart.ChartAreas["Default"].CursorY.IsUserSelectionEnabled = turn;
+            Sendchart.ChartAreas["Default"].CursorY.IsUserEnabled = turn;
+            Buttonchart.ChartAreas["Buttons"].CursorY.IsUserEnabled = turn;
+            Buttonchart.ChartAreas["Buttons"].CursorY.IsUserSelectionEnabled = turn;
+            Receivechart.ChartAreas["Receive"].CursorY.IsUserEnabled = turn;
+            Receivechart.ChartAreas["Receive"].CursorY.IsUserSelectionEnabled = turn;
 
+        }
         private void ReadFromReal_Selected(object sender, RoutedEventArgs e)
         {
             ClearData();
             charttimer.Start();
+            SetUserSettings(false);
         }
         private void ChartUpdate(object sender, EventArgs e)
         {
