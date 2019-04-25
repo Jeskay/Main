@@ -26,21 +26,7 @@ namespace mainWpf
     /// </summary>
     public partial class ChartBuilder : Window
     {
-            public static List<int>[] buttons;
-            public static List<sbyte> axisX_p;
-            public static List<sbyte> axisY_p;
-            public static List<sbyte> axisW_p;
-            public static List<sbyte> axisZ_p;
-            public static List<sbyte> camera_rotate;
-            public static List<sbyte> manipulator_rotate;
-            public static List<float> Yaw;
-            public static List<float> Pitch;
-            public static List<float> Roll;
-            public static List<float> Depth;
-            public static List<float> Temperature;
-            public static List<sbyte> core;
-        public static List<string> ReceiveTime;
-        public static List<string> SendTime;
+            
         ChartController chartcontroller = new ChartController();
         DispatcherTimer charttimer = new DispatcherTimer();
         public ChartBuilder()
@@ -50,21 +36,21 @@ namespace mainWpf
         }
         private void Chart_Window_Loaded(object sender, RoutedEventArgs e)
         {
-            buttons = new List<int>[12];
-            axisX_p = new List<sbyte>();
-            axisY_p = new List<sbyte>();
-            axisW_p = new List<sbyte>();
-            axisZ_p = new List<sbyte>();
-            camera_rotate = new List<sbyte>();
-            manipulator_rotate = new List<sbyte>();
-            Yaw = new List<float>();
-            Pitch = new List<float>();
-            Roll = new List<float>();
-            Depth = new List<float>();
-            Temperature = new List<float>();
-            core = new List<sbyte>();
-            SendTime = new List<string>();
-            ReceiveTime = new List<string>();
+            ChartModel.Buttons = new List<int>[22];
+            ChartModel.AxisX_p = new List<sbyte>();
+            ChartModel.AxisY_p = new List<sbyte>();
+            ChartModel.AxisW_p = new List<sbyte>();
+            ChartModel.AxisZ_p = new List<sbyte>();
+            ChartModel.Camera_rotate = new List<sbyte>();
+            ChartModel.Manipulator_rotate = new List<sbyte>();
+            ChartModel.Yaw = new List<float>();
+            ChartModel.Pitch = new List<float>();
+            ChartModel.Roll = new List<float>();
+            ChartModel.Depth = new List<float>();
+            ChartModel.Temperature = new List<float>();
+            ChartModel.Core = new List<sbyte>();
+            ChartModel.SendTime = new List<string>();
+            ChartModel.ReceiveTime = new List<string>();
             charttimer.Interval = new TimeSpan(0, 0, 0, 0, 80);
             charttimer.Tick += new EventHandler(ChartUpdate);
             Sendchart.ChartAreas.Add(new ChartArea("Default"));
@@ -82,10 +68,10 @@ namespace mainWpf
             Sendchart.Series.Add(new Series("AxisZ"));
             Sendchart.Series.Add(new Series("Camera"));
             Sendchart.Series.Add(new Series("Manipulator"));
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < 22; i++)
             {
                 Buttonchart.Series.Add(new Series("button" + i.ToString()));
-                buttons[i] = new List<int>();
+                ChartModel.Buttons[i] = new List<int>();
             }
 
         }
@@ -253,76 +239,76 @@ namespace mainWpf
         }
         private void ChartDataupdate()
         {
-            axisX_p.Add(Model.vGM.axisX_p);
-            axisY_p.Add(Model.vGM.axisY_p);
-            axisW_p.Add(Model.vGM.axisW_p);
-            axisZ_p.Add(Model.vGM.axisZ_p);
-            camera_rotate.Add(Model.vGM.camera_rotate);
-            manipulator_rotate.Add(Model.vGM.manipulator_rotate);
-            SendTime.Add(DateTime.Now.ToLongTimeString());
-            Yaw.Add(Model.vSM.yaw);
-            Pitch.Add(Model.vSM.pitch);
-            Roll.Add(Model.vSM.roll);
-            Depth.Add(Model.vSM.depth);
-            Temperature.Add(Model.vSM.depth);
-            core.Add(Model.vSM.core);
-            ReceiveTime.Add(DateTime.Now.ToLongTimeString());
+            ChartModel.AxisX_p.Add(Model.vGM.axisX_p);
+            ChartModel.AxisY_p.Add(Model.vGM.axisY_p);
+            ChartModel.AxisW_p.Add(Model.vGM.axisW_p);
+            ChartModel.AxisZ_p.Add(Model.vGM.axisZ_p);
+            ChartModel.Camera_rotate.Add(Model.vGM.camera_rotate);
+            ChartModel.Manipulator_rotate.Add(Model.vGM.manipulator_rotate);
+            ChartModel.SendTime.Add(DateTime.Now.ToLongTimeString());
+            ChartModel.Yaw.Add(Model.vSM.yaw);
+            ChartModel.Pitch.Add(Model.vSM.pitch);
+            ChartModel.Roll.Add(Model.vSM.roll);
+            ChartModel.Depth.Add(Model.vSM.depth);
+            ChartModel.Temperature.Add(Model.vSM.depth);
+            ChartModel.Core.Add(Model.vSM.core);
+            ChartModel.ReceiveTime.Add(DateTime.Now.ToLongTimeString());
             for (int i = 0; i < 12; i++)
-                buttons[i].Add(JoystickController.GetButtons[i]);
-            if (SendTime.Count > 100)
+                ChartModel.Buttons[i].Add(JoystickController.GetButtons[i]);
+            if (ChartModel.SendTime.Count > 100)
             {
-                axisX_p.Remove(axisX_p.First());
-                axisY_p.Remove(axisY_p.First());
-                axisW_p.Remove(axisW_p.First());
-                axisZ_p.Remove(axisZ_p.First());
-                camera_rotate.Remove(camera_rotate.First());
-                manipulator_rotate.Remove(manipulator_rotate.First());
-                SendTime.Remove(SendTime.First());
-                Yaw.Remove(Yaw.First());
-                Pitch.Remove(Pitch.First());
-                Roll.Remove(Roll.First());
-                Depth.Remove(Depth.First());
-                Temperature.Remove(Temperature.First());
-                core.Remove(core.First());
-                ReceiveTime.Remove(ReceiveTime.First());
+                ChartModel.AxisX_p.Remove(ChartModel.AxisX_p.First());
+                ChartModel.AxisY_p.Remove(ChartModel.AxisY_p.First());
+                ChartModel.AxisW_p.Remove(ChartModel.AxisW_p.First());
+                ChartModel.AxisZ_p.Remove(ChartModel.AxisZ_p.First());
+                ChartModel.Camera_rotate.Remove(ChartModel.Camera_rotate.First());
+                ChartModel.Manipulator_rotate.Remove(ChartModel.Manipulator_rotate.First());
+                ChartModel.SendTime.Remove(ChartModel.SendTime.First());
+                ChartModel.Yaw.Remove(ChartModel.Yaw.First());
+                ChartModel.Pitch.Remove(ChartModel.Pitch.First());
+                ChartModel.Roll.Remove(ChartModel.Roll.First());
+                ChartModel.Depth.Remove(ChartModel.Depth.First());
+                ChartModel.Temperature.Remove(ChartModel.Temperature.First());
+                ChartModel.Core.Remove(ChartModel.Core.First());
+                ChartModel.ReceiveTime.Remove(ChartModel.ReceiveTime.First());
                 for (int i = 0; i < 12; i++)
-                    buttons[i].Remove(buttons[i].First());
+                    ChartModel.Buttons[i].Remove(ChartModel.Buttons[i].First());
             }
         }
         private void UpdateChart()
         {
-            Sendchart.Series["AxisX"].Points.DataBindXY(SendTime, axisX_p);
-            Sendchart.Series["AxisY"].Points.DataBindXY(SendTime, axisY_p);
-            Sendchart.Series["AxisW"].Points.DataBindXY(SendTime, axisW_p);
-            Sendchart.Series["AxisZ"].Points.DataBindXY(SendTime, axisZ_p);
-            Sendchart.Series["Camera"].Points.DataBindXY(SendTime, camera_rotate);
-            Sendchart.Series["Manipulator"].Points.DataBindXY(SendTime, manipulator_rotate);
-            Receivechart.Series["Yaw"].Points.DataBindXY(ReceiveTime, Yaw);
-            Receivechart.Series["Pitch"].Points.DataBindXY(ReceiveTime, Pitch);
-            Receivechart.Series["Roll"].Points.DataBindXY(ReceiveTime, Roll);
-            Receivechart.Series["Depth"].Points.DataBindXY(ReceiveTime, Depth);
-            Receivechart.Series["Temperature"].Points.DataBindXY(ReceiveTime, Temperature);
-            Receivechart.Series["Core"].Points.DataBindXY(ReceiveTime, core);
-            for (int i = 0; i < 12; i++)
-                Buttonchart.Series["button" + i.ToString()].Points.DataBindXY(SendTime, buttons[i]);
+            Sendchart.Series["AxisX"].Points.DataBindXY(ChartModel.SendTime, ChartModel.AxisX_p);
+            Sendchart.Series["AxisY"].Points.DataBindXY(ChartModel.SendTime, ChartModel.AxisY_p);
+            Sendchart.Series["AxisW"].Points.DataBindXY(ChartModel.SendTime, ChartModel.AxisW_p);
+            Sendchart.Series["AxisZ"].Points.DataBindXY(ChartModel.SendTime, ChartModel.AxisZ_p);
+            Sendchart.Series["Camera"].Points.DataBindXY(ChartModel.SendTime, ChartModel.Camera_rotate);
+            Sendchart.Series["Manipulator"].Points.DataBindXY(ChartModel.SendTime, ChartModel.Manipulator_rotate);
+            Receivechart.Series["Yaw"].Points.DataBindXY(ChartModel.ReceiveTime, ChartModel.Yaw);
+            Receivechart.Series["Pitch"].Points.DataBindXY(ChartModel.ReceiveTime, ChartModel.Pitch);
+            Receivechart.Series["Roll"].Points.DataBindXY(ChartModel.ReceiveTime, ChartModel.Roll);
+            Receivechart.Series["Depth"].Points.DataBindXY(ChartModel.ReceiveTime, ChartModel.Depth);
+            Receivechart.Series["Temperature"].Points.DataBindXY(ChartModel.ReceiveTime, ChartModel.Temperature);
+            Receivechart.Series["Core"].Points.DataBindXY(ChartModel.ReceiveTime, ChartModel.Core);
+            for (int i = 0; i < 22; i++)
+                Buttonchart.Series["button" + i.ToString()].Points.DataBindXY(ChartModel.SendTime, ChartModel.Buttons[i]);
         }
         private void ClearData()
         {
-            axisX_p.Clear();
-            axisY_p.Clear();
-            axisW_p.Clear();
-            axisZ_p.Clear();
-            camera_rotate.Clear();
-            manipulator_rotate.Clear();
-            Yaw.Clear();
-            Pitch.Clear();
-            Roll.Clear();
-            Depth.Clear();
-            Temperature.Clear();
-            core.Clear();
-            SendTime.Clear();
-            ReceiveTime.Clear();
-            for (int i = 0; i < 12; i++) buttons[i].Clear();
+            ChartModel.AxisX_p.Clear();
+            ChartModel.AxisY_p.Clear();
+            ChartModel.AxisW_p.Clear();
+            ChartModel.AxisZ_p.Clear();
+            ChartModel.Camera_rotate.Clear();
+            ChartModel.Manipulator_rotate.Clear();
+            ChartModel.Yaw.Clear();
+            ChartModel.Pitch.Clear();
+            ChartModel.Roll.Clear();
+            ChartModel.Depth.Clear();
+            ChartModel.Temperature.Clear();
+            ChartModel.Core.Clear();
+            ChartModel.SendTime.Clear();
+            ChartModel.ReceiveTime.Clear();
+            for (int i = 0; i < 22; i++) ChartModel.Buttons[i].Clear();
         }
 
         private void AxisXChart_CB_Unchecked(object sender, RoutedEventArgs e)
@@ -539,18 +525,6 @@ namespace mainWpf
         private void TwelvethButton_CB_Unchecked(object sender, RoutedEventArgs e)
         {
             Buttonchart.Series["button11"].Enabled = false;
-        }
-
-        private void Main_WFHost_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.Key == System.Windows.Input.Key.OemPlus)//V
-            {
-                Sendchart.ChartAreas["Default"].AxisX.Interval-=10;
-            }
-            if (e.Key == Key.OemMinus)
-            {
-                Sendchart.ChartAreas["Default"].AxisX.Interval+=10;
-            }
         }
     }
 }

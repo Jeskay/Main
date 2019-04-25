@@ -18,17 +18,17 @@ namespace mainWpf
             {
                 while ((line = sr.ReadLine()) != null)
                 {
-                    ReadFloatNumber(line, ChartBuilder.Yaw);
-                    ReadFloatNumber(line, ChartBuilder.Pitch);
-                    ReadFloatNumber(line, ChartBuilder.Roll);
-                    ReadFloatNumber(line, ChartBuilder.Depth);
-                    ReadFloatNumber(line, ChartBuilder.Temperature);
-                    ReadSBNumber(line, ChartBuilder.core);
+                    ReadFloatNumber(line, ChartModel.Yaw);
+                    ReadFloatNumber(line, ChartModel.Pitch);
+                    ReadFloatNumber(line, ChartModel.Roll);
+                    ReadFloatNumber(line, ChartModel.Depth);
+                    ReadFloatNumber(line, ChartModel.Temperature);
+                    ReadSBNumber(line, ChartModel.Core);
                     string time = "";
                     position++;
                     for (; position < line.Length; position++)
                         time += line[position];
-                    ChartBuilder.ReceiveTime.Add(Convert.ToDateTime(time).ToLongTimeString());
+                    ChartModel.ReceiveTime.Add(Convert.ToDateTime(time).ToLongTimeString());
                     position = 0;
                 }
                 CheckReceiveData();
@@ -46,23 +46,23 @@ namespace mainWpf
             {
                 while ((line = sr.ReadLine()) != null)
                 {
-                    ReadSBNumber(line, ChartBuilder.axisX_p);
-                    ReadSBNumber(line, ChartBuilder.axisY_p);
-                    ReadSBNumber(line, ChartBuilder.axisW_p);
-                    ReadSBNumber(line, ChartBuilder.axisZ_p);
-                    ReadSBNumber(line, ChartBuilder.manipulator_rotate);
-                    ReadSBNumber(line, ChartBuilder.camera_rotate);
+                    ReadSBNumber(line, ChartModel.AxisX_p);
+                    ReadSBNumber(line, ChartModel.AxisY_p);
+                    ReadSBNumber(line, ChartModel.AxisW_p);
+                    ReadSBNumber(line, ChartModel.AxisZ_p);
+                    ReadSBNumber(line, ChartModel.Manipulator_rotate);
+                    ReadSBNumber(line, ChartModel.Camera_rotate);
                     int count = 0;
-                    for (int limit = position + 24; position < limit; position += 2)
+                    for (int limit = position + 44; position < limit; position += 2)
                     {
-                        ChartBuilder.buttons[count].Add(line[position]);
+                        ChartModel.Buttons[count].Add(line[position]);
                         count++;
                     }
                     string time = "";
                     position++;
                     for (; position < line.Length; position++)
                         time += line[position];
-                    ChartBuilder.SendTime.Add(Convert.ToDateTime(time).ToLongTimeString());
+                    ChartModel.SendTime.Add(Convert.ToDateTime(time).ToLongTimeString());
                     position = 0;
                 }
             }
@@ -74,75 +74,75 @@ namespace mainWpf
         }
         private void CheckSendData()
         {
-            int min = ChartBuilder.SendTime.Count;
-            if (ChartBuilder.axisX_p.Count > min)
+            int min = ChartModel.SendTime.Count;
+            if (ChartModel.AxisX_p.Count > min)
             {
-                ChartBuilder.axisX_p.Remove(ChartBuilder.axisX_p.Last());
+                ChartModel.AxisX_p.Remove(ChartModel.AxisX_p.Last());
                 CheckSendData();
             }
-            if (ChartBuilder.axisY_p.Count > min)
+            if (ChartModel.AxisY_p.Count > min)
             {
-                ChartBuilder.axisY_p.Remove(ChartBuilder.axisY_p.Last());
+                ChartModel.AxisY_p.Remove(ChartModel.AxisY_p.Last());
                 CheckSendData();
             }
-            if (ChartBuilder.axisW_p.Count > min)
+            if (ChartModel.AxisW_p.Count > min)
             {
-                ChartBuilder.axisW_p.Remove(ChartBuilder.axisW_p.Last());
+                ChartModel.AxisW_p.Remove(ChartModel.AxisW_p.Last());
                 CheckSendData();
             }
-            if (ChartBuilder.axisZ_p.Count > min)
-            { 
-                ChartBuilder.axisZ_p.Remove(ChartBuilder.axisZ_p.Last());
+            if (ChartModel.AxisZ_p.Count > min)
+            {
+                ChartModel.AxisZ_p.Remove(ChartModel.AxisZ_p.Last());
                 CheckSendData();
             }
-            if (ChartBuilder.manipulator_rotate.Count > min)
+            if (ChartModel.Manipulator_rotate.Count > min)
             {
-                ChartBuilder.manipulator_rotate.Remove(ChartBuilder.manipulator_rotate.Last());
+                ChartModel.Manipulator_rotate.Remove(ChartModel.Manipulator_rotate.Last());
                 CheckSendData();
             }
-            if (ChartBuilder.camera_rotate.Count > min)
+            if (ChartModel.Camera_rotate.Count > min)
             {
-                ChartBuilder.camera_rotate.Remove(ChartBuilder.camera_rotate.Last());
+                ChartModel.Camera_rotate.Remove(ChartModel.Camera_rotate.Last());
                 CheckSendData();
             }
             for (int i = 0; i < 12; i++)
-                if (ChartBuilder.buttons[i].Count > min)
+                if (ChartModel.Buttons[i].Count > min)
                 {
-                    ChartBuilder.buttons[i].Remove(ChartBuilder.buttons[i].Last());
+                    ChartModel.Buttons[i].Remove(ChartModel.Buttons[i].Last());
                     CheckReceiveData();
                 }
         }
         private void CheckReceiveData()
         {
-            int min = ChartBuilder.ReceiveTime.Count;
-            if (ChartBuilder.Yaw.Count > min)
+            int min = ChartModel.ReceiveTime.Count;
+            if (ChartModel.Yaw.Count > min)
             {
-                ChartBuilder.Yaw.Remove(ChartBuilder.Yaw.Last());
+                ChartModel.Yaw.Remove(ChartModel.Yaw.Last());
                 CheckReceiveData();
             }
-            if (ChartBuilder.Pitch.Count > min)
+            if (ChartModel.Pitch.Count > min)
             {
-                ChartBuilder.Pitch.Remove(ChartBuilder.Pitch.Last());
+                ChartModel.Pitch.Remove(ChartModel.Pitch.Last());
                 CheckReceiveData();
             }
-            if (ChartBuilder.Roll.Count > min)
+            if (ChartModel.Roll.Count > min)
             {
-                ChartBuilder.Roll.Remove(ChartBuilder.Roll.Last());
+                ChartModel.Roll.Remove(ChartModel.Roll.Last());
                 CheckReceiveData();
             }
-            if (ChartBuilder.Depth.Count > min)
+            if (ChartModel.Depth.Count > min)
             {
-                ChartBuilder.Depth.Remove(ChartBuilder.Depth.Last());
+                ChartModel.Depth.Remove(ChartModel.Depth.Last());
                 CheckReceiveData();
             }
-            if (ChartBuilder.Temperature.Count > min)
+            if (ChartModel.Temperature.Count > min)
             {
-                ChartBuilder.Temperature.Remove(ChartBuilder.Temperature.Last());
+                ChartModel.Temperature.Remove(ChartModel.Temperature.Last());
                 CheckReceiveData();
             }
-            if (ChartBuilder.core.Count > min)
+            if (ChartModel.Core.Count > min)
             {
-                ChartBuilder.core.Remove(ChartBuilder.core.Last());
+                ChartModel.Core.Remove(ChartModel.Core.Last());
                 CheckReceiveData();
             }
             

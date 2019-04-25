@@ -41,6 +41,7 @@ namespace mainWpf
         {
             public sbyte button_data1;
             public sbyte button_data2;
+            public sbyte button_data3;
             public sbyte axisX_p;
             public sbyte axisY_p;
             public sbyte axisW_p;

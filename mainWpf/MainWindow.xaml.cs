@@ -100,7 +100,7 @@ namespace mainWpf
                     info += "AxisZ: " + Model.vGM.axisZ_p + "\n";//state.Z + ";";
                     info += "Slighter:  " + Model.vGM.manipulator_rotate + "\n"; //sligterP[0] + ";";
                     info += "PointOfView:   " + Model.vGM.camera_rotate + "\n";
-                    for (int i = 0; i < 12; i++) info += "Key" + i + ": " + JoystickController.GetButtons[i] + "\n";
+                    for (int i = 0; i < 22; i++) info += "Key" + i + ": " + JoystickController.GetButtons[i] + "\n";
                     MainUDP.Send(info);
 
                     vmodel.Depth = Model.vSM.depth;
@@ -122,7 +122,7 @@ namespace mainWpf
                     Console.WriteLine("Возникло исключение1: " + ex.ToString() + "\n  " + ex.Message);
                 }
                     string senddata = Model.vGM.axisX_p + "!" + Model.vGM.axisY_p + "!" + Model.vGM.axisW_p + "!" + Model.vGM.axisZ_p + "!" + Model.vGM.manipulator_rotate + "!" + Model.vGM.camera_rotate + "!";
-                    for (int i = 0; i < 12; i++) senddata += JoystickController.GetButtons[i] + "!";
+                    for (int i = 0; i < 22; i++) senddata += JoystickController.GetButtons[i] + "!";
                     senddata += ":" + DateTime.Now.ToLongTimeString() + '\n';
                     Byte[] sendlog = new UTF8Encoding(true).GetBytes(senddata);
                     // Add some information to the file.
@@ -332,6 +332,25 @@ namespace mainWpf
                 chartBuilder.Owner = this;
                 chartBuilder.Show();
             }
+            if (e.Key == Key.D7) JoystickController.GetButtons[12] = 0;
+
+            if (e.Key == Key.D8) JoystickController.GetButtons[13] = 0;
+
+            if (e.Key == Key.D9) JoystickController.GetButtons[14] = 0;
+
+            if (e.Key == Key.D0) JoystickController.GetButtons[15] = 0;
+
+            if (e.Key == Key.I) JoystickController.GetButtons[16] = 0;
+
+            if (e.Key == Key.O) JoystickController.GetButtons[17] = 0;
+
+            if (e.Key == Key.P) JoystickController.GetButtons[18] = 0;
+
+            if (e.Key == Key.J) JoystickController.GetButtons[19] = 0;
+
+            if (e.Key == Key.K) JoystickController.GetButtons[20] = 0;
+
+            if (e.Key == Key.L) JoystickController.GetButtons[21] = 0;
         }
 
         private void MainWin_Closed(object sender, EventArgs e)//V
@@ -371,6 +390,29 @@ namespace mainWpf
                 Image_signal.Visibility = Visibility.Collapsed;
                 timer.Start();
             }
+        }
+
+        private void MainWin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.D7) JoystickController.GetButtons[12] = 1;
+            
+            if (e.Key == Key.D8) JoystickController.GetButtons[13] = 1;
+
+            if (e.Key == Key.D9) JoystickController.GetButtons[14] = 1;
+            
+            if (e.Key == Key.D0) JoystickController.GetButtons[15] = 1;
+            
+            if (e.Key == Key.I) JoystickController.GetButtons[16] = 1;
+            
+            if (e.Key == Key.O) JoystickController.GetButtons[17] = 1;
+            
+            if (e.Key == Key.P) JoystickController.GetButtons[18] = 1;
+            
+            if (e.Key == Key.J) JoystickController.GetButtons[19] = 1;
+
+            if (e.Key == Key.K) JoystickController.GetButtons[20] = 1;
+
+            if (e.Key == Key.L) JoystickController.GetButtons[21] = 1;
         }
     }
 }
