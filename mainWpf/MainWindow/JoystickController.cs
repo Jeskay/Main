@@ -23,13 +23,17 @@ namespace mainWpf
         private Device joystick;
         private double SpeedK = 0.25;
         private bool NoneJoystick = false;
-        private static int[] Buttons = new int[12];
+        private static int[] Buttons = new int[22];
 
         public static int[] GetButtons
         {
             get
             {
                 return Buttons;
+            }
+            set
+            {
+                Buttons = value;
             }
         }
         public bool GetJoystick
@@ -107,6 +111,7 @@ namespace mainWpf
             }
             Model.vGM.button_data1 = 0;
             Model.vGM.button_data2 = 0;
+            Model.vGM.button_data3 = 0;
             for (int i = 0; i <= 7; i++)//C>
             {
                 if ((Buttons[i] == 1))
@@ -118,7 +123,14 @@ namespace mainWpf
             {
                 if ((Buttons[i] == 1))
                 {
-                    Model.vGM.button_data2 = (sbyte)(((int)Model.vGM.button_data2) | (1 << (i - 8)));
+                    Model.vGM.button_data2 = (sbyte)((int)Model.vGM.button_data2 | (1 << (i - 8)));
+                }
+            }
+            for (int i = 12; i < 22; i++)
+            {
+                if (buttons[i] == 1)
+                {
+                    Model.vGM.button_data3 = (sbyte)((int)Model.vGM.button_data3 | (1 << (i - 12)));
                 }
             }
         }
