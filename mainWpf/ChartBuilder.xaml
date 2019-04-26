@@ -9,14 +9,26 @@
     <Grid x:Name="ChartWindow_Grid" Margin="0,10,0,0">
         
                     <WindowsFormsHost x:Name="Main_WFHost" Margin="133,6,0,329">
-                        <dvc:Chart x:Name="Sendchart" />
-                    </WindowsFormsHost>
+                        <dvc:Chart x:Name="Sendchart" >
+                <dvc:Chart.ChartAreas>
+                    <dvc:ChartArea Name="Default"/>
+                </dvc:Chart.ChartAreas>
+            </dvc:Chart>
+        </WindowsFormsHost>
                     <WindowsFormsHost x:Name="Second_WFHost" Margin="133,346,0,0">
-                        <dvc:Chart x:Name="Receivechart" />
-                    </WindowsFormsHost>
+            <dvc:Chart x:Name="Receivechart" >
+                <dvc:Chart.ChartAreas>
+                    <dvc:ChartArea Name="Receive"/>
+                </dvc:Chart.ChartAreas>
+            </dvc:Chart>
+        </WindowsFormsHost>
                     <WindowsFormsHost x:Name="Main_ButtonHost" Margin="133,177,0,160">
-                        <dvc:Chart x:Name="Buttonchart" />
-                    </WindowsFormsHost>
+            <dvc:Chart x:Name="Buttonchart" >
+                <dvc:Chart.ChartAreas>
+                    <dvc:ChartArea Name="Buttons"/>
+                </dvc:Chart.ChartAreas>
+            </dvc:Chart>
+        </WindowsFormsHost>
                     <CheckBox x:Name="AxisXChart_CB" Content="AxisX" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Checked="AxisXChart_CB_Checked" Margin="0,41,0,0" Unchecked="AxisXChart_CB_Unchecked"/>
                     <CheckBox x:Name="AxisYChart_CB" Content="AxisY" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Margin="0,61,0,0" Checked="AxisYChart_CB_Checked" Unchecked="AxisYChart_CB_Unchecked"/>
                     <CheckBox x:Name="AxisWChart_CB" Content="AxisW" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="84" Margin="0,81,0,0" Checked="AxisWChart_CB_Checked" Unchecked="AxisWChart_CB_Unchecked"/>

@@ -53,21 +53,18 @@ namespace mainWpf
             ChartModel.ReceiveTime = new List<string>();
             charttimer.Interval = new TimeSpan(0, 0, 0, 0, 80);
             charttimer.Tick += new EventHandler(ChartUpdate);
-            Sendchart.ChartAreas.Add(new ChartArea("Default"));
-            Receivechart.ChartAreas.Add(new ChartArea("Receive"));
-            Buttonchart.ChartAreas.Add(new ChartArea("Buttons"));
-            Receivechart.Series.Add(new Series("Yaw"));
-            Receivechart.Series.Add(new Series("Pitch"));
-            Receivechart.Series.Add(new Series("Roll"));
-            Receivechart.Series.Add(new Series("Depth"));
-            Receivechart.Series.Add(new Series("Temperature"));
-            Receivechart.Series.Add(new Series("Core"));
             Sendchart.Series.Add(new Series("AxisY"));
             Sendchart.Series.Add(new Series("AxisX"));
             Sendchart.Series.Add(new Series("AxisW"));
             Sendchart.Series.Add(new Series("AxisZ"));
             Sendchart.Series.Add(new Series("Camera"));
             Sendchart.Series.Add(new Series("Manipulator"));
+            Receivechart.Series.Add(new Series("Yaw"));
+            Receivechart.Series.Add(new Series("Pitch"));
+            Receivechart.Series.Add(new Series("Roll"));
+            Receivechart.Series.Add(new Series("Depth"));
+            Receivechart.Series.Add(new Series("Temperature"));
+            Receivechart.Series.Add(new Series("Core"));
             for (int i = 0; i < 22; i++)
             {
                 Buttonchart.Series.Add(new Series("button" + i.ToString()));
@@ -253,7 +250,7 @@ namespace mainWpf
             ChartModel.Temperature.Add(Model.vSM.depth);
             ChartModel.Core.Add(Model.vSM.core);
             ChartModel.ReceiveTime.Add(DateTime.Now.ToLongTimeString());
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < 22; i++)
                 ChartModel.Buttons[i].Add(JoystickController.GetButtons[i]);
             if (ChartModel.SendTime.Count > 100)
             {
@@ -271,7 +268,7 @@ namespace mainWpf
                 ChartModel.Temperature.Remove(ChartModel.Temperature.First());
                 ChartModel.Core.Remove(ChartModel.Core.First());
                 ChartModel.ReceiveTime.Remove(ChartModel.ReceiveTime.First());
-                for (int i = 0; i < 12; i++)
+                for (int i = 0; i < 22; i++)
                     ChartModel.Buttons[i].Remove(ChartModel.Buttons[i].First());
             }
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace mainWpf
 {
@@ -34,7 +35,6 @@ namespace mainWpf
             set
             {
                 buttons = value;
-
             }
         }
         public static List<sbyte> AxisX_p

@@ -41,11 +41,11 @@
         </Grid.RowDefinitions>
         <Grid x:Name="myGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="2">
             <Image x:Name="ImageWebcam1" HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="2"/>
-            <Grid x:Name="UDPData_Grid" HorizontalAlignment="Left" Height="356" VerticalAlignment="Top" Width="611" Panel.ZIndex="3">
+            <Grid x:Name="UDPData_Grid" HorizontalAlignment="Left" Width="600" Panel.ZIndex="3" Margin="0,0,0,-54.4">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto" MinHeight="75"/>
-                    <RowDefinition Height="auto" MinHeight="338"/>
+                    <RowDefinition Height="auto" MinHeight="600"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>

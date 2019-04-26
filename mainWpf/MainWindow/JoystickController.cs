@@ -119,18 +119,18 @@ namespace mainWpf
                     Model.vGM.button_data1 = (sbyte)(((int)Model.vGM.button_data1) | (1 << i));
                 }
             }
-            for (int i = 8; i < 12; i++)
+            for (int i = 8; i < 15; i++)
             {
                 if ((Buttons[i] == 1))
                 {
                     Model.vGM.button_data2 = (sbyte)((int)Model.vGM.button_data2 | (1 << (i - 8)));
                 }
             }
-            for (int i = 12; i < 22; i++)
+            for (int i = 15; i < 22; i++)
             {
-                if (buttons[i] == 1)
+                if (Buttons[i] == 1)
                 {
-                    Model.vGM.button_data3 = (sbyte)((int)Model.vGM.button_data3 | (1 << (i - 12)));
+                    Model.vGM.button_data3 = (sbyte)((int)Model.vGM.button_data3 | (1 << (i - 15)));
                 }
             }
         }
