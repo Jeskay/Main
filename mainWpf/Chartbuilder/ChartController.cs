@@ -105,7 +105,7 @@ namespace mainWpf
                 ChartModel.Camera_rotate.Remove(ChartModel.Camera_rotate.Last());
                 CheckSendData();
             }
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < 22; i++)
                 if (ChartModel.Buttons[i].Count > min)
                 {
                     ChartModel.Buttons[i].Remove(ChartModel.Buttons[i].Last());

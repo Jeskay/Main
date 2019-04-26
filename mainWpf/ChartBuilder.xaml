@@ -24,6 +24,30 @@
         </WindowsFormsHost>
                     <WindowsFormsHost x:Name="Main_ButtonHost" Margin="133,177,0,160">
             <dvc:Chart x:Name="Buttonchart" >
+                <dvc:Chart.Series>
+                    <dvc:Series ChartArea="Buttons" Name="button0" ChartType="Line"/>
+                    <dvc:Series ChartArea="Buttons" Name="button1" ChartType="Line"/>
+                    <dvc:Series ChartArea="Buttons" Name="button2" ChartType="Line"/>
+                    <dvc:Series ChartArea="Buttons" Name="button3" ChartType="Line"/>
+                    <dvc:Series ChartArea="Buttons" Name="button4" ChartType="Line"/>
+                    <dvc:Series ChartArea="Buttons" Name="button5" ChartType="Line"/>
+                    <dvc:Series ChartArea="Buttons" Name="button6" ChartType="Line"/>
+                    <dvc:Series ChartArea="Buttons" Name="button7" ChartType="Line"/>
+                    <dvc:Series ChartArea="Buttons" Name="button8" ChartType="Line"/>
+                    <dvc:Series ChartArea="Buttons" Name="button9" ChartType="Line"/>
+                    <dvc:Series ChartArea="Buttons" Name="button10" ChartType="Line"/>
+                    <dvc:Series ChartArea="Buttons" Name="button11" ChartType="Line"/>
+                    <dvc:Series ChartArea="Buttons" Name="button12" ChartType="Line"/>
+                    <dvc:Series ChartArea="Buttons" Name="button13" ChartType="Line"/>
+                    <dvc:Series ChartArea="Buttons" Name="button14" ChartType="Line"/>
+                    <dvc:Series ChartArea="Buttons" Name="button15" ChartType="Line"/>
+                    <dvc:Series ChartArea="Buttons" Name="button16" ChartType="Line"/>
+                    <dvc:Series ChartArea="Buttons" Name="button17" ChartType="Line"/>
+                    <dvc:Series ChartArea="Buttons" Name="button18" ChartType="Line"/>
+                    <dvc:Series ChartArea="Buttons" Name="button19" ChartType="Line"/>
+                    <dvc:Series ChartArea="Buttons" Name="button20" ChartType="Line"/>
+                    <dvc:Series ChartArea="Buttons" Name="button21" ChartType="Line"/>
+                </dvc:Chart.Series>
                 <dvc:Chart.ChartAreas>
                     <dvc:ChartArea Name="Buttons"/>
                 </dvc:Chart.ChartAreas>
@@ -45,20 +69,6 @@
                         <ComboBoxItem x:Name="ReadFromFile" Selected="ReadFromFile_Selected" Content="ReadFromFile"/>
                         <ComboBoxItem x:Name="ReadFromReal" Selected="ReadFromReal_Selected" Content="ReadFromReal"/>
                     </ComboBox>
-        <ComboBox x:Name="Buttons_CB" HorizontalAlignment="Left" Height="30" Margin="0,177,0,0" VerticalAlignment="Top" Width="117">
-            <CheckBox x:Name="FirstButton_CB" Content="Botton 1" HorizontalAlignment="Left"  Height="20" VerticalAlignment="Top" Width="84" Margin="0,10,0,0" Unchecked="FirstButton_CB_Unchecked" Checked="FirstButton_CB_Checked"/>
-            <CheckBox x:Name="SecondButton_CB" Content="Botton 2" HorizontalAlignment="Left"  Height="20" VerticalAlignment="Top" Width="84" Checked="SecondButton_CB_Checked" Unchecked="SecondButton_CB_Unchecked"/>
-            <CheckBox x:Name="ThirdButton_CB" Content="Botton 3" HorizontalAlignment="Left"  Height="20" VerticalAlignment="Top" Width="84" Checked="ThirdButton_CB_Checked" Unchecked="ThirdButton_CB_Unchecked"/>
-            <CheckBox x:Name="FourthButton_CB" Content="Botton 4" HorizontalAlignment="Left"  Height="20" VerticalAlignment="Top" Width="84" Checked="FourthButton_CB_Checked" Unchecked="FourthButton_CB_Unchecked"/>
-            <CheckBox x:Name="FifthButton_CB" Content="Botton 5" HorizontalAlignment="Left"  Height="20" VerticalAlignment="Top" Width="84" Checked="FifthButton_CB_Checked" Unchecked="FifthButton_CB_Unchecked"/>
-            <CheckBox x:Name="SixthButton_CB" Content="Botton 6" HorizontalAlignment="Left"  Height="20" VerticalAlignment="Top" Width="84" Checked="SixthButton_CB_Checked" Unchecked="SixthButton_CB_Unchecked"/>
-            <CheckBox x:Name="SevethButton_CB" Content="Botton 7" HorizontalAlignment="Left"  Height="20" VerticalAlignment="Top" Width="84" Checked="SevethButton_CB_Checked" Unchecked="SevethButton_CB_Unchecked"/>
-            <CheckBox x:Name="EighthButton_CB" Content="Botton 8" HorizontalAlignment="Left"  Height="20" VerticalAlignment="Top" Width="84" Checked="EighthButton_CB_Checked" Unchecked="EighthButton_CB_Unchecked"/>
-            <CheckBox x:Name="NinthButton_CB" Content="Botton 9" HorizontalAlignment="Left"  Height="20" VerticalAlignment="Top" Width="84" Checked="NinthButton_CB_Checked" Unchecked="NinthButton_CB_Unchecked"/>
-            <CheckBox x:Name="TenthButton_CB" Content="Botton 10" HorizontalAlignment="Left"  Height="20" VerticalAlignment="Top" Width="84" Checked="TenthButton_CB_Checked" Unchecked="TenthButton_CB_Unchecked"/>
-            <CheckBox x:Name="EleventhButton_CB" Content="Botton 11" HorizontalAlignment="Left"  Height="20" VerticalAlignment="Top" Width="84" Checked="EleventhButton_CB_Checked" Unchecked="EleventhButton_CB_Unchecked"/>
-            <CheckBox x:Name="TwelvethButton_CB" Content="Botton 12" HorizontalAlignment="Left"  Height="20" VerticalAlignment="Top" Width="84" Checked="TwelvethButton_CB_Checked" Unchecked="TwelvethButton_CB_Unchecked"/>
-        </ComboBox>
         <Rectangle x:Name="X_rect" Fill="Red" HorizontalAlignment="Left" Height="20" Margin="108,41,0,0" Stroke="Black" VerticalAlignment="Top" Width="20"/>
         <Rectangle x:Name="Y_rect" Fill="#FFC80A14" HorizontalAlignment="Left" Height="20" Margin="108,61,0,0" Stroke="Black" VerticalAlignment="Top" Width="20"/>
         <Rectangle x:Name="W_rect" Fill="#FF6414C8" HorizontalAlignment="Left" Height="20" Margin="108,81,0,0" Stroke="Black" VerticalAlignment="Top" Width="20"/>
@@ -71,5 +81,6 @@
         <Rectangle x:Name="Depth_rect" Fill="#FF0AC8C8" HorizontalAlignment="Left" Height="20" Margin="108,406,0,0" Stroke="Black" VerticalAlignment="Top" Width="20"/>
         <Rectangle x:Name="Temperature_rect" Fill="#FF32C864" HorizontalAlignment="Left" Height="20" Margin="108,426,0,0" Stroke="Black" VerticalAlignment="Top" Width="20"/>
         <Rectangle x:Name="Core_rect" Fill="#FFFA3264" HorizontalAlignment="Left" Height="20" Margin="108,446,0,0" Stroke="Black" VerticalAlignment="Top" Width="20"/>
+        <CheckBox x:Name="Buttons_CB" Content="Buttons" HorizontalAlignment="Left" Height="35" Margin="0,177,0,0" VerticalAlignment="Top" Width="118" Checked="Buttons_CB_Checked" Unchecked="Buttons_CB_Unchecked"/>
     </Grid>
 </Window>
