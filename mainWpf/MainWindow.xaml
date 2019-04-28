@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:mainWpf"
         mc:Ignorable="d"
-        Title="MainWindow"  Height="768" Width="1366" Loaded="MainWin_Loaded" Background="#008BB6C3" KeyUp="Keyboard_KeyUp" Closed="MainWin_Closed" KeyDown="MainWin_KeyDown">
+        Title="MainWindow"  Height="768" Width="1366" Loaded="MainWin_Loaded" Background="#008BB6C3" KeyUp="Keyboard_KeyUp" Closed="MainWin_Closed">
     <Window.Resources>
         <Style TargetType="Button" x:Key="Default">
             <Setter Property="Background" Value="#FF143A5B"/>
