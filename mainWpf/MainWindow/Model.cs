@@ -28,8 +28,8 @@ namespace mainWpf
         public struct SM
         {
             public float yaw;
-            public float pitch;
             public float roll;
+            public float pitch;
             public float depth;
             public float temperature;
             public sbyte  core;

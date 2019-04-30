@@ -53,12 +53,6 @@ namespace mainWpf
             ChartModel.ReceiveTime = new List<string>();
             charttimer.Interval = new TimeSpan(0, 0, 0, 0, 80);
             charttimer.Tick += new EventHandler(ChartUpdate);
-            Sendchart.Series.Add(new Series("AxisY"));
-            Sendchart.Series.Add(new Series("AxisX"));
-            Sendchart.Series.Add(new Series("AxisW"));
-            Sendchart.Series.Add(new Series("AxisZ"));
-            Sendchart.Series.Add(new Series("Camera"));
-            Sendchart.Series.Add(new Series("Manipulator"));
             Receivechart.Series.Add(new Series("Yaw"));
             Receivechart.Series.Add(new Series("Pitch"));
             Receivechart.Series.Add(new Series("Roll"));
