@@ -150,17 +150,17 @@ namespace mainWpf
             if (Buttons[6] == 1)
             {
                 vmodel.SpeedMode = "1";
-                SpeedK = 0.25;
+                SpeedK = 0.5;
             }
             if (Buttons[5] == 1)
             {
                 vmodel.SpeedMode = "2";
-                SpeedK = 0.5;
+                SpeedK = 0.75;
             }
             if (Buttons[4] == 1)
             {
                 vmodel.SpeedMode = "3";
-                SpeedK = 1.0;
+                SpeedK = 0.9;
             }
         }
         private void Slider_Update(int[] slider_p)
