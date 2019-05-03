@@ -357,38 +357,32 @@ namespace mainWpf
 
             if (e.Key == Key.I)
             {
-                if (JoystickController.GetButtons[16] == 0) JoystickController.GetButtons[16] = 1;
-                else JoystickController.GetButtons[16] = 0;
+                JoystickController.GetButtons[16] = 0;
             }
 
             if (e.Key == Key.O)
             {
-                if (JoystickController.GetButtons[17] == 0) JoystickController.GetButtons[17] = 1;
-                else JoystickController.GetButtons[17] = 0;
+                JoystickController.GetButtons[17] = 0;
             }
 
             if (e.Key == Key.P)
             {
-                if (JoystickController.GetButtons[18] == 0) JoystickController.GetButtons[18] = 1;
-                else JoystickController.GetButtons[18] = 0;
+                JoystickController.GetButtons[18] = 0;
             }
 
             if (e.Key == Key.J)
             {
-                if (JoystickController.GetButtons[19] == 0) JoystickController.GetButtons[19] = 1;
-                else JoystickController.GetButtons[19] = 0;
+                JoystickController.GetButtons[19] = 0;
             }
 
             if (e.Key == Key.K)
             {
-                if (JoystickController.GetButtons[20] == 0) JoystickController.GetButtons[20] = 1;
-                else JoystickController.GetButtons[20] = 0;
+                JoystickController.GetButtons[20] = 0;
             }
 
             if (e.Key == Key.L)
             {
-                if (JoystickController.GetButtons[21] == 0) JoystickController.GetButtons[21] = 1;
-                else JoystickController.GetButtons[21] = 0;
+                JoystickController.GetButtons[21] = 0;
             }
         }
 
@@ -428,6 +422,39 @@ namespace mainWpf
                 Image_Nosignal.Visibility = Visibility.Visible;
                 Image_signal.Visibility = Visibility.Collapsed;
                 timer.Start();
+            }
+        }
+
+        private void MainWin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.I)
+            {
+                JoystickController.GetButtons[16] = 1;
+            }
+
+            if (e.Key == Key.O)
+            {
+                JoystickController.GetButtons[17] = 1;
+            }
+
+            if (e.Key == Key.P)
+            {
+                JoystickController.GetButtons[18] = 1;
+            }
+
+            if (e.Key == Key.J)
+            {
+                JoystickController.GetButtons[19] = 1;
+            }
+
+            if (e.Key == Key.K)
+            {
+                JoystickController.GetButtons[20] = 1;
+            }
+
+            if (e.Key == Key.L)
+            {
+                JoystickController.GetButtons[21] = 1;
             }
         }
     }
