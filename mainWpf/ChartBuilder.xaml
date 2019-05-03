@@ -33,28 +33,28 @@
                     <WindowsFormsHost x:Name="Main_ButtonHost" Margin="133,177,0,160">
             <dvc:Chart x:Name="Buttonchart" >
                 <dvc:Chart.Series>
-                    <dvc:Series ChartArea="Buttons" Name="button0" ChartType="Line"/>
-                    <dvc:Series ChartArea="Buttons" Name="button1" ChartType="Line"/>
-                    <dvc:Series ChartArea="Buttons" Name="button2" ChartType="Line"/>
-                    <dvc:Series ChartArea="Buttons" Name="button3" ChartType="Line"/>
-                    <dvc:Series ChartArea="Buttons" Name="button4" ChartType="Line"/>
-                    <dvc:Series ChartArea="Buttons" Name="button5" ChartType="Line"/>
-                    <dvc:Series ChartArea="Buttons" Name="button6" ChartType="Line"/>
-                    <dvc:Series ChartArea="Buttons" Name="button7" ChartType="Line"/>
-                    <dvc:Series ChartArea="Buttons" Name="button8" ChartType="Line"/>
-                    <dvc:Series ChartArea="Buttons" Name="button9" ChartType="Line"/>
-                    <dvc:Series ChartArea="Buttons" Name="button10" ChartType="Line"/>
-                    <dvc:Series ChartArea="Buttons" Name="button11" ChartType="Line"/>
-                    <dvc:Series ChartArea="Buttons" Name="button12" ChartType="Line"/>
-                    <dvc:Series ChartArea="Buttons" Name="button13" ChartType="Line"/>
-                    <dvc:Series ChartArea="Buttons" Name="button14" ChartType="Line"/>
-                    <dvc:Series ChartArea="Buttons" Name="button15" ChartType="Line"/>
-                    <dvc:Series ChartArea="Buttons" Name="button16" ChartType="Line"/>
-                    <dvc:Series ChartArea="Buttons" Name="button17" ChartType="Line"/>
-                    <dvc:Series ChartArea="Buttons" Name="button18" ChartType="Line"/>
-                    <dvc:Series ChartArea="Buttons" Name="button19" ChartType="Line"/>
-                    <dvc:Series ChartArea="Buttons" Name="button20" ChartType="Line"/>
-                    <dvc:Series ChartArea="Buttons" Name="button21" ChartType="Line"/>
+                    <dvc:Series ChartArea="Buttons" Name="button0" ChartType="Line" Color="AliceBlue"/>
+                    <dvc:Series ChartArea="Buttons" Name="button1" ChartType="Line" Color="BlanchedAlmond"/>
+                    <dvc:Series ChartArea="Buttons" Name="button2" ChartType="Line" Color="ControlDark" />
+                    <dvc:Series ChartArea="Buttons" Name="button3" ChartType="Line" Color="DarkBlue" />
+                    <dvc:Series ChartArea="Buttons" Name="button4" ChartType="Line" Color="DarkOliveGreen" />
+                    <dvc:Series ChartArea="Buttons" Name="button5" ChartType="Line" Color="Firebrick" />
+                    <dvc:Series ChartArea="Buttons" Name="button6" ChartType="Line" Color="Fuchsia"/>
+                    <dvc:Series ChartArea="Buttons" Name="button7" ChartType="Line" Color="DimGray" />
+                    <dvc:Series ChartArea="Buttons" Name="button8" ChartType="Line" Color="GradientInactiveCaption" />
+                    <dvc:Series ChartArea="Buttons" Name="button9" ChartType="Line" Color="InfoText" />
+                    <dvc:Series ChartArea="Buttons" Name="button10" ChartType="Line" Color="LightGoldenrodYellow" />
+                    <dvc:Series ChartArea="Buttons" Name="button11" ChartType="Line" Color="MediumOrchid"/>
+                    <dvc:Series ChartArea="Buttons" Name="button12" ChartType="Line" Color="MenuBar"/>
+                    <dvc:Series ChartArea="Buttons" Name="button13" ChartType="Line" Color="OrangeRed"/>
+                    <dvc:Series ChartArea="Buttons" Name="button14" ChartType="Line" Color="Salmon"/>
+                    <dvc:Series ChartArea="Buttons" Name="button15" ChartType="Line" Color="SeaGreen"/>
+                    <dvc:Series ChartArea="Buttons" Name="button16" ChartType="Line" Color="Sienna"/>
+                    <dvc:Series ChartArea="Buttons" Name="button17" ChartType="Line" Color="Teal"/>
+                    <dvc:Series ChartArea="Buttons" Name="button18" ChartType="Line" Color="Turquoise"/>
+                    <dvc:Series ChartArea="Buttons" Name="button19" ChartType="Line" Color="Window"/>
+                    <dvc:Series ChartArea="Buttons" Name="button20" ChartType="Line" Color="Cornsilk"/>
+                    <dvc:Series ChartArea="Buttons" Name="button21" ChartType="Line" Color="LightPink"/>
                 </dvc:Chart.Series>
                 <dvc:Chart.ChartAreas>
                     <dvc:ChartArea Name="Buttons"/>

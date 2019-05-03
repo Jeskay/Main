@@ -22,7 +22,10 @@ namespace mainWpf
         private string advdepth;
         private static int speedmode;
         private Visibility lamp;
-        
+        private Brush yawReg;
+        private Brush pitchReg;
+        private Brush rollReg;
+        private Brush depthReg;
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
         public struct SM
@@ -139,9 +142,34 @@ namespace mainWpf
                 lamp = value;
             }
         }
+        public Brush YawReg
+        {
+            get
+            {
+                return yawReg;
+            }
+            set
+            {
+                yawReg = value;
+            }
+        }
+        public Brush PitchReg
+        {
+            get { return pitchReg; }
+            set { pitchReg = value; }
+        }
+        public Brush RollReg
+        {
+            get { return rollReg; }
+            set { rollReg = value; }
+        }
+        public Brush DepthReg
+        {
+            get { return depthReg; }
+            set { depthReg = value; }
+        }
         public Model()
         {
-            
             Depth          = 0;
             Yaw            = 0;
             Pitch          = 0;

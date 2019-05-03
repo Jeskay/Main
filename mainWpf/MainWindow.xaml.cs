@@ -121,7 +121,8 @@ namespace mainWpf
                 {
                     Console.WriteLine("Возникло исключение1: " + ex.ToString() + "\n  " + ex.Message);
                 }
-                    string senddata = Model.vGM.axisX_p + "!" + Model.vGM.axisY_p + "!" + Model.vGM.axisW_p + "!" + Model.vGM.axisZ_p + "!" + Model.vGM.manipulator_rotate + "!" + Model.vGM.camera_rotate + "!";
+
+                string senddata = Model.vGM.axisX_p + "!" + Model.vGM.axisY_p + "!" + Model.vGM.axisW_p + "!" + Model.vGM.axisZ_p + "!" + Model.vGM.manipulator_rotate + "!" + Model.vGM.camera_rotate + "!";
                     for (int i = 0; i < 22; i++) senddata += JoystickController.GetButtons[i] + "!";
                     senddata += ":" + DateTime.Now.ToLongTimeString() + '\n';
                     Byte[] sendlog = new UTF8Encoding(true).GetBytes(senddata);
@@ -217,13 +218,6 @@ namespace mainWpf
             sp.Load();
             TimeOut1.Load();
 
-            TextBox1.Visibility             = Visibility.Collapsed;
-            ctext.Visibility                = Visibility.Collapsed;
-            //Image_lantern.Visibility        = Visibility.Hidden;
-            Label_ByteData.Visibility       = Visibility.Collapsed;
-            //Label_DephMeter.Visibility    = Visibility.Collapsed;
-            Label_SendingBytes.Visibility   = Visibility.Collapsed;//V<
-
             webcam                          = new WebCamCapture();//C>
             webcam.FrameNumber                  = ((ulong)(0ul));
             webcam.TimeToCapture_milliseconds   = 30;
@@ -257,6 +251,10 @@ namespace mainWpf
             ReceiveLog = File.Create(@path);
             //StreamReader sr = File.OpenText(@"ResourseFiles\\SendLog.txt");
             //setter.ReadCoefficients("Coefficents.txt");
+            vmodel.YawReg = Brushes.Red;
+            vmodel.PitchReg = Brushes.Red;
+            vmodel.RollReg = Brushes.Red;
+            vmodel.DepthReg = Brushes.Red;
             timercontroller.StartTimer(15);
         }
         private void Keyboard_KeyUp(object sender, KeyEventArgs e)//V
@@ -334,25 +332,57 @@ namespace mainWpf
             }
             if (e.Key == Key.D7)
             {
-                if (JoystickController.GetButtons[12] == 0) JoystickController.GetButtons[12] = 1;
-                else JoystickController.GetButtons[12] = 0;
+                if (JoystickController.GetButtons[12] == 0)
+                {
+                    JoystickController.GetButtons[12] = 1;
+                    vmodel.YawReg = Brushes.Green;
+                }
+                else
+                {
+                    JoystickController.GetButtons[12] = 0;
+                    vmodel.YawReg = Brushes.Red;
+                }
             }
             if (e.Key == Key.D8)
             {
-                if (JoystickController.GetButtons[13] == 0) JoystickController.GetButtons[13] = 1;
-                else JoystickController.GetButtons[13] = 0;
+                if (JoystickController.GetButtons[13] == 0)
+                {
+                    JoystickController.GetButtons[13] = 1;
+                    vmodel.DepthReg = Brushes.Green;
+                }
+                else
+                {
+                    JoystickController.GetButtons[13] = 0;
+                    vmodel.DepthReg = Brushes.Red;
+                }
             }
 
             if (e.Key == Key.D9)
             {
-                if (JoystickController.GetButtons[14] == 0) JoystickController.GetButtons[14] = 1;
-                else JoystickController.GetButtons[14] = 0;
+                if (JoystickController.GetButtons[14] == 0)
+                {
+                    JoystickController.GetButtons[14] = 1;
+                    vmodel.RollReg = Brushes.Green;
+                }
+                else
+                {
+                    JoystickController.GetButtons[14] = 0;
+                    vmodel.RollReg = Brushes.Red;
+                }
             }
 
             if (e.Key == Key.D0)
             {
-                if (JoystickController.GetButtons[15] == 0) JoystickController.GetButtons[15] = 1;
-                else JoystickController.GetButtons[15] = 0;
+                if (JoystickController.GetButtons[15] == 0)
+                {
+                    JoystickController.GetButtons[15] = 1;
+                    vmodel.PitchReg = Brushes.Green;
+                }
+                else
+                {
+                    JoystickController.GetButtons[15] = 0;
+                    vmodel.PitchReg = Brushes.Red;
+                }
             }
 
             if (e.Key == Key.I)
@@ -400,17 +430,6 @@ namespace mainWpf
 
         public void SpeedModeChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-           
-        }
-
-        private void TextBox_timer_TextChanged_1(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void TextBox_SpeedMode_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
             if (MainUDP.Connection)
             {
                 Image_signal.Visibility = Visibility.Visible;
@@ -423,6 +442,17 @@ namespace mainWpf
                 Image_signal.Visibility = Visibility.Collapsed;
                 timer.Start();
             }
+        }
+
+        private void TextBox_timer_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void TextBox_SpeedMode_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+            
         }
 
         private void MainWin_KeyDown(object sender, KeyEventArgs e)

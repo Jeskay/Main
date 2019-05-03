@@ -95,6 +95,54 @@ namespace mainWpf
                 OnPropertyChanged("Lamp");
             }
         }
+        public Brush YawReg
+        {
+            get
+            {
+                return model.YawReg;
+            }
+            set
+            {
+                model.YawReg = value;
+                OnPropertyChanged("YawReg");
+            }
+        }
+        public Brush PitchReg
+        {
+            get
+            {
+                return model.PitchReg;
+            }
+            set
+            {
+                model.PitchReg = value;
+                OnPropertyChanged("PitchReg");
+            }
+        }
+        public Brush RollReg
+        {
+            get
+            {
+                return model.RollReg;
+            }
+            set
+            {
+                model.RollReg = value;
+                OnPropertyChanged("RollReg");
+            }
+        }
+        public Brush DepthReg
+        {
+            get
+            {
+                return model.DepthReg;
+            }
+            set
+            {
+                model.DepthReg = value;
+                OnPropertyChanged("DepthReg");
+            }
+        }
         public string SpeedMode
         {
             get { return "SpeedMode: " + Model.SpeedMode; }
