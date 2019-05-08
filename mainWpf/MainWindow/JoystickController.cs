@@ -150,17 +150,17 @@ namespace mainWpf
             if (Buttons[6] == 1)
             {
                 vmodel.SpeedMode = "1";
-                SpeedK = 0.5;
+                SpeedK = 0.25;
             }
             if (Buttons[5] == 1)
             {
                 vmodel.SpeedMode = "2";
-                SpeedK = 0.75;
+                SpeedK = 0.5;
             }
             if (Buttons[4] == 1)
             {
                 vmodel.SpeedMode = "3";
-                SpeedK = 0.9;
+                SpeedK = 0.75;
             }
         }
         private void Slider_Update(int[] slider_p)
@@ -171,9 +171,9 @@ namespace mainWpf
         }
         private void Main_Joystick_Parameters_Update(JoystickState state)
         {
-            Model.vGM.axisX_p = (sbyte)Math.Round(state.X * SpeedK);
-            Model.vGM.axisY_p = (sbyte)Math.Round(state.Y * SpeedK * -1);
-            Model.vGM.axisZ_p = (sbyte)state.Z;
+            Model.vGM.axisX_p   = (sbyte)Math.Round(state.X * SpeedK);
+            Model.vGM.axisY_p   = (sbyte)Math.Round(state.Y * SpeedK * -1);
+            Model.vGM.axisZ_p   = (sbyte)Math.Round(state.Z * (SpeedK == 0.25 ? 0.5 : SpeedK));
             Model.vGM.axisW_p   = (sbyte)Math.Round(state.Rz * SpeedK);
         }
     } 

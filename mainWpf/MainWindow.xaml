@@ -90,13 +90,13 @@
         <Image x:Name="Image_Background" Source="Images/nostalgic_blue_background_06_hd_pictures_169782.jpg" Margin="0,0,2,1.4" HorizontalAlignment="Right" Width="auto"/>
         <Image x:Name="Image_IsSound" HorizontalAlignment="Left" Height="123" Margin="909,12,0,0" VerticalAlignment="Top" Width="106" Panel.ZIndex="3"/>
         <MediaElement x:Name="ME_Test" Margin="1015,546,10,3" Panel.ZIndex="4" LoadedBehavior="Manual" Source="Videos/videoplayback.mp4" Visibility="Collapsed" Volume="2"/>
-        <Label x:Name="YawRegulator_Label" Content="Yreg" HorizontalAlignment="Left" Height="39" Margin="13,582,0,0" VerticalAlignment="Top" Width="40" Panel.ZIndex="2"/>
-        <Label x:Name="PitchRegulator_Label" Content="Preg" HorizontalAlignment="Left" Height="39" Margin="13,546,0,0" VerticalAlignment="Top" Width="40" Panel.ZIndex="2"/>
-        <Label x:Name="RollRegulator_Label" Content="Rreg" HorizontalAlignment="Left" Height="39" Margin="10,507,0,0" VerticalAlignment="Top" Width="40" Panel.ZIndex="2"/>
-        <Label x:Name="DepthRegulator_Label" Content="Dreg" HorizontalAlignment="Left" Height="39" Margin="10,612,0,0" VerticalAlignment="Top" Width="40" Panel.ZIndex="2"/>
-        <Rectangle x:Name="Roll_Rect" Fill="{Binding Path=RollReg, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="39" Margin="48,507,0,0" Stroke="Black" VerticalAlignment="Top" Width="39" Panel.ZIndex="2"/>
-        <Rectangle x:Name="Pitch_Rect" Fill="{Binding Path=PitchReg, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="39" Margin="48,538,0,0" Stroke="Black" VerticalAlignment="Top" Width="39" Panel.ZIndex="2"/>
-        <Rectangle x:Name="Yaw_Rect" Fill="{Binding Path=YawReg, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="39" Margin="48,573,0,0" Stroke="Black" VerticalAlignment="Top" Width="39" Panel.ZIndex="2"/>
+        <Label x:Name="YawRegulator_Label" Content="Yreg" HorizontalAlignment="Left" Height="39" Margin="8,568,0,0" VerticalAlignment="Top" Width="40" Panel.ZIndex="2"/>
+        <Label x:Name="PitchRegulator_Label" Content="Preg" HorizontalAlignment="Left" Height="39" Margin="8,528,0,0" VerticalAlignment="Top" Width="40" Panel.ZIndex="2"/>
+        <Label x:Name="RollRegulator_Label" Content="Rreg" HorizontalAlignment="Left" Height="39" Margin="10,490,0,0" VerticalAlignment="Top" Width="40" Panel.ZIndex="2"/>
+        <Label x:Name="DepthRegulator_Label" Content="Dreg" HorizontalAlignment="Left" Height="39" Margin="10,607,0,0" VerticalAlignment="Top" Width="40" Panel.ZIndex="2"/>
+        <Rectangle x:Name="Roll_Rect" Fill="{Binding Path=RollReg, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="39" Margin="48,490,0,0" Stroke="Black" VerticalAlignment="Top" Width="39" Panel.ZIndex="2"/>
+        <Rectangle x:Name="Pitch_Rect" Fill="{Binding Path=PitchReg, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="39" Margin="48,529,0,0" Stroke="Black" VerticalAlignment="Top" Width="39" Panel.ZIndex="2"/>
+        <Rectangle x:Name="Yaw_Rect" Fill="{Binding Path=YawReg, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="39" Margin="48,568,0,0" Stroke="Black" VerticalAlignment="Top" Width="39" Panel.ZIndex="2"/>
         <Rectangle x:Name="Depth_Rect" Fill="{Binding Path=DepthReg, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="39" Margin="48,607,0,0" Stroke="Black" VerticalAlignment="Top" Width="39" Panel.ZIndex="2"/>
     </Grid>
 </Window>
