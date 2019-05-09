@@ -54,7 +54,7 @@ namespace mainWpf
         }
         public float Depth
         {
-            get { return model.Roll; }
+            get { return model.Depth; }
             set
             {
                 model.Depth = value;
