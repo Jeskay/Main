@@ -162,6 +162,7 @@ namespace mainWpf
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Speed1Brush"));
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Speed2Brush"));
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Speed3Brush"));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Speed4Brush"));
                 }
             }
         }
@@ -169,6 +170,7 @@ namespace mainWpf
         public Brush Speed1Brush => GetBrush(1);
         public Brush Speed2Brush => GetBrush(2);
         public Brush Speed3Brush => GetBrush(3);
+        public Brush Speed4Brush => GetBrush(4);
         public Brush GetBrush(int speed)
         {
             if (model == null || speed > Model.SpeedMode)
@@ -179,7 +181,8 @@ namespace mainWpf
             {
                 case 1: return Brushes.Lime;
                 case 2: return Brushes.Gold;
-                default: return Brushes.Firebrick;
+                case 4: return Brushes.Firebrick;
+                default: return Brushes.Orange;
             }
         }
         #endregion Brushes

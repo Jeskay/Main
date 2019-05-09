@@ -162,6 +162,11 @@ namespace mainWpf
                 vmodel.SpeedMode = "3";
                 SpeedK = 0.75;
             }
+            if (Buttons[7] == 1)
+            {
+                vmodel.SpeedMode = "4";
+                SpeedK = 1.0;
+            }
         }
         private void Slider_Update(int[] slider_p)
         {

@@ -12,7 +12,9 @@ using System.Windows.Threading;
 using System.Threading;
 using WebCam_Capture;
 using System.IO;
-using System.Reflection;
+using System.Windows.Media.Media3D;
+using HelixToolkit.Wpf;
+
 
 namespace mainWpf
 {
@@ -29,7 +31,7 @@ namespace mainWpf
         System.Media.SoundPlayer TimeOut1 = new System.Media.SoundPlayer();
         // обьявление используемых клаасов
         public static VModel vmodel;
-        ROVprojection ProjectionWindow = new ROVprojection();
+        //ROVprojection ProjectionWindow = new ROVprojection(); //отдельное окно 3Д модели
         ChartBuilder chartBuilder = new ChartBuilder();
         public JoystickController Maincontroller;
         public UDPController MainUDP;
@@ -39,6 +41,9 @@ namespace mainWpf
         public VUDPModel vudp;
         FileStream SendLog;
         FileStream ReceiveLog;
+        ROVprojectionModelView projectionmodelview;
+        ModelImporter importer;
+        Model3D model;
 
         bool mark = false;
         bool TimerIsStoped = false;
@@ -57,13 +62,18 @@ namespace mainWpf
             InitializeComponent();
 
             //Теперь MainWindow главное окно для ProjectionWindow
-            setter          = new SettingsController();
+            projectionmodelview = new ROVprojectionModelView(new ROVprojectionModel());
+            importer = new ModelImporter();
+            setter = new SettingsController();
             Maincontroller  = new JoystickController();
             MainUDP         = new UDPController();
             vmodel          = new VModel(new Model());
             vtimer          = new VTimerModel(new TimerModel());
             vudp            = new VUDPModel(new UDPModel());
             timercontroller = new TimerController();
+            model = importer.Load(@"ResourseFiles\\ROV.obj");
+           _3DModel_Grid.DataContext = projectionmodelview;
+            Models.Content = model;
             DataContext = vmodel;
             UDPData_Grid.DataContext = vudp;
             GroupBoxTimer_Grid.DataContext = vtimer;
@@ -113,9 +123,9 @@ namespace mainWpf
                     vudp.SendingBytes = MainUDP.SendedBytes;
                     vudp.ReceivingBytes = MainUDP.ReceivedBytes;
                     vudp.Connection = MainUDP.Connection;
-                    ProjectionWindow.Yaw = Model.vSM.yaw;
-                    ProjectionWindow.Pitch = Model.vSM.pitch;
-                    ProjectionWindow.Roll = Model.vSM.roll;
+                    projectionmodelview.RotationX = Model.vSM.yaw;
+                    projectionmodelview.RotationZ = Model.vSM.pitch;
+                    projectionmodelview.RotationY = Model.vSM.roll;
                 }
                 catch (Exception ex)
                 {
@@ -322,8 +332,8 @@ namespace mainWpf
             }
             if (e.KeyboardDevice.Modifiers == ModifierKeys.Shift && e.Key == System.Windows.Input.Key.N)//V
             {
-                ProjectionWindow.Owner = this;
-                ProjectionWindow.Show();
+                //ProjectionWindow.Owner = this; // 3Д модель
+                //ProjectionWindow.Show();
             }
             if (e.KeyboardDevice.Modifiers == ModifierKeys.Shift && e.Key == System.Windows.Input.Key.V)
             {
