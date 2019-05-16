@@ -112,7 +112,18 @@ namespace mainWpf
                     info += "PointOfView:   " + Model.vGM.camera_rotate + "\n";
                     for (int i = 0; i < 22; i++) info += "Key" + i + ": " + JoystickController.GetButtons[i] + "\n";
                     MainUDP.Send(info);
-
+                    if (MainUDP.Connection)
+                    {
+                        vmodel.IsSignal = Visibility.Visible;
+                        vmodel.NoSignal = Visibility.Collapsed;
+                        timer.Stop();
+                    }
+                    else
+                    {
+                        vmodel.IsSignal = Visibility.Collapsed;
+                        vmodel.NoSignal = Visibility.Visible;
+                        timer.Start();
+                    }
                     vmodel.Depth = Model.vSM.depth;
                     vmodel.Pitch = Model.vSM.pitch;
                     vmodel.Roll = Model.vSM.roll;
@@ -244,7 +255,7 @@ namespace mainWpf
             MainUDP.Receiver();
 
             timer.Tick      += new EventHandler(timerTick);
-            timer.Interval   = new TimeSpan(0, 0, 1);
+            timer.Interval   = new TimeSpan(0, 0, 2);
             
             timer3.Tick     += new EventHandler(timer3Tick);
             timer3.Interval  = new TimeSpan(0, 0, 3);
@@ -440,18 +451,7 @@ namespace mainWpf
 
         public void SpeedModeChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if (MainUDP.Connection)
-            {
-                Image_signal.Visibility = Visibility.Visible;
-                Image_Nosignal.Visibility = Visibility.Collapsed;
-                timer.Stop();
-            }
-            else
-            {
-                Image_Nosignal.Visibility = Visibility.Visible;
-                Image_signal.Visibility = Visibility.Collapsed;
-                timer.Start();
-            }
+
         }
 
         private void TextBox_timer_TextChanged_1(object sender, TextChangedEventArgs e)

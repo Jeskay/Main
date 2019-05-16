@@ -95,6 +95,30 @@ namespace mainWpf
                 OnPropertyChanged("Lamp");
             }
         }
+        public Visibility IsSignal
+        {
+            get
+            {
+                return model.IsSignal;
+            }
+            set
+            {
+                model.IsSignal = value;
+                OnPropertyChanged("IsSignal");
+            }
+        }
+        public Visibility NoSignal
+        {
+            get
+            {
+                return model.NoSignal;
+            }
+            set
+            {
+                model.NoSignal = value;
+                OnPropertyChanged("NoSignal");
+            }
+        }
         public Brush YawReg
         {
             get

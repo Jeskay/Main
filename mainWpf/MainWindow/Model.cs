@@ -22,6 +22,8 @@ namespace mainWpf
         private string advdepth;
         private static int speedmode;
         private Visibility lamp;
+        private Visibility isSignal;
+        private Visibility noSignal;
         private Brush yawReg;
         private Brush pitchReg;
         private Brush rollReg;
@@ -142,6 +144,28 @@ namespace mainWpf
                 lamp = value;
             }
         }
+        public Visibility IsSignal
+        {
+            get
+            {
+                return noSignal;
+            }
+            set
+            {
+                noSignal = value;
+            }
+        }
+        public Visibility NoSignal
+        {
+            get
+            {
+                return noSignal;
+            }
+            set
+            {
+                noSignal = value;
+            }
+        }
         public Brush YawReg
         {
             get
@@ -178,7 +202,9 @@ namespace mainWpf
             SecondDepth    = 0;
             speedmode      = 1;
             Core           = 0;
-            Lamp = Visibility.Collapsed;
+            Lamp           = Visibility.Collapsed;
+            IsSignal       = Visibility.Collapsed;
+            NoSignal       = Visibility.Visible;
         }
 
 }
